@@ -75,7 +75,7 @@ Per questo l'ordine dei `<script>` in `index.html` è importante: una classe dev
 
 ## Pubblicare
 
-Il sito è su Vercel: https://giacomo-negri.vercel.app
+Il sito è su Vercel: https://giacomonegri.vercel.app
 
 Per aggiornarlo, dalla cartella con i file da pubblicare (`index.html`, `404.html`, `robots.txt`, `sitemap.xml`, `vercel.json`, `css/`, `js/`, `assets/`):
 

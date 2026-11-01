@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://giacomo-negri.vercel.app/sitemap.xml
+Sitemap: https://giacomonegri.vercel.app/sitemap.xml
