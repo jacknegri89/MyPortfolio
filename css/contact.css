@@ -1,0 +1,167 @@
+/* Sezione Contatti: titolo grande, email e riquadri dei canali. */
+.contact {
+  position: relative;
+  isolation: isolate; /* senza questo la luce (.orb, z-index -1) finisce dietro lo sfondo e non si vede */
+  overflow: hidden;
+  padding-block: clamp(72px, 14vw, 190px) clamp(60px, 8vw, 100px);
+}
+.contact .orb {
+  position: absolute;
+  width: 760px;
+  height: 760px;
+  left: 50%;
+  top: 10%;
+  margin-left: -380px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(99, 189, 255, 0.18),
+    rgba(59, 139, 235, 0.06) 40%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+.contact-big {
+  font-size: clamp(4rem, 15vw, 15rem);
+  line-height: 0.82;
+  letter-spacing: -0.07em;
+  font-weight: 700;
+  margin-top: 18px;
+}
+.contact-big .serif {
+  font-weight: 400;
+}
+.contact-lead {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 1.12rem;
+  max-width: 52ch;
+}
+/* Email grande con il pulsante "Copia" accanto */
+.mail-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: clamp(28px, 4vw, 44px);
+}
+.mail-big {
+  display: inline-block;
+  font-size: clamp(1.4rem, 4.2vw, 3.4rem);
+  letter-spacing: -0.04em;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+.mail-big::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: var(--grad);
+  transform-origin: left;
+  transform: scaleX(0.18);
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.mail-big:hover::after {
+  transform: scaleX(1);
+}
+.channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(36px, 5vw, 60px);
+}
+.channel {
+  flex: 0 1 auto; /* larghezza naturale: con un solo riquadro non deve occupare tutta la riga */
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px;
+  border-radius: 16px;
+  border: 1px solid var(--stroke);
+  background: rgba(6, 7, 13, 0.6);
+  min-width: 0;
+  transition: border-color 0.2s;
+}
+.channel:hover {
+  border-color: var(--stroke-2);
+}
+.channel > svg {
+  width: 20px;
+  height: 20px;
+  color: var(--a2);
+  flex: none;
+}
+.channel .v {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+.channel .v small {
+  font: 500 0.68rem/1.4 var(--f-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.channel .v a {
+  font-weight: 500;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.channel .v a:hover {
+  color: var(--a2);
+}
+.copy {
+  flex: none;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke-2);
+  background: transparent;
+  color: var(--fg);
+  font: 500 0.74rem/1 var(--f-mono);
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+.copy:hover {
+  border-color: var(--a2);
+}
+.copy.done {
+  color: var(--ok);
+  border-color: var(--ok);
+}
+.contact-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+@media (max-width: 480px) {
+  .channel {
+    padding: 14px 16px;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+  .channel > svg {
+    display: none;
+  }
+  .channel .v a {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+}
+
+/* Su touchscreen il pulsante "Copia" deve essere abbastanza grande da toccare con il dito */
+@media (pointer: coarse) {
+  .copy {
+    min-height: 44px;
+    padding: 10px 18px;
+  }
+}

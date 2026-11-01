@@ -1,0 +1,9 @@
+/* Utenti che chiedono meno animazioni: niente loader e animazioni ferme. Deve restare l'ultimo file CSS caricato. */
+@media (prefers-reduced-motion: reduce) {
+  #loader {
+    display: none;
+  }
+  .aurora {
+    animation: none;
+  }
+}

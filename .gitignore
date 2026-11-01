@@ -1,0 +1,10 @@
+# Personal notes and a duplicate of the CV: not part of the site
+profilo_jack.md
+profilo_personale_disoccupato.md
+CV – Giacomo Negri.pdf
+.vercel/
+.env
+.env.*
+node_modules/
+.playwright-mcp/
+.claude/
