@@ -1,0 +1,61 @@
+/* Sezione Chi sono: frase che si illumina con lo scroll e riquadri con i numeri. */
+.statement {
+  font-size: clamp(1.9rem, 4.4vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+  max-width: 1100px;
+}
+.statement .serif {
+  font-size: 1.06em;
+}
+.statement .sw {
+  display: inline;
+}
+.about {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: clamp(56px, 8vw, 110px);
+}
+.about-side {
+  grid-column: 1/-1;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-content: start;
+}
+.about-text {
+  grid-column: 1/-1;
+  padding: clamp(24px, 3vw, 38px);
+  display: grid;
+  gap: 20px;
+}
+.about-text p {
+  color: var(--muted);
+  max-width: 72ch;
+}
+.about-text p strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+.about-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.about-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  font-size: 0.86rem;
+  color: #c9cee0;
+}
+.about-meta svg {
+  width: 15px;
+  height: 15px;
+  color: var(--a2);
+}

@@ -1,0 +1,66 @@
+/* Cursore personalizzato (punto + anello) visibile solo con mouse. */
+.cur-dot,
+.cur-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 350;
+  border-radius: 50%;
+  opacity: 0;
+}
+.cur-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #fff;
+  mix-blend-mode: difference;
+}
+.cur-ring {
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  display: grid;
+  place-items: center;
+  transition:
+    width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    height 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    margin 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.35s,
+    border-color 0.35s;
+}
+.cur-ring span {
+  font: 600 0.72rem/1 var(--f-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #05060b;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.cur-ring.is-link {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+.cur-ring.is-view {
+  width: 96px;
+  height: 96px;
+  margin: -48px 0 0 -48px;
+  background: var(--a2);
+  border-color: transparent;
+}
+.cur-ring.is-view span {
+  opacity: 1;
+}
+.has-cursor,
+.has-cursor a,
+.has-cursor button {
+  cursor: none;
+}
+.has-cursor .cur-dot,
+.has-cursor .cur-ring {
+  opacity: 1;
+}

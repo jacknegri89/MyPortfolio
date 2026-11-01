@@ -1,0 +1,125 @@
+/* Sezione Formazione: scuola, certificazioni e lingue. */
+.edu {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .edu {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.panel {
+  padding: clamp(24px, 3.4vw, 40px);
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+.panel .k {
+  font: 500 0.74rem/1 var(--f-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--a2);
+}
+.panel h3 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+.panel .sub,
+.panel > p {
+  color: var(--muted);
+}
+.subjects {
+  display: grid;
+  margin: 6px 0 0;
+}
+.subjects div {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 14px;
+  padding-block: 12px;
+  border-top: 1px solid var(--stroke);
+  font-size: 0.94rem;
+}
+.subjects dt {
+  font: 500 0.72rem/1.9 var(--f-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.subjects dd {
+  margin: 0;
+  color: #c9cee0;
+}
+@media (max-width: 460px) {
+  .subjects div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+}
+.certs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+}
+.certs li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-block: 16px;
+  border-top: 1px solid var(--stroke);
+}
+.certs b {
+  font-weight: 500;
+  display: block;
+  font-size: 1.05rem;
+}
+.certs small {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+.pill {
+  flex: none;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px dashed var(--stroke-2);
+  font: 500 0.66rem/1.2 var(--f-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.langs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+@media (max-width: 760px) {
+  .langs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.lang {
+  padding: 24px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+.lang .k {
+  font: 500 0.72rem/1 var(--f-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.lang b {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.lang > span:not(.k) {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
