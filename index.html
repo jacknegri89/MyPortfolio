@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Giacomo Negri · Developer</title>
+<meta name="description" content="Giacomo Negri, developer. Web app, integrazioni AI e sistemi embedded con Raspberry Pi. In Lombardia e come frontaliere in Canton Ticino.">
+<meta name="theme-color" content="#04050A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%2304050A%27/%3E%3Ctext x=%2732%27 y=%2742%27 text-anchor=%27middle%27 font-family=%27Arial,sans-serif%27 font-weight=%27700%27 font-size=%2728%27 fill=%27%23F3F5FB%27%3EGN%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Giacomo Negri · Developer">
+<meta property="og:description" content="Web app, integrazioni AI e sistemi embedded. Progetti, esperienza e contatti.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://giacomo-negri.vercel.app/">
+<meta property="og:image" content="https://giacomo-negri.vercel.app/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://giacomo-negri.vercel.app/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Le librerie JS arrivano da questi due CDN: aprire la connessione subito fa risparmiare tempo -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<!-- Stili: l'ordine conta (reduced-motion.css deve restare l'ultimo).
+     ?v=... è la versione: dopo aver modificato CSS o JS cambiala ovunque (cerca e sostituisci),
+     così i visitatori scaricano i file nuovi invece di usare quelli vecchi in cache. -->
+<link rel="stylesheet" href="css/base.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/loader.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/cursor.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/nav.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/buttons.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/hero.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/marquee.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/sections.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/about.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/projects.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/experience.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/skills.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/education.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/contact.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/footer.css?v=2026-11-01d">
+<link rel="stylesheet" href="css/reduced-motion.css?v=2026-11-01d">
+</head>
+<body>
+
+<a class="skip-link" href="#chi-sono">Vai al contenuto</a>
+
+<!-- PRELOADER -->
+<div id="loader" aria-hidden="true">
+  <div class="ld-top"><span>Giacomo Negri</span><span>Portfolio ©2026</span></div>
+  <div class="ld-bottom"><div class="ld-count" id="ld-count">0</div><div class="ld-word">web · AI · embedded</div></div>
+  <div class="ld-bar" id="ld-bar"></div>
+</div>
+
+<div class="cur-dot" id="cur-dot" aria-hidden="true"></div>
+<div class="cur-ring" id="cur-ring" aria-hidden="true"><span id="cur-label">Apri</span></div>
+
+<nav class="nav" aria-label="Navigazione principale">
+  <a class="logo" href="#top">Giacomo Negri<sup>©26</sup></a>
+  <ul>
+    <li><a href="#progetti">Progetti</a></li>
+    <li><a href="#esperienza">Esperienza</a></li>
+    <li><a href="#competenze">Stack</a></li>
+    <li class="keep"><a href="#contatti">Contatti</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- ================= HERO ================= -->
+  <header class="hero" id="top" data-pause-offscreen>
+    <div class="aurora a1" aria-hidden="true"></div>
+    <div class="aurora a2" aria-hidden="true"></div>
+    <canvas id="bg3d" aria-hidden="true"></canvas>
+
+    <div class="hero-meta">
+      <span class="role hero-in">Developer</span>
+    </div>
+
+    <h1 class="hero-name">
+      <span class="visually-hidden">Giacomo Negri</span>
+      <span class="line l1" aria-hidden="true"><span id="name-1">Giacomo</span></span>
+      <span class="line l2" aria-hidden="true"><span id="name-2">Negri</span></span>
+    </h1>
+
+    <div class="hero-foot">
+      <p class="intro hero-in">Diplomato in Informatica &amp; Telecomunicazioni nel 2026. Disponibile in <b>Lombardia</b> e come frontaliere in <b>Canton Ticino</b>.</p>
+      <div class="cta hero-in">
+        <a class="btn btn-primary magnetic" href="#progetti">Progetti
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </a>
+        <a class="btn magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-01e" target="_blank" rel="noopener" aria-label="Guarda il CV in anteprima">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>CV
+        </a>
+        <a class="btn magnetic" href="https://github.com/jacknegri89" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= VELOCITY MARQUEE ================= -->
+  <div class="vmarquee" aria-hidden="true">
+    <div class="vrow" data-dir="-1"><span class="strong">C#</span><span class="o">JavaScript</span><span class="strong">PHP</span><span class="o">Java</span><span class="strong">Python</span><span class="o">C++</span><span class="o">TypeScript</span><span class="strong">C#</span><span class="o">JavaScript</span><span class="strong">PHP</span><span class="o">Java</span><span class="strong">Python</span><span class="o">C++</span><span class="o">TypeScript</span></div>
+    <div class="vrow" data-dir="1"><span class="s g">Web app</span><span class="o">Integrazioni AI</span><span class="s">Embedded</span><span class="o">Automazioni</span><span class="s g">Junior developer</span><span class="o">Lombardia</span><span class="s">Canton Ticino</span><span class="s g">Web app</span><span class="o">Integrazioni AI</span><span class="s">Embedded</span><span class="o">Automazioni</span><span class="s g">Junior developer</span><span class="o">Lombardia</span><span class="s">Canton Ticino</span></div>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="section" id="chi-sono">
+    <div class="wrap">
+            <h2 class="visually-hidden">Chi sono</h2>
+      <p class="statement" id="statement">Sono Giacomo, perito informatico. Non scrivo solo codice per il web: se mi serve qualcosa che non esiste, me lo costruisco. Così sono nati un job scraper per il Canton Ticino, con l'analisi AI degli annunci via API, e <span class="serif accent-text">un'app Android di note cifrate.</span></p>
+
+      <div class="about">
+        <div class="about-side">
+          <div class="card about-text reveal">
+            <p>Diplomato in Informatica &amp; Telecomunicazioni all'Istituto Jean Monnet nel 2026. Ho realizzato <strong>Renova</strong>, una piattaforma con autenticazione, cinque tipi di grafici interattivi e dati in tempo reale dalla Ember Climate API. Durante lo stage in <strong>TCR Tecora</strong> ho contribuito a un sistema con Raspberry Pi 3 in un contesto industriale reale. Ora sto ampliando le competenze con le certificazioni cloud di AWS e Microsoft.</p>
+            <div class="about-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Barlassina (MB)</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14M6 17l1.5-5h9L18 17M8 17v2M16 17v2"/></svg>Patente B · automunito</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Italiano · Inglese B2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS (horizontal) ================= -->
+  <section class="hsec" id="progetti" data-pause-offscreen>
+    <div class="h-track" id="h-track">
+      <div class="h-intro">
+                <h2 class="split">Cose che ho <span class="serif accent-text">costruito.</span></h2>
+        <p>Dati in tempo reale, automazione con analisi AI e crittografia locale. Quattro progetti, ognuno con uno stack diverso.</p>
+        <span class="h-hint"><i></i>Continua a scorrere</span>
+      </div>
+
+      <!-- Renova -->
+      <article class="card proj">
+        <div class="proj-copy">
+          <div class="proj-num"><span class="kind">Web App · Progetto scolastico</span><span>Mar — Giu 2026</span></div>
+          <h3>Renova</h3>
+          <p>Piattaforma per monitorare <b>generazione elettrica ed emissioni di CO₂ per paese</b>. Dati in tempo reale dalla <b>Ember Climate API</b> con cache PHP lato server, cinque tipi di grafici interattivi con Chart.js, autenticazione, quiz tematici, leaderboard e achievement.</p>
+          <ul class="chips"><li>PHP</li><li>MySQL</li><li>JavaScript</li><li>Chart.js</li><li>Ember API</li><li>HTML5/CSS3</li></ul>
+          <div class="proj-links">
+            <a class="btn btn-primary btn-sm magnetic" href="https://renova.great-site.net" target="_blank" rel="noopener">Apri il sito live
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+        </div>
+        <a class="window" href="https://renova.great-site.net" target="_blank" rel="noopener" data-cursor="Apri" aria-label="renova.great-site.net, apri Renova">
+          <div class="win-bar"><i></i><i></i><i></i><span>renova.great-site.net</span></div>
+          <img class="win-shot" src="assets/renova.webp?v=2026-10-08" alt="Pagina principale di Renova: titolo «Da dove arriva la tua elettricità?» e pulsante per creare un account" width="1280" height="800" loading="lazy" decoding="async">
+        </a>
+      </article>
+
+      <!-- Job Scraper -->
+      <article class="card proj">
+        <div class="proj-copy">
+          <div class="proj-num"><span class="kind">Python · Personale</span><span>Giu 2026</span></div>
+          <h3>Job Scraper Ticino</h3>
+          <p>Raccoglie annunci di lavoro pubblici dai portali svizzeri, li filtra per il <b>distretto di Mendrisio</b> e li arricchisce con un'<b>analisi AI opzionale tramite OpenAI API</b>: match, categoria e stima salariale. Genera una dashboard HTML interattiva con ricerca live, filtri e ordinamento per distanza.</p>
+          <ul class="chips"><li>Python</li><li>Playwright</li><li>Web Scraping</li><li>OpenAI API</li><li>Cache locale</li><li>pytest</li><li>GitHub Actions</li></ul>
+          <p class="proj-note">50 test automatici con pytest, eseguiti su GitHub Actions a ogni modifica.</p>
+          <div class="proj-links">
+            <a class="btn btn-sm magnetic" href="https://github.com/jacknegri89/Job-Scraper-Ticino" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>Codice su GitHub
+            </a>
+          </div>
+        </div>
+        <a class="window watch" href="https://github.com/jacknegri89/Job-Scraper-Ticino" target="_blank" rel="noopener" data-cursor="Codice" aria-label="Apri il codice di Job Scraper Ticino su GitHub">
+          <div class="win-bar"><i></i><i></i><i></i><span>~/Job-Scraper-Ticino</span></div>
+          <div class="win-body term-body" id="scraper-term">
+<span class="p">$</span> python scraper.py <span class="c">--distretto</span> mendrisio <span class="c">--ai</span>
+<span class="d">▸</span> Playwright: apertura portali di lavoro svizzeri
+<span class="d">▸</span> raccolta annunci pubblici
+<span class="d">▸</span> filtro per distretto di Mendrisio
+<span class="d">▸</span> analisi AI: match · categoria · stima salariale
+<span class="d">▸</span> ordinamento per distanza
+<span class="ok">✓</span> dashboard.html generata
+          </div>
+        </a>
+      </article>
+
+      <!-- LogLens -->
+      <article class="card proj">
+        <div class="proj-copy">
+          <div class="proj-num"><span class="kind">Web App · Personale</span><span>Giu 2026</span></div>
+          <h3>LogLens</h3>
+          <p>Incolli un log o uno stack trace e ottieni un'<b>analisi con AI</b>: trova l'errore vero, ne stabilisce gravità e categoria, elenca le cause probabili e i passi per il debug, e prepara una <b>GitHub Issue</b> da copiare con un clic. Funziona con <b>OpenAI API</b> oppure con un modello locale <b>Ollama</b>. Ogni analisi viene salvata nello storico.</p>
+          <ul class="chips"><li>TypeScript</li><li>React</li><li>Node.js</li><li>Prisma</li><li>PostgreSQL</li><li>Vitest</li><li>GitHub Actions</li></ul>
+          <p class="proj-note">Il motore AI è dietro un'unica interfaccia: si passa da OpenAI a Ollama con una variabile d'ambiente. Prima dell'AI un parser seleziona solo le righe utili del log. 50 test con Vitest su GitHub Actions.</p>
+          <div class="proj-links">
+            <a class="btn btn-sm magnetic" href="https://github.com/jacknegri89/LogLens" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>Codice su GitHub
+            </a>
+          </div>
+        </div>
+        <a class="window" href="https://github.com/jacknegri89/LogLens" target="_blank" rel="noopener" data-cursor="Codice" aria-label="Apri il codice di LogLens su GitHub">
+          <div class="win-bar"><i></i><i></i><i></i><span>LogLens · analisi</span></div>
+          <div class="win-body term-body">
+<span class="c">log o stack trace</span>
+<span class="d">▸</span> ricerca delle righe rilevanti
+<span class="d">▸</span> AI: OpenAI API o Ollama in locale
+<span class="d">▸</span> gravità e categoria assegnate
+<span class="d">▸</span> cause probabili e passi di debug
+<span class="ok">✓</span> GitHub Issue pronta da copiare
+          </div>
+        </a>
+      </article>
+
+      <!-- Secure Notes -->
+      <article class="card proj">
+        <div class="proj-copy">
+          <div class="proj-num"><span class="kind">Android · Personale</span><span>Java</span></div>
+          <h3>Secure Notes</h3>
+          <p>App blocco note con <b>crittografia locale AES</b>: ogni nota viene cifrata prima di essere salvata ed è accessibile solo con una password personale, <b>mai memorizzata in chiaro</b>. Completamente offline. L'ho sviluppata per capire il ciclo completo di un'app Android: layout, persistenza locale e crittografia.</p>
+          <ul class="chips"><li>Java</li><li>Android SDK</li><li>AES</li><li>SQLite</li></ul>
+          <p class="proj-note">Il codice di questo progetto non è pubblico.</p>
+        </div>
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="notch" aria-hidden="true"></div>
+              <div class="ph-head">Secure Notes
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+              </div>
+              <div class="ph-note"><b>Idee progetto</b><p id="cipher-1">Dashboard per il consumo di energia in casa</p></div>
+              <div class="ph-note"><b>Da studiare</b><p id="cipher-2">AWS Skill Builder: moduli base sul cloud</p></div>
+              <div class="ph-state">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span id="ph-state">AES · sbloccato con password</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="h-progress" aria-hidden="true"><i id="h-progress"></i></div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section class="section" id="esperienza" data-pause-offscreen>
+    <div class="wrap">
+      <div class="sec-head">
+                <h2 class="split">Stage in <span class="serif accent-text">elettronica industriale.</span></h2>
+        <p class="reveal">Dal sensore al relè, fino al cablaggio e alla spedizione dei macchinari.</p>
+      </div>
+
+      <article class="card exp reveal">
+        <div>
+          <div class="exp-head">
+            <span class="eyebrow">Stage · Giu — Lug 2025</span>
+            <h3>TCR Tecora</h3>
+            <div class="exp-meta"><span>Elettronica industriale</span><span>Cogliate (MB)</span><span>Team di 4</span></div>
+          </div>
+          <ul class="bullets">
+            <li><span><b>Progettazione embedded.</b> Integrazione di un sistema con Raspberry Pi 3 per deumidificare un gas prima dell'analisi chimica: lettura del sensore DHT22 in tempo reale, controllo di relè e pompa ad aria al superamento della soglia, parametri configurabili da display touch Nextion via seriale.</span></li>
+            <li><span><b>Cablatura e saldatura di precisione.</b> Assemblaggio di cablaggi e componenti con attenzione a continuità elettrica, ordine e affidabilità del montaggio.</span></li>
+            <li><span><b>Fine linea logistico.</b> Imballaggio, preparazione e spedizione di macchinari industriali.</span></li>
+          </ul>
+        </div>
+
+        <div class="window serial" role="img" aria-label="Monitor simulato: il Raspberry Pi legge l'umidità dal sensore DHT22 e accende la pompa quando supera la soglia">
+          <div class="win-bar"><i></i><i></i><i></i><span>rpi3 · deumidificatore · soglia UR 60%</span></div>
+          <div class="win-body" id="serial-body" aria-hidden="true"></div>
+          <div class="serial-cap">// simulazione del ciclo di controllo sviluppato in stage</div>
+        </div>
+
+        <div class="schematic">
+          <span class="eyebrow">Schema del sistema</span>
+          <p class="schem-hint" aria-hidden="true">Scorri lo schema di lato →</p>
+          <div class="schem-scroll">
+            <svg viewBox="0 0 760 236" role="img" aria-label="Il sensore DHT22 invia umidità e temperatura al Raspberry Pi 3, che confronta il valore con la soglia e comanda il relè della pompa ad aria; il display Nextion imposta i parametri via seriale.">
+              <defs>
+                <linearGradient id="coreg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#3B8BEB"/><stop offset="1" stop-color="#63BDFF"/></linearGradient>
+                <filter id="glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              </defs>
+              <rect class="sb" x="10" y="24" width="170" height="70" rx="12"/>
+              <text class="st" x="28" y="55">Sensore DHT22</text><text class="ss" x="28" y="77">umidità · temperatura</text>
+              <rect class="sb" x="10" y="146" width="170" height="70" rx="12"/>
+              <text class="st" x="28" y="177">Display Nextion</text><text class="ss" x="28" y="199">touch · parametri</text>
+              <rect class="sb core" x="290" y="24" width="190" height="192" rx="14"/>
+              <text class="st" x="310" y="56">Raspberry Pi 3</text><text class="ss" x="310" y="80">lettura in tempo reale</text>
+              <rect x="310" y="98" width="150" height="44" rx="10" fill="none" stroke="#63BDFF" stroke-opacity=".6" stroke-dasharray="4 4"/>
+              <text class="ss" x="326" y="125" style="fill:#F3F5FB">UR &gt; soglia ?</text>
+              <text class="ss" x="310" y="172">sì → relè ON</text><text class="ss" x="310" y="194">no → relè OFF</text>
+              <rect class="sb" x="580" y="24" width="170" height="70" rx="12"/>
+              <text class="st" x="598" y="55">Relè</text><text class="ss" x="598" y="77">comando on/off</text>
+              <rect class="sb" x="580" y="146" width="170" height="70" rx="12"/>
+              <text class="st" x="598" y="177">Pompa ad aria</text><text class="ss" x="598" y="199">deumidifica il gas</text>
+              <path class="sw" d="M180 59H290"/><text class="sl" x="198" y="50">GPIO · dati</text>
+              <path class="sw" d="M180 181H290" stroke-dasharray="5 5"/><text class="sl" x="198" y="172">seriale UART</text>
+              <path class="sw" d="M480 59H580"/><text class="sl" x="500" y="50">GPIO</text>
+              <path class="sw" d="M665 94V146"/>
+              <circle class="pulse" r="3.5"><animateMotion dur="1.6s" repeatCount="indefinite" path="M180 59H290"/></circle>
+              <circle class="pulse b" r="3.5"><animateMotion dur="2.4s" repeatCount="indefinite" path="M180 181H290" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="linear"/></circle>
+              <circle class="pulse" r="3.5"><animateMotion dur="1.6s" begin=".8s" repeatCount="indefinite" path="M480 59H580"/></circle>
+              <circle class="pulse" r="3.5"><animateMotion dur="1.2s" begin="1.2s" repeatCount="indefinite" path="M665 94V146"/></circle>
+            </svg>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section class="section" id="competenze">
+    <div class="wrap">
+      <div class="sec-head">
+                <h2 class="split">Strumenti che <span class="serif accent-text">uso.</span></h2>
+        <p class="reveal">Dal frontend al database, dai test automatici all'integrazione con modelli AI, fino all'hardware.</p>
+      </div>
+      <div class="bento">
+        <div class="card skill w2 reveal">
+          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span><h3>Linguaggi</h3></div>
+          <ul class="chips"><li>JavaScript</li><li>TypeScript</li><li>Python</li><li>PHP</li><li>Java</li><li>C++</li><li>C#</li></ul>
+        </div>
+        <div class="card skill reveal">
+          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></span><h3>Frontend</h3></div>
+          <ul class="chips"><li>React</li><li>HTML5/CSS3</li><li>Tailwind</li><li>Vite</li></ul>
+        </div>
+        <div class="card skill reveal">
+          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.9L19 9.7l-4.2 3 1.5 5.3L12 15l-4.3 3 1.5-5.3L5 9.7l5.2-1.8Z"/></svg></span><h3>AI</h3></div>
+          <ul class="chips"><li>OpenAI API</li><li>Claude Code</li><li>Codex</li><li>Prompt engineering</li></ul>
+        </div>
+        <div class="card skill w2 reveal">
+          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><h3>Backend &amp; Database</h3></div>
+          <ul class="chips"><li>Node.js</li><li>Express</li><li>REST API</li><li>MySQL</li><li>PostgreSQL</li><li>Supabase</li><li>Prisma</li><li>SQLite</li></ul>
+        </div>
+        <div class="card skill reveal">
+          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7l7.4 4M8.3 17l7.4-4"/></svg></span><h3>Tooling &amp; CI</h3></div>
+          <ul class="chips"><li>Git / GitHub</li><li>GitHub Actions</li><li>Vitest</li><li>Playwright</li></ul>
+        </div>
+        <div class="card skill reveal">
+          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span><h3>Embedded &amp; Reti</h3></div>
+          <ul class="chips"><li>Raspberry Pi</li><li>Arduino</li><li>TCP/IP</li><li>VLAN</li><li>Routing</li><li>Packet Tracer</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EDUCATION ================= -->
+  <section class="section" id="formazione">
+    <div class="wrap">
+      <div class="sec-head">
+                <h2 class="split">Studio e <span class="serif accent-text">prossimi passi.</span></h2>
+      </div>
+      <div class="edu">
+        <div class="card panel reveal">
+          <span class="k">2020 — 2026</span>
+          <h3>Istituto Jean Monnet</h3>
+          <p class="sub">Diploma in Informatica &amp; Telecomunicazioni, conseguito a giugno 2026 · Mariano Comense</p>
+          <dl class="subjects">
+            <div><dt>Informatica</dt><dd>Java, C#, C++, JavaScript, OOP, programmazione concorrente</dd></div>
+            <div><dt>Sistemi e Reti</dt><dd>TCP/IP, VLAN, routing</dd></div>
+            <div><dt>Laboratorio</dt><dd>Hardware, Arduino, Cisco Packet Tracer</dd></div>
+          </dl>
+        </div>
+        <div class="card panel reveal">
+          <span class="k">Certificazioni</span>
+          <h3>Percorso pianificato</h3>
+          <p>Certificazioni cloud per affiancare lo sviluppo web.</p>
+          <ul class="certs">
+            <li><span><b>AWS Skill Builder</b><small>Cloud computing</small></span><span class="pill">In programma</span></li>
+            <li><span><b>Microsoft Learn</b><small>Azure e strumenti Microsoft</small></span><span class="pill">In programma</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="langs">
+        <div class="card lang reveal"><span class="k">Italiano</span><b>Madrelingua</b></div>
+        <div class="card lang reveal"><span class="k">Inglese</span><b>B2</b><span>Documentazione tecnica e comunicazione</span></div>
+        <div class="card lang reveal"><span class="k">Referenze</span><b>Disponibili su richiesta</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contatti">
+    <div class="orb" aria-hidden="true"></div>
+    <div class="wrap">
+            <h2 class="contact-big split">Parliamone<span class="serif accent-text">.</span></h2>
+      <p class="contact-lead reveal">Cerco un ruolo come sviluppatore junior o tecnico IT, in Lombardia o come frontaliere in Canton Ticino.</p>
+      <div class="mail-row reveal">
+        <a class="mail-big" href="mailto:negrigiacomo435@gmail.com" data-cursor="Scrivi">negrigiacomo435@gmail.com</a>
+        <button class="copy" type="button" data-copy="negrigiacomo435@gmail.com" aria-label="Copia l'indirizzo email">Copia</button>
+      </div>
+
+      <div class="channels">
+        <div class="channel reveal">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+          <div class="v"><small>GitHub</small><a href="https://github.com/jacknegri89" target="_blank" rel="noopener">github.com/jacknegri89</a></div>
+        </div>
+        <div class="channel reveal">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.82-2.06 3.75-2.06 4 0 4.74 2.64 4.74 6.07V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4z"/></svg>
+          <div class="v"><small>LinkedIn</small><a href="https://www.linkedin.com/in/giacomo-negri-952084448" target="_blank" rel="noopener">linkedin.com/in/giacomo-negri</a></div>
+        </div>
+      </div>
+      <div class="contact-cta">
+        <a class="btn btn-primary magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-01e" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>Guarda il CV
+        </a>
+        <a class="btn magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-01e" download="CV-Giacomo-Negri.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Scarica il CV
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-name" aria-hidden="true">
+    <svg class="foot-sign"><text class="foot-sign-text" x="50%" y="0.94em" text-anchor="middle">Giacomo Negri</text></svg>
+  </div>
+  <div class="wrap foot-row">
+    <span>© <span id="year">2026</span> Giacomo Negri</span>
+    <a href="#top" id="to-top">Torna su ↑</a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<!-- Codice del sito: prima le classi, poi App.js che le usa, per ultimo main.js che avvia tutto -->
+<script src="js/core/Environment.js?v=2026-11-01d"></script>
+<script src="js/core/TextSplitter.js?v=2026-11-01d"></script>
+<script src="js/core/SmoothScroll.js?v=2026-11-01d"></script>
+<script src="js/core/OffscreenPauser.js?v=2026-11-01d"></script>
+<script src="js/components/ContactDetails.js?v=2026-11-01d"></script>
+<script src="js/components/NavBar.js?v=2026-11-01d"></script>
+<script src="js/components/ParticleWave.js?v=2026-11-01d"></script>
+<script src="js/components/CustomCursor.js?v=2026-11-01d"></script>
+<script src="js/components/CardSpotlight.js?v=2026-11-01d"></script>
+<script src="js/components/MagneticButtons.js?v=2026-11-01d"></script>
+<script src="js/components/ScraperTerminal.js?v=2026-11-01d"></script>
+<script src="js/components/InViewWatcher.js?v=2026-11-01d"></script>
+<script src="js/components/SecureNotesDemo.js?v=2026-11-01d"></script>
+<script src="js/components/SerialMonitor.js?v=2026-11-01d"></script>
+<script src="js/components/CopyButtons.js?v=2026-11-01d"></script>
+<script src="js/components/VelocityMarquee.js?v=2026-11-01d"></script>
+<script src="js/animations/IntroAnimation.js?v=2026-11-01d"></script>
+<script src="js/animations/ScrollAnimations.js?v=2026-11-01d"></script>
+<script src="js/animations/HorizontalProjects.js?v=2026-11-01d"></script>
+<script src="js/animations/FooterSignature.js?v=2026-11-01d"></script>
+<script src="js/App.js?v=2026-11-01d"></script>
+<script src="js/main.js?v=2026-11-01d"></script>
+</body>
+</html>

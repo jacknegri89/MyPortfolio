@@ -1,0 +1,52 @@
+# Configurazione Apache per InfinityFree. Se una regola dà errore 500, commenta il blocco e riprova.
+
+# 1. Porta tutto su HTTPS (il certificato gratuito va attivato dal pannello dell'hosting)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# 2. Pagina 404 personalizzata
+ErrorDocument 404 /404.html
+
+# 3. Il CV si apre nel browser invece di scaricarsi (il pulsante "Scarica il CV" usa l'attributo download)
+<IfModule mod_headers.c>
+  <FilesMatch "\.pdf$">
+    Header set Content-Disposition "inline"
+    Header set X-Content-Type-Options "nosniff"
+  </FilesMatch>
+
+  # 4. Intestazioni di sicurezza di base
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+<IfModule mod_mime.c>
+  AddType application/pdf .pdf
+  AddType image/webp .webp
+</IfModule>
+
+# 5. Cache: css e js hanno ?v=... nel link, quindi si possono tenere a lungo
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType application/pdf "access plus 1 week"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# 6. Compressione
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/xml image/svg+xml
+</IfModule>
+
+# 7. Niente elenco dei file e niente file nascosti
+Options -Indexes
+<FilesMatch "^\.(?!htaccess$)">
+  Require all denied
+</FilesMatch>

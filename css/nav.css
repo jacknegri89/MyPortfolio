@@ -1,0 +1,79 @@
+/* Barra di navigazione fissa in alto. */
+.nav {
+  position: fixed;
+  z-index: 60;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: calc(env(safe-area-inset-top, 0px) + 20px) var(--gut) 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+  mix-blend-mode: difference;
+  color: #fff;
+  pointer-events: none;
+}
+.nav > * {
+  pointer-events: auto;
+}
+.logo {
+  font: 600 1rem/1 var(--f-sans);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  justify-self: start;
+}
+.logo sup {
+  font: 500 0.6rem var(--f-mono);
+  margin-left: 2px;
+}
+.nav ul {
+  display: flex;
+  gap: 22px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-self: end;
+}
+.nav ul a {
+  position: relative;
+  font: 500 0.82rem/1 var(--f-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav ul a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.nav ul a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+@media (max-width: 860px) {
+  .nav ul li:not(.keep) {
+    display: none;
+  }
+  /* Su telefono il testo della barra finiva sopra quello della pagina e si leggeva male:
+     appena si scorre la barra prende uno sfondo scuro (classe .is-scrolled, vedi js/components/NavBar.js) */
+  .nav {
+    mix-blend-mode: normal;
+    padding-block: calc(env(safe-area-inset-top, 0px) + 16px) 16px;
+    border-bottom: 1px solid transparent;
+    transition:
+      background-color 0.3s,
+      border-color 0.3s;
+  }
+  .nav.is-scrolled {
+    background-color: rgba(4, 5, 10, 0.94);
+    border-bottom-color: var(--stroke);
+  }
+}
