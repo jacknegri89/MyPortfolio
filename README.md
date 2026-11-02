@@ -97,7 +97,6 @@ npx vercel deploy --prod --yes
 ```
 
 In PowerShell, write `npx.cmd` instead of `npx`. `vercel.json` makes the CV open in the browser, and sets caching and security headers.
-`.htaccess` was used by the old hosting (InfinityFree): Vercel does not use it.
 
 ---
 
