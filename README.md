@@ -90,13 +90,15 @@ For this reason the order of the `<script>` tags in `index.html` matters: a clas
 
 The site is hosted on **Vercel**: https://giacomonegri.vercel.app
 
-To update it, run this from the folder with the files to publish (`index.html`, `404.html`, `robots.txt`, `sitemap.xml`, `vercel.json`, `css/`, `js/`, `assets/`):
+Vercel is connected to this GitHub repository, so every `git push` to the main branch publishes the site automatically, usually within a minute.
+To preview a change, open `index.html` in the browser, or run a local server from the project folder:
 
 ```bash
-npx vercel deploy --prod --yes
+python -m http.server 5173
 ```
 
-In PowerShell, write `npx.cmd` instead of `npx`. `vercel.json` makes the CV open in the browser, and sets caching and security headers.
+`vercel.json` makes the CV open in the browser, and sets caching and security headers.
+The Content-Security-Policy lives in the `<head>` of `index.html` and `404.html`: if you add an external script, style or font, add its domain there too.
 
 ---
 

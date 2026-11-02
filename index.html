@@ -2,6 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Giacomo Negri · Developer</title>
 <meta name="description" content="Giacomo Negri, developer. Web app, integrazioni AI e sistemi embedded con Raspberry Pi. In Lombardia e come frontaliere in Canton Ticino.">
@@ -190,7 +191,7 @@
           <h3>LogLens</h3>
           <p>Incolli un log o uno stack trace e ottieni un'<b>analisi con AI</b>: trova l'errore vero, ne stabilisce gravità e categoria, elenca le cause probabili e i passi per il debug, e prepara una <b>GitHub Issue</b> da copiare con un clic. Funziona con <b>OpenAI API</b> oppure con un modello locale <b>Ollama</b>. Ogni analisi viene salvata nello storico. La demo online usa regole interne, senza chiavi AI.</p>
           <ul class="chips"><li>TypeScript</li><li>React</li><li>Node.js</li><li>Prisma</li><li>PostgreSQL</li><li>Vitest</li><li>GitHub Actions</li></ul>
-          <p class="proj-note">Il motore AI è dietro un'unica interfaccia: si passa da OpenAI a Ollama con una variabile d'ambiente. Prima dell'AI un parser seleziona solo le righe utili del log. 50 test con Vitest su GitHub Actions.</p>
+          <p class="proj-note">Il motore AI è dietro un'unica interfaccia: si passa da OpenAI a Ollama con una variabile d'ambiente. Prima dell'AI un parser seleziona solo le righe utili del log. Test automatici con Vitest e Playwright, eseguiti su GitHub Actions.</p>
           <div class="proj-links">
             <a class="btn btn-primary btn-sm magnetic" href="https://loglens-demo.vercel.app" target="_blank" rel="noopener">Apri il sito live
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
@@ -414,10 +415,10 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous"></script>
 <!-- Codice del sito: prima le classi, poi App.js che le usa, per ultimo main.js che avvia tutto -->
 <script src="js/core/Environment.js?v=2026-11-01d"></script>
 <script src="js/core/TextSplitter.js?v=2026-11-01d"></script>
