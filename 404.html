@@ -34,6 +34,12 @@
   .nf-text { max-width: 34rem; margin: 22px 0 32px; color: var(--muted); line-height: 1.6; }
   .nf-actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .nf-path { margin-top: 48px; font: 500 0.74rem/1.4 var(--f-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); }
+  .nf > * { animation: nf-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .nf > :nth-child(2) { animation-delay: 0.12s; }
+  .nf > :nth-child(3) { animation-delay: 0.22s; }
+  .nf > :nth-child(4) { animation-delay: 0.32s; }
+  @keyframes nf-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .nf > * { animation: none; } }
   .nf-path b { color: var(--a2); font-weight: 500; }
 </style>
 </head>
@@ -47,6 +53,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
     <a class="btn" href="/#progetti">Vedi i progetti</a>
+    <a class="btn" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-01i" target="_blank" rel="noopener">Scarica il CV</a>
   </div>
   <p class="nf-path"><b>giacomonegri</b> / 404</p>
 </main>
