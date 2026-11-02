@@ -5,24 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Pagina non trovata · Giacomo Negri</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%2304050A%27/%3E%3Ctext x=%2732%27 y=%2742%27 text-anchor=%27middle%27 font-family=%27Arial,sans-serif%27 font-weight=%27700%27 font-size=%2728%27 fill=%27%23F3F5FB%27%3EGN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="css/base.css?v=2026-11-02a">
+<link rel="stylesheet" href="css/buttons.css?v=2026-11-02a">
 <style>
-  :root { --bg: #04050a; --fg: #f3f5fb; --muted: #8e95ac; --a2: #63bdff; }
-  * { box-sizing: border-box; }
-  body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: var(--bg); color: var(--fg); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-  main { max-width: 34rem; }
-  p.code { margin: 0 0 8px; color: var(--a2); font-family: ui-monospace, Consolas, monospace; }
-  h1 { margin: 0 0 14px; font-size: clamp(2rem, 7vw, 3.2rem); line-height: 1.1; }
-  p { margin: 0 0 24px; color: var(--muted); line-height: 1.6; }
-  a { color: var(--bg); background: var(--a2); padding: 12px 20px; border-radius: 999px; text-decoration: none; font-weight: 600; }
-  a:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+  .nf { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-block: 48px; }
+  .nf-code {
+    margin: 0;
+    font-family: var(--f-serif);
+    font-style: italic;
+    font-size: clamp(7rem, 30vw, 19rem);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--stroke-2);
+  }
+  .nf-title {
+    margin: clamp(20px, 4vw, 36px) 0 0;
+    font-size: clamp(2.2rem, 7vw, 4.6rem);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+  }
+  .nf-title .accent-text { font-family: var(--f-serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .nf-text { max-width: 34rem; margin: 22px 0 32px; color: var(--muted); line-height: 1.6; }
+  .nf-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .nf-path { margin-top: 48px; font: 500 0.74rem/1.4 var(--f-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); }
+  .nf-path b { color: var(--a2); font-weight: 500; }
 </style>
 </head>
 <body>
-<main>
-  <p class="code">404</p>
-  <h1>Questa pagina non esiste.</h1>
-  <p>Il link potrebbe essere sbagliato o la pagina è stata spostata. Il portfolio è tutto nella pagina iniziale.</p>
-  <a href="/">Torna al portfolio</a>
+<main class="wrap nf">
+  <p class="nf-code" aria-hidden="true">404</p>
+  <h1 class="nf-title">Questa pagina <span class="accent-text">non esiste.</span></h1>
+  <p class="nf-text">Il link potrebbe essere sbagliato o la pagina è stata spostata. Tutto il portfolio si trova nella home.</p>
+  <div class="nf-actions">
+    <a class="btn btn-primary" href="/">Torna alla home
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <a class="btn" href="/#progetti">Vedi i progetti</a>
+  </div>
+  <p class="nf-path"><b>giacomonegri</b> / 404</p>
 </main>
 </body>
 </html>
