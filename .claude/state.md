@@ -1,5 +1,5 @@
 # Stato tecnico — MyPortfolio (portfolio di Giacomo Negri)
-Aggiornato il 10 novembre 2026 (audit finale, ramo `chore/portfolio-final-audit`).
+Aggiornato il 10 novembre 2026 (audit finale, PR #7 unita in `main`).
 
 ## Repository e pubblicazione
 - GitHub: `jacknegri89/MyPortfolio` (rinominato da `My-Portfolio` il 10/11/2026), ramo unico `main`, PUBLIC.
@@ -40,10 +40,11 @@ Aggiornato il 10 novembre 2026 (audit finale, ramo `chore/portfolio-final-audit`
 - [x] Audit sicurezza iniziale, rinomina repo, repo PUBLIC, cronologia di `main` riscritta (email di contatto, foto rimossa).
 - [x] Posizionamento developer, sezione siti web in evidenza, CV rifatto, font locali, case study con schermate reali.
 - [x] Audit finale (ramo `chore/portfolio-final-audit`): nessun segreto in 35 commit raggiungibili; axe-core 0 violazioni su home, privacy, 404 (375 e 1280 px); nessun overflow a 320/375/768/1000/1280/1440; corretta la regione scorrevole dello schema (`.schem-scroll`, ora focusabile da tastiera).
-- [ ] Merge su `main`, rami eliminati, verifica Vercel (vedi report finale).
+- [x] PR #7 unita in `main`, ramo eliminato, deploy Vercel `success`; audit ripetuto sul sito pubblico: tutto PASS.
+- [x] Lighthouse sul sito pubblico (mobile e desktop): Accessibility, Best Practices, SEO 100. Performance NON misurata.
 
 ## Problemi aperti
 - I commit precedenti alla pulizia (autore con email personale diversa da quella di contatto, foto `assets/giacomo.jpg`) restano raggiungibili da `refs/pull/1/head` e `refs/pull/2/head`: solo il supporto GitHub può eliminarli.
 - Il CV pubblico contiene data di nascita, comune di residenza, patente e foto: decisione dell'utente se tenerli.
 - Backup della cronologia originale: `Documents\MyPortfolio-backup-2026-11-10.bundle` (fuori dal repo, non pubblicare).
-- Lighthouse: vedere il report finale per i punteggi misurati.
+- Performance (Lighthouse/trace) mai misurata: strumento usato non la include.
