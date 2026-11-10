@@ -10,7 +10,7 @@ Aggiornato il 10 novembre 2026.
 
 ## Stack & Env
 - HTML5, CSS3, JavaScript senza build. Nessun `.env`, nessun backend, nessun segreto.
-- CDN con SRI: Three.js r128, GSAP 3.12.5 + ScrollTrigger (cdnjs), Lenis 1.1.13 (jsDelivr). Font: Google Fonts.
+- CDN con SRI: Three.js r128, GSAP 3.12.5 + ScrollTrigger (cdnjs), Lenis 1.1.13 (jsDelivr). Font: locali in `assets/fonts/` (WOFF2 latin + latin-ext), dichiarati in `css/fonts.css`; nessuna terza parte per i font.
 - Locale: `python -m http.server 5173`.
 
 ## Mappa architettura
@@ -34,7 +34,7 @@ Aggiornato il 10 novembre 2026.
 ## Decisioni & vincoli
 - Posizionamento: web designer & developer freelance; percorso recruiter nella sezione contatti.
 - Niente ternari né `if` su una riga (regola utente). Script classici, non moduli: l'ordine dei `<script>` conta.
-- Dopo ogni modifica a CSS/JS cambiare `?v=` in tutti gli HTML (ora `2026-11-10b`).
+- Dopo ogni modifica a CSS/JS cambiare `?v=` in tutti gli HTML (ora `2026-11-10c`).
 - Schede progetto: a schermo basso (`max-height: 840px`) lo stile è compatto, altrimenti sforano i 680px minimi della modalità orizzontale.
 - JSON-LD nel `<head>`: è un blocco dati, non viene bloccato dalla CSP.
 - Nessuna licenza scelta: il README dichiara che non è concessa licenza open source (decisione da confermare).
@@ -53,4 +53,3 @@ Aggiornato il 10 novembre 2026.
 - La cronologia di `main` è pulita, ma i vecchi commit restano raggiungibili dai riferimenti delle PR #1 e #2 (`refs/pull/*`): solo il supporto GitHub può eliminarli.
 - Backup della cronologia originale: `Documents\MyPortfolio-backup-2026-11-10.bundle` (fuori dal repo, non pubblicare).
 - `assets/giacomo.jpg` (foto non usata) rimossa dal repo e dalla cronologia di `main` il 10/11/2026.
-- Font ancora da Google Fonts: ospitarli in locale toglierebbe una terza parte.
