@@ -39,3 +39,14 @@ footer {
   stroke: rgba(255, 255, 255, 0.14);
   stroke-width: 1px;
 }
+.foot-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+/* Riga finale: come è fatto il sito */
+.foot-tech {
+  padding-bottom: 26px;
+  font: 400 0.74rem/1.6 var(--f-mono);
+  color: var(--dim);
+}
