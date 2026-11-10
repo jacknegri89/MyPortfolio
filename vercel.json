@@ -15,6 +15,10 @@
       "headers": [{ "key": "Content-Disposition", "value": "inline" }]
     },
     {
+      "source": "/assets/CV-completo-Giacomo-Negri.pdf",
+      "headers": [{ "key": "Content-Disposition", "value": "inline" }]
+    },
+    {
       "source": "/(css|js)/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }]
     }
