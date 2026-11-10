@@ -4,7 +4,7 @@ The source of [giacomonegri.vercel.app](https://giacomonegri.vercel.app), the po
 
 It is a static site written by hand in HTML, CSS and JavaScript: no framework, no build step, no template. The site has two jobs: showing shops, professionals and local businesses that I build custom websites, and letting recruiters and developers look at real projects and at the code behind them, starting with this one.
 
-![The home page: the name "Giacomo Negri" over an animated wave of particles, with the buttons "Parliamo del tuo progetto" and "Esplora i progetti"](docs/portfolio-home.jpg)
+![The home page: the name "Giacomo Negri" over an animated wave of particles, with the buttons "Parliamo del tuo sito web" and "Esplora i progetti"](docs/portfolio-home.jpg)
 
 ## What is on the page
 
@@ -98,6 +98,7 @@ One file per section, loaded in a fixed order: `base.css` first (colour and font
 - Checked at 320, 375, 768, 1000, 1280 and 1440 px wide, with no horizontal scrolling.
 - One `<h1>`, semantic sections, a "skip to content" link, visible keyboard focus, `alt` text and explicit sizes on every image.
 - The screenshot switcher uses real `<button>` elements with `aria-pressed`.
+- The one scrollable region (the system diagram in the experience section) can be focused and scrolled with the keyboard and has an accessible name.
 - `prefers-reduced-motion` is respected by both the CSS and the JavaScript.
 
 ### Screenshots of the projects
@@ -130,7 +131,7 @@ There is no test suite to install. Before publishing I run:
 for f in js/*.js js/*/*.js; do node --check "$f"; done
 ```
 
-and open the page in a real browser (Chromium through Playwright) at the widths listed above, checking the console for errors, the screenshot buttons, keyboard navigation in the projects section, the page with the CDNs blocked, and reduced motion.
+and open the page in a real browser (Chromium through Playwright) at the widths listed above, checking the console for errors, horizontal overflow, the screenshot buttons, keyboard navigation in the projects section, the page with the CDNs blocked, and reduced motion. [axe-core](https://github.com/dequelabs/axe-core) (WCAG 2.x A/AA and best-practice rules) is run on the three pages at phone and desktop width; the scripts live outside the repository.
 
 ## Common tasks
 
