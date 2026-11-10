@@ -1,8 +1,8 @@
 # MyPortfolio
 
-The source of [giacomonegri.vercel.app](https://giacomonegri.vercel.app), the portfolio of Giacomo Negri, freelance web developer.
+The source of [giacomonegri.vercel.app](https://giacomonegri.vercel.app), the portfolio of Giacomo Negri, developer.
 
-It is a static site written by hand in HTML, CSS and JavaScript: no framework, no build step, no template. The site has two jobs: showing prospective clients what I can build for them, and letting recruiters and developers look at real projects and at the code behind them, starting with this one.
+It is a static site written by hand in HTML, CSS and JavaScript: no framework, no build step, no template. The site has two jobs: showing shops, professionals and local businesses that I build custom websites, and letting recruiters and developers look at real projects and at the code behind them, starting with this one.
 
 ![The home page: the name "Giacomo Negri" over an animated wave of particles, with the buttons "Parliamo del tuo progetto" and "Esplora i progetti"](docs/portfolio-home.jpg)
 
@@ -10,9 +10,9 @@ It is a static site written by hand in HTML, CSS and JavaScript: no framework, n
 
 | Section | Purpose |
 | --- | --- |
-| Hero | Who I am, what I build, and the two main paths: start a project or explore the work |
+| Hero | Who I am, what I build, and the two main paths: ask for a website or explore the work |
+| Siti web | Custom websites for businesses, landing pages and restyling, described for people who do not know the technical side; software on request is mentioned as a side note |
 | Chi sono | A short, factual introduction |
-| Servizi | Four services described for people who do not know the technical side |
 | Progetti | Four case studies (problem, solution, technique) with real screenshots, live demos and links to the code |
 | Esperienza | The internship in industrial electronics, with a simulated serial monitor |
 | Stack | Technologies I have actually used in the projects, and how I work |
