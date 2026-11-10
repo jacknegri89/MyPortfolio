@@ -1,5 +1,5 @@
 /*
- * Finto terminale del progetto "Job Scraper Ticino":
+ * Finto terminale del progetto "JobScraper":
  * quando diventa visibile, le righe compaiono una alla volta come se il comando girasse davvero.
  */
 class ScraperTerminal {
