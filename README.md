@@ -27,10 +27,10 @@ It is a static site written by hand in HTML, CSS and JavaScript: no framework, n
 | [GSAP](https://gsap.com) 3.12 + ScrollTrigger | Intro animation, scroll reveals, horizontal projects section |
 | [Three.js](https://threejs.org) r128 | The particle wave in the hero, computed on the GPU by a small vertex shader |
 | [Lenis](https://github.com/darkroomengineering/lenis) 1.1 | Smooth scrolling |
-| Google Fonts | Geist, Geist Mono, Instrument Serif |
+| Local fonts (`assets/fonts/`) | Geist, Geist Mono and Instrument Serif, served from this site as WOFF2 (SIL Open Font License), latin and latin-ext subsets only |
 | [Vercel](https://vercel.com) | Hosting; every push to `main` goes live |
 
-The four libraries load from public CDNs with [Subresource Integrity](https://developer.mozilla.org/docs/Web/Security/Subresource_Integrity) hashes. There is no `package.json` because nothing has to be installed.
+The fonts come from the site itself; the four libraries load from public CDNs with [Subresource Integrity](https://developer.mozilla.org/docs/Web/Security/Subresource_Integrity) hashes. There is no `package.json` because nothing has to be installed.
 
 ## Run it locally
 
@@ -40,7 +40,7 @@ cd MyPortfolio
 python -m http.server 5173
 ```
 
-Then open http://localhost:5173. Opening `index.html` with a double click works too. An internet connection is needed for the CDN libraries and the fonts; without them the page still shows all its content, only without animations.
+Then open http://localhost:5173. Opening `index.html` with a double click works too. An internet connection is needed for the CDN libraries; without them the page still shows all its content, only without animations.
 
 ## Structure
 
@@ -58,6 +58,7 @@ js/
 assets/
   projects/           real screenshots, one folder per project
   og.jpg              preview image shown when the link is shared
+  fonts/              WOFF2 files, declared in css/fonts.css
   CV-Giacomo-Negri.pdf
 docs/                 images used by this README (not deployed)
 vercel.json           clean URLs, caching and security headers
@@ -114,7 +115,7 @@ They are stored as 1280×800 WebP files, lazy-loaded, with declared dimensions.
 
 ## Security
 
-- A Content-Security-Policy in each page allows scripts only from this site and the two CDNs; inline scripts are not allowed.
+- A Content-Security-Policy in each page allows scripts only from this site and the two CDNs, and fonts and images only from this site; inline scripts are not allowed.
 - CDN scripts carry SRI hashes, so a tampered file is refused by the browser.
 - `vercel.json` adds `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options` and `Permissions-Policy`.
 - The site has no forms, no cookies and no analytics. Contact goes through a `mailto:` link.
