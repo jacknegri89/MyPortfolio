@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Giacomo Negri · Web designer e developer freelance</title>
 <meta name="description" content="Web designer e sviluppatore freelance a Barlassina (MB): siti web su misura, gestionali, automazioni e integrazioni API per attività, professionisti e aziende tra Lombardia e Canton Ticino.">
@@ -14,39 +14,39 @@
 <meta property="og:site_name" content="Giacomo Negri">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://giacomonegri.vercel.app/">
-<meta property="og:image" content="https://giacomonegri.vercel.app/assets/og.jpg?v=2026-11-10b">
+<meta property="og:image" content="https://giacomonegri.vercel.app/assets/og.jpg?v=2026-11-10c">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Giacomo Negri, web designer e developer freelance">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="google-site-verification" content="ibT3EAjqxYgr5q7LIRyvW1twlqwuN5mXAtrGTPpS_WQ" />
 <link rel="canonical" href="https://giacomonegri.vercel.app/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Le librerie JS arrivano da questi due CDN: aprire la connessione subito fa risparmiare tempo -->
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="preload" href="assets/fonts/geist-normal-300-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-serif-italic-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=2026-11-10c">
 <!-- Stili: l'ordine conta (reduced-motion.css deve restare l'ultimo).
      ?v=... è la versione: dopo aver modificato CSS o JS cambiala ovunque (cerca e sostituisci),
      così i visitatori scaricano i file nuovi invece di usare quelli vecchi in cache. -->
-<link rel="stylesheet" href="css/base.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/loader.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/cursor.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/nav.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/buttons.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/hero.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/marquee.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/sections.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/about.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/services.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/projects.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/experience.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/skills.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/education.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/contact.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/footer.css?v=2026-11-10b">
-<link rel="stylesheet" href="css/reduced-motion.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/base.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/loader.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/cursor.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/nav.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/buttons.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/hero.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/marquee.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/sections.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/about.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/services.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/projects.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/experience.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/skills.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/education.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/contact.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/footer.css?v=2026-11-10c">
+<link rel="stylesheet" href="css/reduced-motion.css?v=2026-11-10c">
 <!-- Dati strutturati per i motori di ricerca: è un blocco di dati, non codice che viene eseguito -->
 <script type="application/ld+json">
 {
@@ -272,13 +272,13 @@
           <div class="window">
             <div class="win-bar"><i></i><i></i><i></i><span>renovaenergy.vercel.app</span></div>
             <div class="shot-panel" id="renova-shot-home">
-              <a href="assets/projects/renova/home.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/renova/home.webp?v=2026-11-10b" alt="Pagina principale di Renova: titolo «Da dove arriva la tua elettricità?» e pulsante per creare un account" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/renova/home.webp?v=2026-11-10c" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/renova/home.webp?v=2026-11-10c" alt="Pagina principale di Renova: titolo «Da dove arriva la tua elettricità?» e pulsante per creare un account" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="shot-panel" id="renova-shot-features">
-              <a href="assets/projects/renova/features.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/renova/features.webp?v=2026-11-10b" alt="Sezione «Cosa trovi nel pannello» di Renova: schede Analisi, Confronto ed Eco-Quiz" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/renova/features.webp?v=2026-11-10c" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/renova/features.webp?v=2026-11-10c" alt="Sezione «Cosa trovi nel pannello» di Renova: schede Analisi, Confronto ed Eco-Quiz" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
           </div>
@@ -311,13 +311,13 @@
           <div class="window">
             <div class="win-bar"><i></i><i></i><i></i><span>JobScraper</span></div>
             <div class="shot-panel" id="jobscraper-shot-dashboard">
-              <a href="assets/projects/jobscraper/dashboard.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/jobscraper/dashboard.webp?v=2026-11-10b" alt="Dashboard di JobScraper: filtri a sinistra e, per ogni annuncio, testo, livello, contratto, distanza, fonte, date e stima dello stipendio netto" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/jobscraper/dashboard.webp?v=2026-11-10c" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/jobscraper/dashboard.webp?v=2026-11-10c" alt="Dashboard di JobScraper: filtri a sinistra e, per ogni annuncio, testo, livello, contratto, distanza, fonte, date e stima dello stipendio netto" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="shot-panel" id="jobscraper-shot-panel">
-              <a href="assets/projects/jobscraper/panel.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/jobscraper/panel.webp?v=2026-11-10b" alt="Pannello di configurazione di JobScraper: scelta delle regioni, distanza in chilometri e località da includere" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/jobscraper/panel.webp?v=2026-11-10c" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/jobscraper/panel.webp?v=2026-11-10c" alt="Pannello di configurazione di JobScraper: scelta delle regioni, distanza in chilometri e località da includere" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="shot-panel watch" id="jobscraper-shot-terminal">
@@ -365,18 +365,18 @@
           <div class="window">
             <div class="win-bar"><i></i><i></i><i></i><span>loglens-demo.vercel.app</span></div>
             <div class="shot-panel" id="loglens-shot-home">
-              <a href="assets/projects/loglens/home.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/loglens/home.webp?v=2026-11-10b" alt="Pagina iniziale di LogLens: titolo «Trova la riga che ha ceduto» e una lente d'ingrandimento sopra un foglio di log con la riga d'errore evidenziata" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/loglens/home.webp?v=2026-11-10c" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/loglens/home.webp?v=2026-11-10c" alt="Pagina iniziale di LogLens: titolo «Trova la riga che ha ceduto» e una lente d'ingrandimento sopra un foglio di log con la riga d'errore evidenziata" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="shot-panel" id="loglens-shot-report">
-              <a href="assets/projects/loglens/report.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/loglens/report.webp?v=2026-11-10b" alt="Report di LogLens: gravità media, un incidente con causa confermata e le righe di log che la dimostrano" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/loglens/report.webp?v=2026-11-10c" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/loglens/report.webp?v=2026-11-10c" alt="Report di LogLens: gravità media, un incidente con causa confermata e le righe di log che la dimostrano" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="shot-panel" id="loglens-shot-workbench">
-              <a href="assets/projects/loglens/workbench.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/loglens/workbench.webp?v=2026-11-10b" alt="Workbench di LogLens: barra di ricerca con filtri per livello e servizio sopra l'elenco delle righe di log analizzate" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/loglens/workbench.webp?v=2026-11-10c" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/loglens/workbench.webp?v=2026-11-10c" alt="Workbench di LogLens: barra di ricerca con filtri per livello e servizio sopra l'elenco delle righe di log analizzate" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
           </div>
@@ -641,28 +641,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous"></script>
 <!-- Codice del sito: prima le classi, poi App.js che le usa, per ultimo main.js che avvia tutto -->
-<script src="js/core/Environment.js?v=2026-11-10b"></script>
-<script src="js/core/TextSplitter.js?v=2026-11-10b"></script>
-<script src="js/core/SmoothScroll.js?v=2026-11-10b"></script>
-<script src="js/core/OffscreenPauser.js?v=2026-11-10b"></script>
-<script src="js/components/ContactDetails.js?v=2026-11-10b"></script>
-<script src="js/components/NavBar.js?v=2026-11-10b"></script>
-<script src="js/components/ParticleWave.js?v=2026-11-10b"></script>
-<script src="js/components/CustomCursor.js?v=2026-11-10b"></script>
-<script src="js/components/CardSpotlight.js?v=2026-11-10b"></script>
-<script src="js/components/MagneticButtons.js?v=2026-11-10b"></script>
-<script src="js/components/ScraperTerminal.js?v=2026-11-10b"></script>
-<script src="js/components/InViewWatcher.js?v=2026-11-10b"></script>
-<script src="js/components/SecureNotesDemo.js?v=2026-11-10b"></script>
-<script src="js/components/SerialMonitor.js?v=2026-11-10b"></script>
-<script src="js/components/CopyButtons.js?v=2026-11-10b"></script>
-<script src="js/components/ScreenshotTabs.js?v=2026-11-10b"></script>
-<script src="js/components/VelocityMarquee.js?v=2026-11-10b"></script>
-<script src="js/animations/IntroAnimation.js?v=2026-11-10b"></script>
-<script src="js/animations/ScrollAnimations.js?v=2026-11-10b"></script>
-<script src="js/animations/HorizontalProjects.js?v=2026-11-10b"></script>
-<script src="js/animations/FooterSignature.js?v=2026-11-10b"></script>
-<script src="js/App.js?v=2026-11-10b"></script>
-<script src="js/main.js?v=2026-11-10b"></script>
+<script src="js/core/Environment.js?v=2026-11-10c"></script>
+<script src="js/core/TextSplitter.js?v=2026-11-10c"></script>
+<script src="js/core/SmoothScroll.js?v=2026-11-10c"></script>
+<script src="js/core/OffscreenPauser.js?v=2026-11-10c"></script>
+<script src="js/components/ContactDetails.js?v=2026-11-10c"></script>
+<script src="js/components/NavBar.js?v=2026-11-10c"></script>
+<script src="js/components/ParticleWave.js?v=2026-11-10c"></script>
+<script src="js/components/CustomCursor.js?v=2026-11-10c"></script>
+<script src="js/components/CardSpotlight.js?v=2026-11-10c"></script>
+<script src="js/components/MagneticButtons.js?v=2026-11-10c"></script>
+<script src="js/components/ScraperTerminal.js?v=2026-11-10c"></script>
+<script src="js/components/InViewWatcher.js?v=2026-11-10c"></script>
+<script src="js/components/SecureNotesDemo.js?v=2026-11-10c"></script>
+<script src="js/components/SerialMonitor.js?v=2026-11-10c"></script>
+<script src="js/components/CopyButtons.js?v=2026-11-10c"></script>
+<script src="js/components/ScreenshotTabs.js?v=2026-11-10c"></script>
+<script src="js/components/VelocityMarquee.js?v=2026-11-10c"></script>
+<script src="js/animations/IntroAnimation.js?v=2026-11-10c"></script>
+<script src="js/animations/ScrollAnimations.js?v=2026-11-10c"></script>
+<script src="js/animations/HorizontalProjects.js?v=2026-11-10c"></script>
+<script src="js/animations/FooterSignature.js?v=2026-11-10c"></script>
+<script src="js/App.js?v=2026-11-10c"></script>
+<script src="js/main.js?v=2026-11-10c"></script>
 </body>
 </html>
