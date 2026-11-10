@@ -34,6 +34,7 @@ Aggiornato il 10 novembre 2026 (audit finale, PR #7 unita in `main`).
 - Cache busting: `?v=` ora `2026-11-10e` in tutti gli HTML; cambiarlo solo se cambiano CSS/JS.
 - A schermo basso (`max-height: 840px`) le schede progetto sono compatte (altrimenti sforano i 680px minimi della modalità orizzontale).
 - Nessuna licenza scelta: il README dichiara che non è concessa licenza open source (decisione da confermare con l'utente).
+- Non pubblicare nel portfolio siti realizzati per clienti (scelta dell'utente, 10/11/2026): niente casi studio commerciali.
 - README in inglese per scelta del proprietario. Non inventare dati: niente telefono, P.IVA, recensioni, numeri di clienti.
 
 ## Stato avanzamento
@@ -48,4 +49,4 @@ Aggiornato il 10 novembre 2026 (audit finale, PR #7 unita in `main`).
 - Ticket #4985290 a GitHub Support creato il 10/11/2026 (Repositories) per dereferenziare le PR #1-#9: i loro riferimenti `refs/pull/*` raggiungono ancora i vecchi commit (email personale come autore, foto, CV con data di nascita). Esito in attesa: Support valuta caso per caso perché sono dati personali e non segreti. Risposte per email a quella di contatto e su support.github.com/tickets.
 - La password del CV completo (`assets/CV-completo-Giacomo-Negri.pdf`) non si recupera: va ricifrato con `cifra-cv.py` (cartella `Documents\MyPortfolio-cv-privato`, fuori dal repo).
 - Secret scanning e push protection attivati sul repository il 10/11/2026.
-- Performance (Lighthouse/trace) mai misurata: strumento usato non la include.
+- Performance Lighthouse 12 sul sito pubblico (10/11/2026): mobile 79 (FCP 3,1 s, LCP 3,3 s, TBT 220 ms, CLS 0), desktop 95 (LCP 0,8 s). Cause mobile: 17 CSS separati che bloccano il rendering e animazione d'ingresso (LCP = nome nell'hero). Miglioramento facile non applicato: header di cache lunga per `/assets/fonts` e `/assets/projects` in `vercel.json`.
