@@ -18,7 +18,7 @@ Aggiornato il 10 novembre 2026 (audit finale, PR #7 unita in `main`).
 - `privacy.html`, `404.html`: pagine singole con stile inline minimo.
 - `css/`: un file per sezione; `base.css` primo, `reduced-motion.css` ultimo.
 - `js/App.js` crea e avvia tutte le classi; `js/main.js` è l'ultimo script. `js/core/` (Environment, SmoothScroll, TextSplitter, OffscreenPauser), `js/components/` (una classe per effetto), `js/animations/` (Intro, ScrollAnimations, HorizontalProjects, FooterSignature).
-- `assets/projects/<progetto>/`: schermate reali WebP 1280x800. `assets/og.jpg`: anteprima social 1200x630. `assets/CV-Giacomo-Negri.pdf`: CV (2 pagine, generato da HTML con Chromium).
+- `assets/projects/<progetto>/`: schermate reali WebP 1280x800. `assets/og.jpg`: anteprima social 1200x630. `assets/CV-Giacomo-Negri.pdf`: CV pubblico (senza data di nascita né comune; resta foto e patente). `assets/CV-completo-Giacomo-Negri.pdf`: CV completo cifrato AES-256, password scelta dall'utente e mai salvata (script `cifra-cv.py` in `Documents\MyPortfolio-cv-privato`, fuori dal repo, con il PDF in chiaro: non copiarli nel repo).
 - `docs/portfolio-home.jpg`: immagine del README (esclusa dal deploy da `.vercelignore`).
 
 ## Progetti presentati (verificati il 10/11/2026)
@@ -45,6 +45,6 @@ Aggiornato il 10 novembre 2026 (audit finale, PR #7 unita in `main`).
 
 ## Problemi aperti
 - I commit precedenti alla pulizia (autore con email personale diversa da quella di contatto, foto `assets/giacomo.jpg`) restano raggiungibili da `refs/pull/1/head` e `refs/pull/2/head`: solo il supporto GitHub può eliminarli.
-- Il CV pubblico contiene data di nascita, comune di residenza, patente e foto: decisione dell'utente se tenerli.
+- Il CV pubblico ora non ha data di nascita né comune, ma le versioni precedenti (in chiaro) restano nella cronologia Git e nei riferimenti delle PR #1 e #2. La password del CV completo, se persa, non si recupera: va ricifrato.
 - Backup della cronologia originale: `Documents\MyPortfolio-backup-2026-11-10.bundle` (fuori dal repo, non pubblicare).
 - Performance (Lighthouse/trace) mai misurata: strumento usato non la include.
