@@ -1,0 +1,120 @@
+/* Sezione Servizi: elenco numerato in stile indice editoriale (righe separate da una linea, non card). */
+.services {
+  padding-top: 0;
+}
+.svc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--stroke);
+}
+.svc {
+  position: relative;
+  display: grid;
+  /* numero | titolo | descrizione: la descrizione ha più spazio del titolo */
+  grid-template-columns: 4.5rem minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: clamp(16px, 3vw, 48px);
+  align-items: start;
+  padding-block: clamp(28px, 4.4vw, 56px);
+  border-bottom: 1px solid var(--stroke);
+}
+/* Linea azzurra che si allunga sotto la riga quando ci passi sopra */
+.svc::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--a2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.svc:hover::after {
+  transform: scaleX(1);
+}
+.svc-num {
+  font: 500 0.8rem/1 var(--f-mono);
+  letter-spacing: 0.14em;
+  color: var(--a2);
+  padding-top: 0.75em;
+}
+.svc h3 {
+  font-size: clamp(1.9rem, 3.8vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+.svc h3 .serif {
+  font-size: 1.06em;
+}
+.svc-body {
+  display: grid;
+  gap: 18px;
+}
+.svc-body p {
+  color: var(--muted);
+  max-width: 56ch;
+}
+.svc-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 24px;
+  font-size: 0.94rem;
+  color: #c9cee0;
+}
+.svc-points li {
+  position: relative;
+  padding-left: 20px;
+}
+.svc-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 10px;
+  height: 1px;
+  background: var(--a2);
+}
+.svc-body .svc-proof {
+  font-size: 0.9rem;
+  color: var(--dim);
+}
+.svc-proof a {
+  color: var(--fg);
+  text-underline-offset: 4px;
+}
+.svc-proof a:hover {
+  color: var(--a2);
+}
+.svc-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 32px;
+  margin-top: clamp(28px, 4vw, 48px);
+}
+.svc-cta p {
+  color: var(--muted);
+  font-size: 1.08rem;
+  max-width: 44ch;
+}
+
+@media (max-width: 860px) {
+  .svc {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .svc-num {
+    padding-top: 0;
+  }
+}
+@media (max-width: 480px) {
+  .svc-points {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

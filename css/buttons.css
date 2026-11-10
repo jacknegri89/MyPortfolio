@@ -42,3 +42,10 @@
 .magnetic {
   will-change: transform;
 }
+/* Pulsante compatto con sola icona o sigla (es. "CV", logo GitHub) */
+.btn-icon {
+  padding: 15px 18px;
+  font-family: var(--f-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+}

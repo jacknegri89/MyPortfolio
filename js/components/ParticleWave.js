@@ -14,8 +14,12 @@ class ParticleWave {
 
     // Su schermi piccoli usiamo meno punti e meno risoluzione per non appesantire il telefono
     this.isSmallScreen = window.innerWidth < 700;
-    this.columns = this.isSmallScreen ? 90 : 180;
-    this.rows = this.isSmallScreen ? 46 : 84;
+    this.columns = 180;
+    this.rows = 84;
+    if (this.isSmallScreen) {
+      this.columns = 90;
+      this.rows = 46;
+    }
     this.gap = 0.2;
     this.pointCount = this.columns * this.rows;
 
@@ -48,7 +52,10 @@ class ParticleWave {
     this.hero = this.canvas.parentElement;
 
     // Oltre 1.5 (telefono) o 2 (computer) la differenza non si vede, ma il lavoro della GPU cresce molto
-    const maxPixelRatio = this.isSmallScreen ? 1.5 : 2;
+    let maxPixelRatio = 2;
+    if (this.isSmallScreen) {
+      maxPixelRatio = 1.5;
+    }
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
 
     this.shaderValues.uMouse.value = new THREE.Vector2(0, 0);
