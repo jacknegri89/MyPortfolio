@@ -59,7 +59,8 @@ assets/
   projects/           real screenshots, one folder per project
   og.jpg              preview image shown when the link is shared
   fonts/              WOFF2 files, declared in css/fonts.css
-  CV-Giacomo-Negri.pdf
+  CV-Giacomo-Negri.pdf          public CV (no date of birth, no exact town)
+  CV-completo-Giacomo-Negri.pdf password-protected full CV (AES-256), shared on request
 docs/                 images used by this README (not deployed)
 vercel.json           clean URLs, caching and security headers
 ```
