@@ -32,7 +32,7 @@ Aggiornato il 10 novembre 2026.
 - Non inserito: repo privato umoristico per amici.
 
 ## Decisioni & vincoli
-- Posizionamento: web designer & developer freelance; percorso recruiter nella sezione contatti.
+- Posizionamento: developer / sviluppatore web freelance (NON "web designer": Giacomo lo ha chiesto esplicitamente); percorso recruiter nella sezione contatti.
 - Niente ternari né `if` su una riga (regola utente). Script classici, non moduli: l'ordine dei `<script>` conta.
 - Dopo ogni modifica a CSS/JS cambiare `?v=` in tutti gli HTML (ora `2026-11-10c`).
 - Schede progetto: a schermo basso (`max-height: 840px`) lo stile è compatto, altrimenti sforano i 680px minimi della modalità orizzontale.
