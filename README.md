@@ -16,6 +16,17 @@
 
 ---
 
+## Progetti mostrati
+
+- **[JobScraper](https://github.com/jacknegri89/JobScraper)** — ricerca di annunci in Lombardia e Ticino, dashboard locale, deduplicazione, stime di retribuzione e AI opzionale.
+- **[LogLens](https://github.com/jacknegri89/LogLens)** — analisi di log basata su evidenze, motore di regole, AI opzionale e Workbench.
+- **Renova** — piattaforma web per energia e sostenibilità; codice privato, [sito pubblico](https://renovaenergy.vercel.app).
+- **Secure Notes** — app Android personale, codice non pubblico.
+
+Le descrizioni sono mantenute allineate ai README dei progetti. Non pubblicare nel portfolio dettagli o collegamenti dei repository privati non già presentati pubblicamente.
+
+---
+
 ## Structure
 
 ```
@@ -65,7 +76,7 @@ Each file contains a class with a `start()` (or `play()`) method that starts it.
 | `NavBar` | on phones, gives the top bar a background when you scroll |
 | `ParticleWave` | 3D particle wave in the hero |
 | `CustomCursor`, `CardSpotlight`, `MagneticButtons` | mouse effects (desktop only) |
-| `ScraperTerminal` | fake terminal for the Job Scraper project |
+| `ScraperTerminal` | simulated terminal for the JobScraper project |
 | `InViewWatcher` | starts the fake terminal when it enters the screen |
 | `SecureNotesDemo` | text that is encrypted and decrypted on phones |
 | `SerialMonitor` | fake monitor for the Raspberry Pi |
