@@ -4,17 +4,20 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Giacomo Negri · Developer</title>
-<meta name="description" content="Giacomo Negri, developer. Progetti Python, web app, analisi dei log e automazione, con esperienza embedded. Lombardia e Canton Ticino.">
+<title>Giacomo Negri · Web designer e developer freelance</title>
+<meta name="description" content="Web designer e sviluppatore freelance a Barlassina (MB): siti web su misura, gestionali, automazioni e integrazioni API per attività, professionisti e aziende tra Lombardia e Canton Ticino.">
 <meta name="theme-color" content="#04050A">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%2304050A%27/%3E%3Ctext x=%2732%27 y=%2742%27 text-anchor=%27middle%27 font-family=%27Arial,sans-serif%27 font-weight=%27700%27 font-size=%2728%27 fill=%27%23F3F5FB%27%3EGN%3C/text%3E%3C/svg%3E">
-<meta property="og:title" content="Giacomo Negri · Developer">
-<meta property="og:description" content="JobScraper, LogLens, Renova e Secure Notes: sviluppo web, Python, AI ed embedded. Progetti, esperienza e contatti.">
+<meta property="og:title" content="Giacomo Negri · Web designer e developer freelance">
+<meta property="og:description" content="Siti web su misura, gestionali e automazioni. Progetti reali con screenshot, demo e codice pubblico su GitHub.">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Giacomo Negri">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://giacomonegri.vercel.app/">
-<meta property="og:image" content="https://giacomonegri.vercel.app/assets/og.jpg">
+<meta property="og:image" content="https://giacomonegri.vercel.app/assets/og.jpg?v=2026-11-10b">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Giacomo Negri, web designer e developer freelance">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="google-site-verification" content="ibT3EAjqxYgr5q7LIRyvW1twlqwuN5mXAtrGTPpS_WQ" />
 <link rel="canonical" href="https://giacomonegri.vercel.app/">
@@ -27,22 +30,55 @@
 <!-- Stili: l'ordine conta (reduced-motion.css deve restare l'ultimo).
      ?v=... è la versione: dopo aver modificato CSS o JS cambiala ovunque (cerca e sostituisci),
      così i visitatori scaricano i file nuovi invece di usare quelli vecchi in cache. -->
-<link rel="stylesheet" href="css/base.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/loader.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/cursor.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/nav.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/buttons.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/hero.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/marquee.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/sections.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/about.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/projects.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/experience.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/skills.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/education.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/contact.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/footer.css?v=2026-11-10a">
-<link rel="stylesheet" href="css/reduced-motion.css?v=2026-11-10a">
+<link rel="stylesheet" href="css/base.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/loader.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/cursor.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/nav.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/buttons.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/hero.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/marquee.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/sections.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/about.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/services.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/projects.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/experience.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/skills.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/education.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/contact.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/footer.css?v=2026-11-10b">
+<link rel="stylesheet" href="css/reduced-motion.css?v=2026-11-10b">
+<!-- Dati strutturati per i motori di ricerca: è un blocco di dati, non codice che viene eseguito -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://giacomonegri.vercel.app/#giacomo",
+      "name": "Giacomo Negri",
+      "jobTitle": "Web designer e developer freelance",
+      "url": "https://giacomonegri.vercel.app/",
+      "image": "https://giacomonegri.vercel.app/assets/og.jpg",
+      "email": "mailto:negrigiacomo435@gmail.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Barlassina", "addressRegion": "MB", "addressCountry": "IT" },
+      "knowsLanguage": ["it", "en"],
+      "sameAs": ["https://github.com/jacknegri89", "https://www.linkedin.com/in/giacomo-negri-952084448"]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://giacomonegri.vercel.app/#servizi",
+      "name": "Giacomo Negri · Web designer e developer freelance",
+      "url": "https://giacomonegri.vercel.app/",
+      "image": "https://giacomonegri.vercel.app/assets/og.jpg",
+      "email": "mailto:negrigiacomo435@gmail.com",
+      "founder": { "@id": "https://giacomonegri.vercel.app/#giacomo" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Barlassina", "addressRegion": "MB", "addressCountry": "IT" },
+      "areaServed": ["Lombardia", "Canton Ticino"],
+      "knowsAbout": ["Realizzazione siti web", "Siti web personalizzati", "Gestionali", "Applicazioni web", "Integrazioni API", "Automazioni"]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -61,8 +97,8 @@
 <nav class="nav" aria-label="Navigazione principale">
   <a class="logo" href="#top">Giacomo Negri<sup>©26</sup></a>
   <ul>
+    <li><a href="#servizi">Servizi</a></li>
     <li><a href="#progetti">Progetti</a></li>
-    <li><a href="#esperienza">Esperienza</a></li>
     <li><a href="#competenze">Stack</a></li>
     <li class="keep"><a href="#contatti">Contatti</a></li>
   </ul>
@@ -76,25 +112,26 @@
     <canvas id="bg3d" aria-hidden="true"></canvas>
 
     <div class="hero-meta">
-      <span class="role hero-in">Developer</span>
+      <span class="role hero-in">Web designer &amp; developer freelance</span>
     </div>
 
     <h1 class="hero-name">
-      <span class="visually-hidden">Giacomo Negri</span>
+      <span class="visually-hidden">Giacomo Negri, web designer e developer freelance</span>
       <span class="line l1" aria-hidden="true"><span id="name-1">Giacomo</span></span>
       <span class="line l2" aria-hidden="true"><span id="name-2">Negri</span></span>
     </h1>
 
     <div class="hero-foot">
-      <p class="intro hero-in">Diplomato in Informatica &amp; Telecomunicazioni nel 2026. Disponibile in <b>Lombardia</b> e come frontaliere in <b>Canton Ticino</b>.</p>
+      <p class="intro hero-in">Progetto e sviluppo <b>siti web, gestionali e strumenti digitali su misura</b> per attività, professionisti e aziende. Lavoro da Barlassina, tra <b>Lombardia</b> e <b>Canton Ticino</b>.</p>
       <div class="cta hero-in">
-        <a class="btn btn-primary magnetic" href="#progetti">Progetti
+        <a class="btn btn-primary magnetic" href="#contatti">Parliamo del tuo progetto
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn magnetic" href="#progetti">Esplora i progetti
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
         </a>
-        <a class="btn magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-02b" target="_blank" rel="noopener" aria-label="Guarda il CV in anteprima">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>CV
-        </a>
-        <a class="btn magnetic" href="https://github.com/jacknegri89" target="_blank" rel="noopener" aria-label="GitHub">
+        <a class="btn btn-icon magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-02b" target="_blank" rel="noopener" aria-label="Apri il CV in PDF">CV</a>
+        <a class="btn btn-icon magnetic" href="https://github.com/jacknegri89" target="_blank" rel="noopener" aria-label="Profilo GitHub">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
         </a>
       </div>
@@ -104,22 +141,23 @@
   <!-- ================= VELOCITY MARQUEE ================= -->
   <div class="vmarquee" aria-hidden="true">
     <div class="vrow" data-dir="-1"><span class="strong">C#</span><span class="o">JavaScript</span><span class="strong">PHP</span><span class="o">Java</span><span class="strong">Python</span><span class="o">C++</span><span class="o">TypeScript</span><span class="strong">C#</span><span class="o">JavaScript</span><span class="strong">PHP</span><span class="o">Java</span><span class="strong">Python</span><span class="o">C++</span><span class="o">TypeScript</span></div>
-    <div class="vrow" data-dir="1"><span class="s g">Web app</span><span class="o">Integrazioni AI</span><span class="s">Embedded</span><span class="o">Automazioni</span><span class="s g">Junior developer</span><span class="o">Lombardia</span><span class="s">Canton Ticino</span><span class="s g">Web app</span><span class="o">Integrazioni AI</span><span class="s">Embedded</span><span class="o">Automazioni</span><span class="s g">Junior developer</span><span class="o">Lombardia</span><span class="s">Canton Ticino</span></div>
+    <div class="vrow" data-dir="1"><span class="s g">Siti web</span><span class="o">Integrazioni API</span><span class="s">Web app</span><span class="o">Automazioni</span><span class="s g">Gestionali</span><span class="o">Lombardia</span><span class="s">Canton Ticino</span><span class="s g">Siti web</span><span class="o">Integrazioni API</span><span class="s">Web app</span><span class="o">Automazioni</span><span class="s g">Gestionali</span><span class="o">Lombardia</span><span class="s">Canton Ticino</span></div>
   </div>
 
   <!-- ================= ABOUT ================= -->
   <section class="section" id="chi-sono">
     <div class="wrap">
-            <h2 class="visually-hidden">Chi sono</h2>
-      <p class="statement" id="statement">Sono Giacomo, perito informatico. Non scrivo solo codice per il web: se mi serve qualcosa che non esiste, me lo costruisco. Così sono nati JobScraper, che raccoglie offerte di lavoro tra Lombardia e Ticino con analisi AI opzionale, e <span class="serif accent-text">un'app Android di note cifrate.</span></p>
+      <h2 class="visually-hidden">Chi sono</h2>
+      <p class="statement" id="statement">Sono Giacomo, web designer e developer freelance. Parto da quello che serve a chi userà il sito o lo strumento, poi lo disegno e lo sviluppo io, dalla prima bozza alla messa online: <span class="serif accent-text">niente template, niente pezzi inutili.</span></p>
 
       <div class="about">
         <div class="about-side">
           <div class="card about-text reveal">
-            <p>Diplomato in Informatica &amp; Telecomunicazioni all'Istituto Jean Monnet nel 2026. Ho realizzato <strong>Renova</strong>, una piattaforma con autenticazione, cinque tipi di grafici interattivi e dati in tempo reale dalla Ember Climate API. Durante lo stage in <strong>TCR Tecora</strong> ho contribuito a un sistema con Raspberry Pi 3 in un contesto industriale reale. Ora sto ampliando le competenze con le certificazioni cloud di AWS e Microsoft.</p>
+            <p>Realizzo <strong>siti web personalizzati</strong>, <strong>applicazioni e strumenti gestionali</strong>, lavorando su interfaccia, logica lato server e database. Collego servizi esterni tramite API e automatizzo le attività ripetitive.</p>
+            <p>Mi sono diplomato in Informatica &amp; Telecomunicazioni all'Istituto Jean Monnet nel 2026 e ho fatto uno stage in <strong>TCR Tecora</strong>, su un sistema con Raspberry Pi in un contesto industriale. I progetti personali che trovi più sotto, come <strong>JobScraper</strong> e <strong>LogLens</strong>, sono il modo in cui approfondisco tecnologie nuove: il codice è pubblico. Sono aperto anche a collaborazioni e opportunità in azienda.</p>
             <div class="about-meta">
               <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Barlassina (MB)</span>
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14M6 17l1.5-5h9L18 17M8 17v2M16 17v2"/></svg>Patente B · automunito</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16v10H4zM4 7l8 6 8-6"/></svg>Lombardia · Canton Ticino</span>
               <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Italiano · Inglese B2</span>
             </div>
           </div>
@@ -128,51 +166,162 @@
     </div>
   </section>
 
+  <!-- ================= SERVIZI ================= -->
+  <section class="section services" id="servizi">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="split">Cosa posso fare <span class="serif accent-text">per te.</span></h2>
+        <p class="reveal">Per attività locali, professionisti e aziende che vogliono un sito o uno strumento fatto sulle proprie esigenze. Non serve conoscere la parte tecnica: mi spieghi il problema, alla soluzione penso io.</p>
+      </div>
+
+      <ol class="svc-list">
+        <li class="svc reveal">
+          <span class="svc-num" aria-hidden="true">01</span>
+          <h3>Siti web <span class="serif accent-text">su misura</span></h3>
+          <div class="svc-body">
+            <p>Il sito della tua attività, disegnato da zero attorno a quello che fai. Chi arriva capisce subito cosa offri, dove ti trovi e come contattarti.</p>
+            <ul class="svc-points">
+              <li>Design personalizzato</li>
+              <li>Comodo da usare su telefono</li>
+              <li>Pagine veloci da caricare</li>
+              <li>Basi tecniche per farsi trovare su Google</li>
+              <li>Contatti sempre in primo piano</li>
+            </ul>
+          </div>
+        </li>
+        <li class="svc reveal">
+          <span class="svc-num" aria-hidden="true">02</span>
+          <h3>Gestionali e <span class="serif accent-text">piattaforme web</span></h3>
+          <div class="svc-body">
+            <p>Quando fogli di calcolo e messaggi non bastano più: uno strumento online costruito sul tuo modo di lavorare, accessibile da qualsiasi dispositivo.</p>
+            <ul class="svc-points">
+              <li>Ordini e prenotazioni</li>
+              <li>Gestione clienti</li>
+              <li>Aree riservate con accesso</li>
+              <li>Dashboard e pannelli di amministrazione</li>
+            </ul>
+            <p class="svc-proof">Un esempio di area riservata, punteggi e pannello di amministrazione: <a href="#progetti">il progetto Renova</a>.</p>
+          </div>
+        </li>
+        <li class="svc reveal">
+          <span class="svc-num" aria-hidden="true">03</span>
+          <h3>Automazioni e <span class="serif accent-text">integrazioni</span></h3>
+          <div class="svc-body">
+            <p>Collego tra loro i servizi che usi già e tolgo di mezzo i passaggi ripetitivi fatti a mano, così i dati arrivano dove servono senza copia e incolla.</p>
+            <ul class="svc-points">
+              <li>Collegamento a servizi esterni (API)</li>
+              <li>Sincronizzazione dei dati</li>
+              <li>Raccolta ed elaborazione di informazioni</li>
+              <li>Intelligenza artificiale solo dove serve davvero</li>
+            </ul>
+            <p class="svc-proof">Un esempio di raccolta dati automatica: <a href="#progetti">il progetto JobScraper</a>.</p>
+          </div>
+        </li>
+        <li class="svc reveal">
+          <span class="svc-num" aria-hidden="true">04</span>
+          <h3>Design e <span class="serif accent-text">restyling</span></h3>
+          <div class="svc-body">
+            <p>Hai già un sito che non ti rappresenta più? Lo ridisegno tenendo quello che funziona, con un aspetto pensato per il tuo settore e non preso da un modello uguale per tutti.</p>
+            <ul class="svc-points">
+              <li>Restyling di siti esistenti</li>
+              <li>Landing page</li>
+              <li>Interfacce coerenti con la tua attività</li>
+              <li>Testi e percorsi chiari per chi visita</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+
+      <div class="svc-cta reveal">
+        <p>Non sai ancora cosa ti serve di preciso? Raccontami la situazione anche in due righe.</p>
+        <a class="btn btn-primary magnetic" href="mailto:negrigiacomo435@gmail.com?subject=Richiesta%20di%20preventivo&amp;body=Ciao%20Giacomo%2C%0A%0Ami%20servirebbe%3A%20%0AAttivit%C3%A0%20o%20azienda%3A%20%0ATempi%20indicativi%3A%20%0A">Richiedi un preventivo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= PROJECTS (horizontal) ================= -->
   <section class="hsec" id="progetti" data-pause-offscreen>
     <div class="h-track" id="h-track">
       <div class="h-intro">
-                <h2 class="split">Cose che ho <span class="serif accent-text">costruito.</span></h2>
-        <p>Dall’energia ai log, dagli annunci di lavoro alla crittografia: quattro progetti con problemi e tecnologie diversi.</p>
+        <h2 class="split">Cose che ho <span class="serif accent-text">costruito.</span></h2>
+        <p>Quattro progetti, quattro problemi diversi. Per ognuno trovi cosa risolve, come è fatto e le prove: schermate reali, demo e codice.</p>
         <span class="h-hint"><i></i>Continua a scorrere</span>
       </div>
 
       <!-- Renova -->
       <article class="card proj">
         <div class="proj-copy">
-          <div class="proj-num"><span class="kind">Web App · Progetto scolastico</span><span>Mar — Giu 2026</span></div>
+          <div class="proj-num"><span class="kind">Piattaforma web · Progetto scolastico</span><span>Mar — Giu 2026</span></div>
           <h3>Renova</h3>
-          <p>Piattaforma web dedicata a <b>energia e sostenibilità</b>: dati sulla generazione elettrica e le emissioni di CO₂ per paese dall’<b>API di Ember</b>, grafici interattivi con Chart.js e cache PHP. Include account personali, quiz, azioni quotidiane, punteggi, badge e classifiche.</p>
-          <ul class="chips"><li>PHP</li><li>MySQL</li><li>JavaScript</li><li>Chart.js</li><li>Ember API</li><li>HTML5/CSS3</li></ul>
+          <dl class="case">
+            <div><dt>Problema</dt><dd>I dati sull'energia sono pubblici, ma leggerli è difficile: tabelle da migliaia di righe, sigle e unità di misura.</dd></div>
+            <div><dt>Soluzione</dt><dd>Una piattaforma che prende i <b>dati aperti di Ember</b> e li mostra con grafici interattivi, affiancati da quiz, azioni quotidiane, punti, badge e classifica.</dd></div>
+            <div><dt>Tecnica</dt><dd><b>PHP senza framework e MySQL</b>: registrazione con conferma via email, verifica in due passaggi, pannello di amministrazione, limiti alle richieste e test di integrazione.</dd></div>
+          </dl>
+          <ul class="chips"><li>PHP 8</li><li>MySQL / MariaDB</li><li>JavaScript</li><li>Chart.js</li><li>Ember API</li></ul>
           <div class="proj-links">
             <a class="btn btn-primary btn-sm magnetic" href="https://renovaenergy.vercel.app" target="_blank" rel="noopener">Apri il sito live
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
             </a>
           </div>
+          <p class="proj-note">Il codice di questo progetto non è pubblico.</p>
         </div>
-        <a class="window" href="https://renovaenergy.vercel.app" target="_blank" rel="noopener" data-cursor="Apri" aria-label="renovaenergy.vercel.app, apri Renova">
-          <div class="win-bar"><i></i><i></i><i></i><span>renovaenergy.vercel.app</span></div>
-          <img class="win-shot" src="assets/renova.webp?v=2026-11-02" alt="Pagina principale di Renova: titolo «Da dove arriva la tua elettricità?» e pulsante per creare un account" width="1280" height="800" loading="lazy" decoding="async">
-        </a>
+        <div class="shots" data-shots>
+          <div class="window">
+            <div class="win-bar"><i></i><i></i><i></i><span>renovaenergy.vercel.app</span></div>
+            <div class="shot-panel" id="renova-shot-home">
+              <a href="assets/projects/renova/home.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/renova/home.webp?v=2026-11-10b" alt="Pagina principale di Renova: titolo «Da dove arriva la tua elettricità?» e pulsante per creare un account" width="1280" height="800" loading="lazy" decoding="async">
+              </a>
+            </div>
+            <div class="shot-panel" id="renova-shot-features">
+              <a href="assets/projects/renova/features.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/renova/features.webp?v=2026-11-10b" alt="Sezione «Cosa trovi nel pannello» di Renova: schede Analisi, Confronto ed Eco-Quiz" width="1280" height="800" loading="lazy" decoding="async">
+              </a>
+            </div>
+          </div>
+          <div class="shot-tabs" role="group" aria-label="Schermate di Renova">
+            <button type="button" data-shot-target="renova-shot-home">Home</button>
+            <button type="button" data-shot-target="renova-shot-features">Funzionalità</button>
+          </div>
+        </div>
       </article>
 
-      <!-- Job Scraper -->
+      <!-- JobScraper -->
       <article class="card proj">
         <div class="proj-copy">
           <div class="proj-num"><span class="kind">Python · Open source</span><span>Giu — Nov 2026</span></div>
           <h3>JobScraper</h3>
-          <p>Riunisce le offerte di lavoro da <b>13 fonti tra Lombardia e Canton Ticino</b> in una dashboard locale. Filtra per zona, distanza, settore e contratto, <b>elimina i duplicati</b> e distingue annunci nuovi, già visti o da verificare. Mostra la provenienza delle retribuzioni e le stime nette per Italia e Svizzera; il punteggio con <b>OpenAI è facoltativo</b>.</p>
-          <ul class="chips"><li>Python</li><li>Playwright</li><li>Web Scraping</li><li>OpenAI API</li><li>Dashboard offline</li><li>pytest</li><li>GitHub Actions</li></ul>
-          <p class="proj-note">Pannello di configurazione locale, nessun account o server richiesto. Test automatici e controlli CI su GitHub Actions.</p>
+          <dl class="case">
+            <div><dt>Problema</dt><dd>Cercare lavoro a cavallo del confine significa controllare una dozzina di portali, senza sapere se un annuncio è recente o davvero vicino.</dd></div>
+            <div><dt>Soluzione</dt><dd>Raccoglie gli annunci da <b>13 fonti tra Lombardia e Canton Ticino</b>, unisce i doppioni e genera un'unica dashboard locale, filtrabile per zona, distanza, settore, livello e contratto.</dd></div>
+            <div><dt>Tecnica</dt><dd>Un modulo <b>Playwright</b> per portale, stato di ogni annuncio (visto, non ricontrollato, forse scaduto) e stime dello stipendio netto per Italia e Svizzera. La valutazione con AI è facoltativa.</dd></div>
+          </dl>
+          <ul class="chips"><li>Python</li><li>Playwright</li><li>Web scraping</li><li>pytest</li><li>GitHub Actions</li></ul>
           <div class="proj-links">
             <a class="btn btn-sm magnetic" href="https://github.com/jacknegri89/JobScraper" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>Codice su GitHub
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>Visualizza il codice
             </a>
           </div>
+          <p class="proj-note">Gira in locale, senza account né server. Le schermate usano annunci di esempio inventati.</p>
         </div>
-        <a class="window watch" href="https://github.com/jacknegri89/JobScraper" target="_blank" rel="noopener" data-cursor="Codice" aria-label="Apri il codice di JobScraper su GitHub">
-          <div class="win-bar"><i></i><i></i><i></i><span>~/JobScraper</span></div>
-          <div class="win-body term-body" id="scraper-term">
+        <div class="shots" data-shots>
+          <div class="window">
+            <div class="win-bar"><i></i><i></i><i></i><span>JobScraper</span></div>
+            <div class="shot-panel" id="jobscraper-shot-dashboard">
+              <a href="assets/projects/jobscraper/dashboard.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/jobscraper/dashboard.webp?v=2026-11-10b" alt="Dashboard di JobScraper: filtri a sinistra e, per ogni annuncio, testo, livello, contratto, distanza, fonte, date e stima dello stipendio netto" width="1280" height="800" loading="lazy" decoding="async">
+              </a>
+            </div>
+            <div class="shot-panel" id="jobscraper-shot-panel">
+              <a href="assets/projects/jobscraper/panel.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/jobscraper/panel.webp?v=2026-11-10b" alt="Pannello di configurazione di JobScraper: scelta delle regioni, distanza in chilometri e località da includere" width="1280" height="800" loading="lazy" decoding="async">
+              </a>
+            </div>
+            <div class="shot-panel watch" id="jobscraper-shot-terminal">
+              <div class="win-body term-body" id="scraper-term">
 <span class="p">$</span> python main.py
 <span class="d">▸</span> pannello locale: Lombardia + Canton Ticino
 <span class="d">▸</span> raccolta annunci da 13 fonti
@@ -180,31 +329,63 @@
 <span class="d">▸</span> distanza e stime nette IT / CH
 <span class="d">▸</span> analisi AI opzionale, solo su richiesta
 <span class="ok">✓</span> index.html generato · dashboard offline
+              </div>
+            </div>
           </div>
-        </a>
+          <div class="shot-tabs" role="group" aria-label="Schermate di JobScraper">
+            <button type="button" data-shot-target="jobscraper-shot-dashboard">Dashboard</button>
+            <button type="button" data-shot-target="jobscraper-shot-panel">Pannello</button>
+            <button type="button" data-shot-target="jobscraper-shot-terminal">Avvio</button>
+          </div>
+        </div>
       </article>
 
       <!-- LogLens -->
       <article class="card proj">
         <div class="proj-copy">
-          <div class="proj-num"><span class="kind">Web App · Personale</span><span>Giu 2026</span></div>
+          <div class="proj-num"><span class="kind">Web app · Open source</span><span>2026</span></div>
           <h3>LogLens</h3>
-          <p>Analizza log e stack trace di diversi formati, raggruppa gli eventi in <b>incidenti</b> e collega ogni possibile causa alle <b>righe che la supportano</b>. Include oltre 50 regole senza AI, analisi opzionale con <b>OpenAI o Ollama</b>, storico, report condivisibili e GitHub Issue pronte da copiare. Il Workbench offre ricerca avanzata, raggruppamento, tracce e strumenti per mascherare i dati sensibili. La demo live usa la modalità ibrida.</p>
-          <ul class="chips"><li>TypeScript</li><li>React</li><li>Node.js</li><li>Prisma</li><li>PostgreSQL</li><li>Vitest</li><li>Playwright</li></ul>
-          <p class="proj-note">Le conclusioni distinguono cause confermate, probabili e ipotesi. Benchmark su 15 scenari e test automatici con Vitest e Playwright in GitHub Actions.</p>
+          <dl class="case">
+            <div><dt>Problema</dt><dd>Davanti a migliaia di righe di log, trovare quella che ha causato il guasto richiede tempo ed esperienza.</dd></div>
+            <div><dt>Soluzione</dt><dd>Incolli un log o uno stack trace: LogLens riconosce il formato, raggruppa gli errori in <b>incidenti</b>, indica la causa e prepara la GitHub Issue.</dd></div>
+            <div><dt>Tecnica</dt><dd>Ogni conclusione rimanda alla <b>riga di log che la sostiene</b>. Il motore a regole funziona senza AI; OpenAI od Ollama sono opzionali e le loro risposte vengono controllate sul log.</dd></div>
+          </dl>
+          <ul class="chips"><li>TypeScript</li><li>React</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>Prisma</li><li>Vitest</li><li>Playwright</li></ul>
           <div class="proj-links">
-            <a class="btn btn-primary btn-sm magnetic" href="https://loglens-demo.vercel.app" target="_blank" rel="noopener">Apri il sito live
+            <a class="btn btn-primary btn-sm magnetic" href="https://loglens-demo.vercel.app" target="_blank" rel="noopener">Prova la demo
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
             </a>
             <a class="btn btn-sm magnetic" href="https://github.com/jacknegri89/LogLens" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>Codice su GitHub
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>Visualizza il codice
             </a>
           </div>
+          <p class="proj-note">Test automatici e un benchmark su 15 scenari girano a ogni modifica in GitHub Actions.</p>
         </div>
-        <a class="window" href="https://loglens-demo.vercel.app" target="_blank" rel="noopener" data-cursor="Apri" aria-label="loglens-demo.vercel.app, apri LogLens">
-          <div class="win-bar"><i></i><i></i><i></i><span>loglens-demo.vercel.app</span></div>
-          <img class="win-shot" src="assets/loglens.webp?v=2026-11-01" alt="LogLens analizza un log: a sinistra il log con le righe d'errore evidenziate in giallo, a destra gravità alta, categoria Database, cause probabili e passi di debug" width="1280" height="800" loading="lazy" decoding="async">
-        </a>
+        <div class="shots" data-shots>
+          <div class="window">
+            <div class="win-bar"><i></i><i></i><i></i><span>loglens-demo.vercel.app</span></div>
+            <div class="shot-panel" id="loglens-shot-home">
+              <a href="assets/projects/loglens/home.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/loglens/home.webp?v=2026-11-10b" alt="Pagina iniziale di LogLens: titolo «Trova la riga che ha ceduto» e una lente d'ingrandimento sopra un foglio di log con la riga d'errore evidenziata" width="1280" height="800" loading="lazy" decoding="async">
+              </a>
+            </div>
+            <div class="shot-panel" id="loglens-shot-report">
+              <a href="assets/projects/loglens/report.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/loglens/report.webp?v=2026-11-10b" alt="Report di LogLens: gravità media, un incidente con causa confermata e le righe di log che la dimostrano" width="1280" height="800" loading="lazy" decoding="async">
+              </a>
+            </div>
+            <div class="shot-panel" id="loglens-shot-workbench">
+              <a href="assets/projects/loglens/workbench.webp?v=2026-11-10b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/loglens/workbench.webp?v=2026-11-10b" alt="Workbench di LogLens: barra di ricerca con filtri per livello e servizio sopra l'elenco delle righe di log analizzate" width="1280" height="800" loading="lazy" decoding="async">
+              </a>
+            </div>
+          </div>
+          <div class="shot-tabs" role="group" aria-label="Schermate di LogLens">
+            <button type="button" data-shot-target="loglens-shot-home">Home</button>
+            <button type="button" data-shot-target="loglens-shot-report">Report</button>
+            <button type="button" data-shot-target="loglens-shot-workbench">Workbench</button>
+          </div>
+        </div>
       </article>
 
       <!-- Secure Notes -->
@@ -212,9 +393,13 @@
         <div class="proj-copy">
           <div class="proj-num"><span class="kind">Android · Personale</span><span>Java</span></div>
           <h3>Secure Notes</h3>
-          <p>App blocco note con <b>crittografia locale AES</b>: ogni nota viene cifrata prima di essere salvata ed è accessibile solo con una password personale, <b>mai memorizzata in chiaro</b>. Completamente offline. L'ho sviluppata per capire il ciclo completo di un'app Android: layout, persistenza locale e crittografia.</p>
+          <dl class="case">
+            <div><dt>Problema</dt><dd>Volevo capire il ciclo completo di un'app Android: layout, salvataggio locale e crittografia.</dd></div>
+            <div><dt>Soluzione</dt><dd>Un blocco note completamente offline, in cui ogni nota viene cifrata con <b>AES</b> prima di essere salvata.</dd></div>
+            <div><dt>Tecnica</dt><dd>Le note si aprono solo con una password personale, <b>mai memorizzata in chiaro</b>. Salvataggio locale su SQLite.</dd></div>
+          </dl>
           <ul class="chips"><li>Java</li><li>Android SDK</li><li>AES</li><li>SQLite</li></ul>
-          <p class="proj-note">Il codice di questo progetto non è pubblico.</p>
+          <p class="proj-note">Il codice non è pubblico. Il telefono a fianco è una ricostruzione dell'interfaccia, non una schermata dell'app.</p>
         </div>
         <div class="phone-stage">
           <div class="phone">
@@ -306,7 +491,7 @@
     <div class="wrap">
       <div class="sec-head">
                 <h2 class="split">Strumenti che <span class="serif accent-text">uso.</span></h2>
-        <p class="reveal">Dal frontend al database, dai test automatici all'integrazione con modelli AI, fino all'hardware.</p>
+        <p class="reveal">Solo tecnologie che ho usato davvero nei progetti qui sopra: il codice pubblico su GitHub lo dimostra.</p>
       </div>
       <div class="bento">
         <div class="card skill w2 reveal">
@@ -315,25 +500,32 @@
         </div>
         <div class="card skill reveal">
           <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></span><h3>Frontend</h3></div>
-          <ul class="chips"><li>React</li><li>HTML5/CSS3</li><li>Tailwind</li><li>Vite</li></ul>
+          <ul class="chips"><li>HTML5 / CSS3</li><li>React</li><li>Tailwind</li><li>Vite</li><li>GSAP</li><li>Three.js</li></ul>
         </div>
         <div class="card skill reveal">
-          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.9L19 9.7l-4.2 3 1.5 5.3L12 15l-4.3 3 1.5-5.3L5 9.7l5.2-1.8Z"/></svg></span><h3>AI</h3></div>
-          <ul class="chips"><li>OpenAI API</li><li>Claude Code</li><li>Codex</li><li>Prompt engineering</li></ul>
+          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.9L19 9.7l-4.2 3 1.5 5.3L12 15l-4.3 3 1.5-5.3L5 9.7l5.2-1.8Z"/></svg></span><h3>Automazioni &amp; AI</h3></div>
+          <ul class="chips"><li>Web scraping</li><li>Playwright</li><li>OpenAI API</li><li>Ollama</li><li>Claude Code</li><li>Codex</li></ul>
         </div>
         <div class="card skill w2 reveal">
           <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><h3>Backend &amp; Database</h3></div>
-          <ul class="chips"><li>Node.js</li><li>Express</li><li>REST API</li><li>MySQL</li><li>PostgreSQL</li><li>Supabase</li><li>Prisma</li><li>SQLite</li></ul>
+          <ul class="chips"><li>Node.js</li><li>Express</li><li>PHP</li><li>REST API</li><li>MySQL / MariaDB</li><li>PostgreSQL</li><li>Prisma</li><li>Supabase</li><li>SQLite</li></ul>
         </div>
         <div class="card skill reveal">
-          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7l7.4 4M8.3 17l7.4-4"/></svg></span><h3>Tooling &amp; CI</h3></div>
-          <ul class="chips"><li>Git / GitHub</li><li>GitHub Actions</li><li>Vitest</li><li>Playwright</li></ul>
+          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7l7.4 4M8.3 17l7.4-4"/></svg></span><h3>Test &amp; rilascio</h3></div>
+          <ul class="chips"><li>Git / GitHub</li><li>GitHub Actions</li><li>Vitest</li><li>pytest</li><li>Vercel</li></ul>
         </div>
         <div class="card skill reveal">
           <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span><h3>Embedded &amp; Reti</h3></div>
           <ul class="chips"><li>Raspberry Pi</li><li>Arduino</li><li>TCP/IP</li><li>VLAN</li><li>Routing</li><li>Packet Tracer</li></ul>
         </div>
       </div>
+
+      <dl class="method reveal">
+        <div><dt>Versioni</dt><dd>Lavoro su rami dedicati, con commit piccoli e pull request. La cronologia dei repository è pubblica.</dd></div>
+        <div><dt>Test</dt><dd>JobScraper e LogLens hanno test automatici che girano a ogni modifica su GitHub Actions.</dd></div>
+        <div><dt>Sicurezza</dt><dd>Input sempre validati, nessun segreto nel codice, Content-Security-Policy: anche su questo sito.</dd></div>
+        <div><dt>Documentazione</dt><dd>Ogni progetto ha un README che spiega come avviarlo, com'è organizzato e quali limiti ha.</dd></div>
+      </dl>
     </div>
   </section>
 
@@ -376,30 +568,54 @@
   <section class="contact" id="contatti">
     <div class="orb" aria-hidden="true"></div>
     <div class="wrap">
-            <h2 class="contact-big split">Parliamone<span class="serif accent-text">.</span></h2>
-      <p class="contact-lead reveal">Cerco un ruolo come sviluppatore junior o tecnico IT, in Lombardia o come frontaliere in Canton Ticino.</p>
+      <h2 class="contact-big split">Parliamone<span class="serif accent-text">.</span></h2>
+      <p class="contact-lead reveal">Hai in mente un sito, un gestionale o un'attività da automatizzare? Scrivimi cosa ti serve, anche in poche righe: ti rispondo con una proposta e un preventivo, senza impegno.</p>
       <div class="mail-row reveal">
         <a class="mail-big" href="mailto:negrigiacomo435@gmail.com" data-cursor="Scrivi">negrigiacomo435@gmail.com</a>
         <button class="copy" type="button" data-copy="negrigiacomo435@gmail.com" aria-label="Copia l'indirizzo email">Copia</button>
       </div>
-
-      <div class="channels">
-        <div class="channel reveal">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
-          <div class="v"><small>GitHub</small><a href="https://github.com/jacknegri89" target="_blank" rel="noopener">github.com/jacknegri89</a></div>
-        </div>
-        <div class="channel reveal">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.82-2.06 3.75-2.06 4 0 4.74 2.64 4.74 6.07V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4z"/></svg>
-          <div class="v"><small>LinkedIn</small><a href="https://www.linkedin.com/in/giacomo-negri-952084448" target="_blank" rel="noopener">linkedin.com/in/giacomo-negri</a></div>
-        </div>
+      <div class="contact-cta reveal">
+        <a class="btn btn-primary magnetic" href="mailto:negrigiacomo435@gmail.com?subject=Richiesta%20di%20preventivo&amp;body=Ciao%20Giacomo%2C%0A%0Ami%20servirebbe%3A%20%0AAttivit%C3%A0%20o%20azienda%3A%20%0ATempi%20indicativi%3A%20%0A">Richiedi un preventivo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
-      <div class="contact-cta">
-        <a class="btn btn-primary magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-02b" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>Guarda il CV
-        </a>
-        <a class="btn magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-02b" download="CV-Giacomo-Negri.pdf">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Scarica il CV
-        </a>
+
+      <div class="contact-paths">
+        <div class="path reveal">
+          <h3 class="eyebrow">Se hai un progetto</h3>
+          <ol class="steps">
+            <li>Mi scrivi cosa ti serve e per quale attività.</li>
+            <li>Ci sentiamo per capire obiettivi, contenuti e tempi.</li>
+            <li>Ricevi una proposta scritta con il preventivo.</li>
+          </ol>
+        </div>
+
+        <div class="path reveal">
+          <h3 class="eyebrow">Per recruiter e team tecnici</h3>
+          <p class="path-text">Sono aperto anche a collaborazioni e opportunità in azienda, in Lombardia o come frontaliere in Canton Ticino. Qui trovi codice, profilo e CV.</p>
+          <div class="channels">
+            <div class="channel">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+              <div class="v"><small>GitHub</small><a href="https://github.com/jacknegri89" target="_blank" rel="noopener">github.com/jacknegri89</a></div>
+            </div>
+            <div class="channel">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.82-2.06 3.75-2.06 4 0 4.74 2.64 4.74 6.07V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4z"/></svg>
+              <div class="v"><small>LinkedIn</small><a href="https://www.linkedin.com/in/giacomo-negri-952084448" target="_blank" rel="noopener">linkedin.com/in/giacomo-negri</a></div>
+            </div>
+            <div class="channel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>
+              <div class="v"><small>Codice di questo portfolio</small><a href="https://github.com/jacknegri89/MyPortfolio" target="_blank" rel="noopener">github.com/jacknegri89/MyPortfolio</a></div>
+            </div>
+          </div>
+          <div class="contact-cta">
+            <a class="btn btn-sm magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-02b" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>Guarda il CV
+            </a>
+            <a class="btn btn-sm magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-02b" download="CV-Giacomo-Negri.pdf">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Scarica il CV
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -410,9 +626,14 @@
     <svg class="foot-sign"><text class="foot-sign-text" x="50%" y="0.94em" text-anchor="middle">Giacomo Negri</text></svg>
   </div>
   <div class="wrap foot-row">
-    <span>© <span id="year">2026</span> Giacomo Negri</span>
-    <a href="#top" id="to-top">Torna su ↑</a>
+    <span>© <span id="year">2026</span> Giacomo Negri · Web designer &amp; developer freelance</span>
+    <span class="foot-links">
+      <a href="https://github.com/jacknegri89/MyPortfolio" target="_blank" rel="noopener">Codice di questo sito su GitHub</a>
+      <a href="privacy.html">Privacy e cookie</a>
+      <a href="#top" id="to-top">Torna su ↑</a>
+    </span>
   </div>
+  <p class="wrap foot-tech">Sito scritto a mano in HTML, CSS e JavaScript, con animazioni GSAP e Three.js. Nessun template, nessun cookie.</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous"></script>
@@ -420,27 +641,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous"></script>
 <!-- Codice del sito: prima le classi, poi App.js che le usa, per ultimo main.js che avvia tutto -->
-<script src="js/core/Environment.js?v=2026-11-10a"></script>
-<script src="js/core/TextSplitter.js?v=2026-11-10a"></script>
-<script src="js/core/SmoothScroll.js?v=2026-11-10a"></script>
-<script src="js/core/OffscreenPauser.js?v=2026-11-10a"></script>
-<script src="js/components/ContactDetails.js?v=2026-11-10a"></script>
-<script src="js/components/NavBar.js?v=2026-11-10a"></script>
-<script src="js/components/ParticleWave.js?v=2026-11-10a"></script>
-<script src="js/components/CustomCursor.js?v=2026-11-10a"></script>
-<script src="js/components/CardSpotlight.js?v=2026-11-10a"></script>
-<script src="js/components/MagneticButtons.js?v=2026-11-10a"></script>
-<script src="js/components/ScraperTerminal.js?v=2026-11-10a"></script>
-<script src="js/components/InViewWatcher.js?v=2026-11-10a"></script>
-<script src="js/components/SecureNotesDemo.js?v=2026-11-10a"></script>
-<script src="js/components/SerialMonitor.js?v=2026-11-10a"></script>
-<script src="js/components/CopyButtons.js?v=2026-11-10a"></script>
-<script src="js/components/VelocityMarquee.js?v=2026-11-10a"></script>
-<script src="js/animations/IntroAnimation.js?v=2026-11-10a"></script>
-<script src="js/animations/ScrollAnimations.js?v=2026-11-10a"></script>
-<script src="js/animations/HorizontalProjects.js?v=2026-11-10a"></script>
-<script src="js/animations/FooterSignature.js?v=2026-11-10a"></script>
-<script src="js/App.js?v=2026-11-10a"></script>
-<script src="js/main.js?v=2026-11-10a"></script>
+<script src="js/core/Environment.js?v=2026-11-10b"></script>
+<script src="js/core/TextSplitter.js?v=2026-11-10b"></script>
+<script src="js/core/SmoothScroll.js?v=2026-11-10b"></script>
+<script src="js/core/OffscreenPauser.js?v=2026-11-10b"></script>
+<script src="js/components/ContactDetails.js?v=2026-11-10b"></script>
+<script src="js/components/NavBar.js?v=2026-11-10b"></script>
+<script src="js/components/ParticleWave.js?v=2026-11-10b"></script>
+<script src="js/components/CustomCursor.js?v=2026-11-10b"></script>
+<script src="js/components/CardSpotlight.js?v=2026-11-10b"></script>
+<script src="js/components/MagneticButtons.js?v=2026-11-10b"></script>
+<script src="js/components/ScraperTerminal.js?v=2026-11-10b"></script>
+<script src="js/components/InViewWatcher.js?v=2026-11-10b"></script>
+<script src="js/components/SecureNotesDemo.js?v=2026-11-10b"></script>
+<script src="js/components/SerialMonitor.js?v=2026-11-10b"></script>
+<script src="js/components/CopyButtons.js?v=2026-11-10b"></script>
+<script src="js/components/ScreenshotTabs.js?v=2026-11-10b"></script>
+<script src="js/components/VelocityMarquee.js?v=2026-11-10b"></script>
+<script src="js/animations/IntroAnimation.js?v=2026-11-10b"></script>
+<script src="js/animations/ScrollAnimations.js?v=2026-11-10b"></script>
+<script src="js/animations/HorizontalProjects.js?v=2026-11-10b"></script>
+<script src="js/animations/FooterSignature.js?v=2026-11-10b"></script>
+<script src="js/App.js?v=2026-11-10b"></script>
+<script src="js/main.js?v=2026-11-10b"></script>
 </body>
 </html>

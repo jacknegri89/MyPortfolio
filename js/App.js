@@ -30,6 +30,7 @@ class App {
     new SecureNotesDemo(this.environment).start();
     new SerialMonitor(document.getElementById("serial-body"), this.environment).start();
     new CopyButtons().start();
+    new ScreenshotTabs().start();
     new VelocityMarquee(this.smoothScroll, this.environment).start();
 
     this.startAnimations();
