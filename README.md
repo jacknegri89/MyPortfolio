@@ -1,6 +1,6 @@
 # MyPortfolio
 
-The source of [giacomonegri.vercel.app](https://giacomonegri.vercel.app), the portfolio of Giacomo Negri, freelance web designer and developer.
+The source of [giacomonegri.vercel.app](https://giacomonegri.vercel.app), the portfolio of Giacomo Negri, freelance web developer.
 
 It is a static site written by hand in HTML, CSS and JavaScript: no framework, no build step, no template. The site has two jobs: showing prospective clients what I can build for them, and letting recruiters and developers look at real projects and at the code behind them, starting with this one.
 
@@ -145,7 +145,7 @@ Vercel is connected to this repository: every push to `main` publishes the site,
 
 ## License
 
-No open-source license is granted. The code is public so that it can be read and evaluated; the texts, the design and the images remain the property of Giacomo Negri. The libraries listed above keep their own licenses.
+No open-source license is granted. The code is public so that it can be read and evaluated; the texts, the design and the images remain the property of Giacomo Negri. The libraries listed above keep their own licenses, and the fonts are under the SIL Open Font License (texts in `assets/fonts/OFL-*.txt`).
 
 ---
 
