@@ -14,7 +14,7 @@ Aggiornato il 10 novembre 2026.
 - Locale: `python -m http.server 5173`.
 
 ## Mappa architettura
-- `index.html`: tutta la pagina. Ordine sezioni: hero, marquee, chi-sono, servizi, progetti, esperienza, competenze, formazione, contatti, footer.
+- `index.html`: tutta la pagina. Ordine sezioni: hero, marquee, servizi (siti web), chi-sono, progetti, esperienza, competenze, formazione, contatti, footer.
 - `privacy.html`, `404.html`: pagine singole con stile inline minimo.
 - `css/`: un file per sezione; `base.css` primo, `reduced-motion.css` ultimo. `services.css` = elenco servizi.
 - `js/App.js`: crea e avvia tutte le classi. `js/main.js`: ultimo script.
@@ -25,14 +25,14 @@ Aggiornato il 10 novembre 2026.
 - `docs/portfolio-home.jpg`: immagine del README (esclusa dal deploy con `.vercelignore`).
 
 ## Progetti presentati (fonti verificate il 10/11/2026)
-- Renova (repo privato, solo demo): PHP 8 senza framework, MySQL/MariaDB, Chart.js, Ember API, 2FA, pannello admin, test. Schermate: home e funzionalità catturate dal sito live.
+- Renova (repo privato, solo demo): PHP 8 senza framework, MySQL/MariaDB, Chart.js, Ember API, 2FA, pannello admin, test. Schermate: home e sezione «il progetto» catturate dal sito live (la galleria «funzionalità» veniva male e non va usata).
 - JobScraper (pubblico, v1.2.0): 13 fonti, Playwright, dedup, stato annunci, stime nette IT/CH, AI opzionale. Schermate dal repo (`docs/`, dati inventati) + terminale animato.
 - LogLens (pubblico): incidenti con evidenze, motore a regole, OpenAI/Ollama opzionali, benchmark 15 scenari. Home dalla demo live, report e workbench dal repo.
 - Secure Notes: nessun repo né screenshot; mockup dichiarato come ricostruzione.
 - Non inserito: repo privato umoristico per amici.
 
 ## Decisioni & vincoli
-- Posizionamento: developer / sviluppatore web freelance (NON "web designer": Giacomo lo ha chiesto esplicitamente); percorso recruiter nella sezione contatti.
+- Posizionamento: "Developer". NON usare "freelance" né "web designer" (richiesta esplicita di Giacomo). Ai clienti offre SOLO siti web (vetrina, landing page, restyling) per negozi, professionisti, attività locali; software su richiesta solo come nota secondaria, mai gestionali/automazioni/API come servizio; percorso recruiter nella sezione contatti.
 - Niente ternari né `if` su una riga (regola utente). Script classici, non moduli: l'ordine dei `<script>` conta.
 - Dopo ogni modifica a CSS/JS cambiare `?v=` in tutti gli HTML (ora `2026-11-10c`).
 - Schede progetto: a schermo basso (`max-height: 840px`) lo stile è compatto, altrimenti sforano i 680px minimi della modalità orizzontale.
