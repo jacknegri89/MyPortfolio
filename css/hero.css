@@ -134,7 +134,7 @@
 .hero-foot .intro {
   color: var(--muted);
   font-size: 0.98rem;
-  max-width: 38ch;
+  max-width: 46ch;
 }
 .hero-foot .intro b {
   color: var(--fg);
