@@ -1,10 +1,16 @@
-# Personal notes and a duplicate of the CV: not part of the site
-profilo_jack.md
-profilo_personale_disoccupato.md
+# Appunti personali e copie di lavoro: non fanno parte del sito
+profilo_*.md
 CV – Giacomo Negri.pdf
+
+# Configurazioni locali e segreti
 .vercel/
 .env
 .env.*
+
+# Strumenti
 node_modules/
 .playwright-mcp/
-.claude/
+
+# Della cartella .claude si versiona solo lo stato tecnico del progetto
+.claude/*
+!.claude/state.md
