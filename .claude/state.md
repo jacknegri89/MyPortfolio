@@ -45,7 +45,7 @@ Aggiornato il 10 novembre 2026 (audit finale, PR #7 unita in `main`).
 
 ## Problemi aperti
 - Cronologia di `main` riscritta una seconda volta il 10/11/2026 (vecchie versioni del CV sostituite con quella pubblica attuale; albero finale identico). Nessuna data di nascita né foto né email personale nei commit di `main`. Backup: `Documents\MyPortfolio-backup-2026-11-10-b.bundle` (e `...-10.bundle` per la prima riscrittura), fuori dal repo, da non pubblicare.
-- Ticket a GitHub Support inviato il 10/11/2026 per i riferimenti `refs/pull/1..9/head`, che ancora raggiungono i vecchi commit (email personale come autore, foto, CV con data di nascita). Esito in attesa: Support valuta caso per caso perché sono dati personali e non segreti. Se serve, mandare un seguito che elenchi tutte le PR #1-#9.
+- Ticket #4985290 a GitHub Support creato il 10/11/2026 (Repositories) per dereferenziare le PR #1-#9: i loro riferimenti `refs/pull/*` raggiungono ancora i vecchi commit (email personale come autore, foto, CV con data di nascita). Esito in attesa: Support valuta caso per caso perché sono dati personali e non segreti. Risposte per email a quella di contatto e su support.github.com/tickets.
 - La password del CV completo (`assets/CV-completo-Giacomo-Negri.pdf`) non si recupera: va ricifrato con `cifra-cv.py` (cartella `Documents\MyPortfolio-cv-privato`, fuori dal repo).
 - Secret scanning e push protection attivati sul repository il 10/11/2026.
 - Performance (Lighthouse/trace) mai misurata: strumento usato non la include.
