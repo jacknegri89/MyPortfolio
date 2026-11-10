@@ -50,5 +50,5 @@ Aggiornato il 10 novembre 2026.
 
 ## Problemi aperti
 - I 17 commit iniziali hanno come autore un'email personale: diventa visibile con il repo pubblico.
-- `assets/giacomo.jpg` non è usata dal sito (esclusa dal deploy) ma è nel repo.
+- `assets/giacomo.jpg` (foto non usata) rimossa il 10/11/2026 su richiesta; resta nei commit precedenti finché la cronologia non viene riscritta.
 - Font ancora da Google Fonts: ospitarli in locale toglierebbe una terza parte.
