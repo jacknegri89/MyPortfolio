@@ -3,7 +3,7 @@ Aggiornato il 10 novembre 2026.
 
 ## Repository e pubblicazione
 - GitHub: `jacknegri89/MyPortfolio` (rinominato da `My-Portfolio` il 10/11/2026), ramo unico `main`.
-- Visibilità: vedi sezione "Stato avanzamento" (passaggio a PUBLIC dopo audit).
+- Visibilità: PUBLIC dal 10/11/2026, dopo audit di file e cronologia.
 - Vercel: progetto `giacomonegri`, sito `https://giacomonegri.vercel.app`, deploy automatico da `main`.
 - Clone locale: `Documents\MyPortfolio`. Identità git locale: email noreply di GitHub.
 - Nessun `CLAUDE.md` nel repo: valgono le regole globali dell'utente.
@@ -46,9 +46,11 @@ Aggiornato il 10 novembre 2026.
 - [x] Rinomina repo, remote aggiornato.
 - [x] Riposizionamento freelance, sezione servizi, case study, schermate, SEO, privacy, README.
 - [x] Test in Chromium (Playwright) a 320/375/768/1000/1280/1440: PASS.
-- [/] Merge su `main`, pulizia rami, visibilità PUBLIC, verifica Vercel.
+- [x] Merge su `main` (PR #1 e #2), rami di lavoro eliminati, deploy Vercel verificato.
+- [x] Cronologia riscritta il 10/11/2026 (email autore → quella di contatto, foto rimossa), force push su `main`, repo PUBLIC.
 
 ## Problemi aperti
-- I 17 commit iniziali hanno come autore un'email personale: diventa visibile con il repo pubblico.
-- `assets/giacomo.jpg` (foto non usata) rimossa il 10/11/2026 su richiesta; resta nei commit precedenti finché la cronologia non viene riscritta.
+- La cronologia di `main` è pulita, ma i vecchi commit restano raggiungibili dai riferimenti delle PR #1 e #2 (`refs/pull/*`): solo il supporto GitHub può eliminarli.
+- Backup della cronologia originale: `Documents\MyPortfolio-backup-2026-11-10.bundle` (fuori dal repo, non pubblicare).
+- `assets/giacomo.jpg` (foto non usata) rimossa dal repo e dalla cronologia di `main` il 10/11/2026.
 - Font ancora da Google Fonts: ospitarli in locale toglierebbe una terza parte.
