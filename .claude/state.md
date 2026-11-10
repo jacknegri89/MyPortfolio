@@ -1,23 +1,54 @@
-# Stato tecnico — portfolio di Giacomo Negri
+# Stato tecnico — MyPortfolio (portfolio di Giacomo Negri)
 Aggiornato il 10 novembre 2026.
 
 ## Repository e pubblicazione
-- Repository GitHub attuale: `jacknegri89/My-Portfolio`, ramo `main`.
-- Nome richiesto: `MyPortfolio` (rinomina amministrativa ancora da eseguire in GitHub: Settings → General → Repository name).
-- Vercel: progetto `giacomonegri`, sito `https://giacomonegri.vercel.app`; integration GitHub su `main`.
-- Sito statico HTML/CSS/JavaScript senza build; animazioni Three.js, GSAP e Lenis via CDN.
-- Non c'è un file `CLAUDE.md` nell'albero del repo esaminato prima di questo aggiornamento.
+- GitHub: `jacknegri89/MyPortfolio` (rinominato da `My-Portfolio` il 10/11/2026), ramo unico `main`.
+- Visibilità: vedi sezione "Stato avanzamento" (passaggio a PUBLIC dopo audit).
+- Vercel: progetto `giacomonegri`, sito `https://giacomonegri.vercel.app`, deploy automatico da `main`.
+- Clone locale: `Documents\MyPortfolio`. Identità git locale: email noreply di GitHub.
+- Nessun `CLAUDE.md` nel repo: valgono le regole globali dell'utente.
 
-## Contenuti aggiornati
-- Renova: descrizione allineata a README del progetto privato, confermando API Ember, quiz, azioni, punti, badge.
-- JobScraper: titolo e link canonici `jacknegri89/JobScraper`, funzione geografica Lombardia + Ticino, 13 fonti, deduplicazione, stato annunci, stipendi e AI opzionale. Terminale illustrativo allineato a `python main.py` e `index.html`.
-- LogLens: descrizione allineata al README aggiornato, regole e modalità ibrida, evidenze, Workbench, benchmark.
-- Secure Notes: mantenuto come progetto Android senza codice pubblico.
-- Repository privato umoristico per amici: non inserito nel portfolio pubblico.
-- Cache busting CSS/JS in `index.html`: `v=2026-11-10a`.
+## Stack & Env
+- HTML5, CSS3, JavaScript senza build. Nessun `.env`, nessun backend, nessun segreto.
+- CDN con SRI: Three.js r128, GSAP 3.12.5 + ScrollTrigger (cdnjs), Lenis 1.1.13 (jsDelivr). Font: Google Fonts.
+- Locale: `python -m http.server 5173`.
 
-## Da verificare / decisioni non prese
-- Eseguire la rinomina effettiva del repository in `MyPortfolio` tramite GitHub (la connessione disponibile non supporta la modifica amministrativa del nome).
-- Dopo la rinomina controllare l'integrazione GitHub del progetto Vercel e gli eventuali remote locali.
-- Valutare se aggiornare screenshot LogLens con immagine recente e se cambiare il posizionamento professionale da “cerco ruolo junior IT” a “freelance per aziende” (richiede decisione del proprietario).
-- Evitare modifiche estetiche o ulteriori voci senza approvazione.
+## Mappa architettura
+- `index.html`: tutta la pagina. Ordine sezioni: hero, marquee, chi-sono, servizi, progetti, esperienza, competenze, formazione, contatti, footer.
+- `privacy.html`, `404.html`: pagine singole con stile inline minimo.
+- `css/`: un file per sezione; `base.css` primo, `reduced-motion.css` ultimo. `services.css` = elenco servizi.
+- `js/App.js`: crea e avvia tutte le classi. `js/main.js`: ultimo script.
+- `js/core/`: `Environment`, `SmoothScroll`, `TextSplitter`, `OffscreenPauser`.
+- `js/components/`: `ScreenshotTabs` (pulsanti `data-shot-target` → `.shot-panel`), `ScraperTerminal`, `InViewWatcher`, `ParticleWave`, `CustomCursor`, `CardSpotlight`, `MagneticButtons`, `SecureNotesDemo`, `SerialMonitor`, `CopyButtons`, `VelocityMarquee`, `NavBar`, `ContactDetails`.
+- `js/animations/`: `IntroAnimation`, `ScrollAnimations`, `HorizontalProjects`, `FooterSignature`.
+- `assets/projects/<progetto>/`: schermate reali WebP 1280x800. `assets/og.jpg`: anteprima social (hero a 1200x630).
+- `docs/portfolio-home.jpg`: immagine del README (esclusa dal deploy con `.vercelignore`).
+
+## Progetti presentati (fonti verificate il 10/11/2026)
+- Renova (repo privato, solo demo): PHP 8 senza framework, MySQL/MariaDB, Chart.js, Ember API, 2FA, pannello admin, test. Schermate: home e funzionalità catturate dal sito live.
+- JobScraper (pubblico, v1.2.0): 13 fonti, Playwright, dedup, stato annunci, stime nette IT/CH, AI opzionale. Schermate dal repo (`docs/`, dati inventati) + terminale animato.
+- LogLens (pubblico): incidenti con evidenze, motore a regole, OpenAI/Ollama opzionali, benchmark 15 scenari. Home dalla demo live, report e workbench dal repo.
+- Secure Notes: nessun repo né screenshot; mockup dichiarato come ricostruzione.
+- Non inserito: repo privato umoristico per amici.
+
+## Decisioni & vincoli
+- Posizionamento: web designer & developer freelance; percorso recruiter nella sezione contatti.
+- Niente ternari né `if` su una riga (regola utente). Script classici, non moduli: l'ordine dei `<script>` conta.
+- Dopo ogni modifica a CSS/JS cambiare `?v=` in tutti gli HTML (ora `2026-11-10b`).
+- Schede progetto: a schermo basso (`max-height: 840px`) lo stile è compatto, altrimenti sforano i 680px minimi della modalità orizzontale.
+- JSON-LD nel `<head>`: è un blocco dati, non viene bloccato dalla CSP.
+- Nessuna licenza scelta: il README dichiara che non è concessa licenza open source (decisione da confermare).
+- README in inglese per scelta precedente del proprietario.
+- Non inventare dati: niente telefono, P.IVA, recensioni, numeri di clienti.
+
+## Stato avanzamento
+- [x] Audit sicurezza su file e 18 commit: nessun segreto.
+- [x] Rinomina repo, remote aggiornato.
+- [x] Riposizionamento freelance, sezione servizi, case study, schermate, SEO, privacy, README.
+- [x] Test in Chromium (Playwright) a 320/375/768/1000/1280/1440: PASS.
+- [/] Merge su `main`, pulizia rami, visibilità PUBLIC, verifica Vercel.
+
+## Problemi aperti
+- I 17 commit iniziali hanno come autore un'email personale: diventa visibile con il repo pubblico.
+- `assets/giacomo.jpg` non è usata dal sito (esclusa dal deploy) ma è nel repo.
+- Font ancora da Google Fonts: ospitarli in locale toglierebbe una terza parte.

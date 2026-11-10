@@ -1,116 +1,151 @@
-<h1 align="center">Giacomo Negri · Portfolio</h1>
+# MyPortfolio
 
-<p align="center">
-  <a href="https://giacomonegri.vercel.app"><img alt="Live site" src="https://img.shields.io/badge/live-giacomonegri.vercel.app-63bdff?style=for-the-badge&logo=vercel&logoColor=white&labelColor=04050a"></a>
-  <img alt="HTML5" src="https://img.shields.io/badge/HTML5-e34f26?style=for-the-badge&logo=html5&logoColor=white&labelColor=04050a">
-  <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572b6?style=for-the-badge&logo=css3&logoColor=white&labelColor=04050a">
-  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black&labelColor=04050a">
-  <img alt="GSAP" src="https://img.shields.io/badge/GSAP-88ce02?style=for-the-badge&labelColor=04050a">
-</p>
+The source of [giacomonegri.vercel.app](https://giacomonegri.vercel.app), the portfolio of Giacomo Negri, freelance web designer and developer.
 
-<p align="center">
-  A static, build-free personal portfolio with 3D hero animations, scroll-driven sections and a few interactive demos.
-</p>
+It is a static site written by hand in HTML, CSS and JavaScript: no framework, no build step, no template. The site has two jobs: showing prospective clients what I can build for them, and letting recruiters and developers look at real projects and at the code behind them, starting with this one.
 
-> Open `index.html` in your browser to view the site locally. External libraries (Three.js, GSAP, ScrollTrigger, Lenis) load from a CDN, so you need an internet connection.
+![The home page: the name "Giacomo Negri" over an animated wave of particles, with the buttons "Parliamo del tuo progetto" and "Esplora i progetti"](docs/portfolio-home.jpg)
 
----
+## What is on the page
 
-## Progetti mostrati
+| Section | Purpose |
+| --- | --- |
+| Hero | Who I am, what I build, and the two main paths: start a project or explore the work |
+| Chi sono | A short, factual introduction |
+| Servizi | Four services described for people who do not know the technical side |
+| Progetti | Four case studies (problem, solution, technique) with real screenshots, live demos and links to the code |
+| Esperienza | The internship in industrial electronics, with a simulated serial monitor |
+| Stack | Technologies I have actually used in the projects, and how I work |
+| Formazione | School and planned certifications |
+| Contatti | Email and quote request for clients; GitHub, LinkedIn, CV and this repository for recruiters |
 
-- **[JobScraper](https://github.com/jacknegri89/JobScraper)** — ricerca di annunci in Lombardia e Ticino, dashboard locale, deduplicazione, stime di retribuzione e AI opzionale.
-- **[LogLens](https://github.com/jacknegri89/LogLens)** — analisi di log basata su evidenze, motore di regole, AI opzionale e Workbench.
-- **Renova** — piattaforma web per energia e sostenibilità; codice privato, [sito pubblico](https://renovaenergy.vercel.app).
-- **Secure Notes** — app Android personale, codice non pubblico.
+## Built with
 
-Le descrizioni sono mantenute allineate ai README dei progetti. Non pubblicare nel portfolio dettagli o collegamenti dei repository privati non già presentati pubblicamente.
+| What | Why |
+| --- | --- |
+| HTML, CSS, JavaScript (no build) | A single page does not need a framework; the browser runs the files as they are |
+| [GSAP](https://gsap.com) 3.12 + ScrollTrigger | Intro animation, scroll reveals, horizontal projects section |
+| [Three.js](https://threejs.org) r128 | The particle wave in the hero, computed on the GPU by a small vertex shader |
+| [Lenis](https://github.com/darkroomengineering/lenis) 1.1 | Smooth scrolling |
+| Google Fonts | Geist, Geist Mono, Instrument Serif |
+| [Vercel](https://vercel.com) | Hosting; every push to `main` goes live |
 
----
+The four libraries load from public CDNs with [Subresource Integrity](https://developer.mozilla.org/docs/Web/Security/Subresource_Integrity) hashes. There is no `package.json` because nothing has to be installed.
+
+## Run it locally
+
+```bash
+git clone https://github.com/jacknegri89/MyPortfolio.git
+cd MyPortfolio
+python -m http.server 5173
+```
+
+Then open http://localhost:5173. Opening `index.html` with a double click works too. An internet connection is needed for the CDN libraries and the fonts; without them the page still shows all its content, only without animations.
 
 ## Structure
 
 ```
-index.html            content only (texts, sections, links)
+index.html            the whole page: content only (texts, sections, links)
+privacy.html          privacy and cookie notice
+404.html              "page not found"
 css/                  one stylesheet per part of the page
 js/
   core/               base classes used across the site
   components/         one class per interactive element
   animations/         GSAP animations (intro, scroll, horizontal projects)
-  App.js              creates and starts all components
+  App.js              creates and starts every component, in order
   main.js             starts App (must be the last script)
-assets/               CV as PDF, Renova screenshots, og.jpg (preview when the link is shared)
+assets/
+  projects/           real screenshots, one folder per project
+  og.jpg              preview image shown when the link is shared
+  CV-Giacomo-Negri.pdf
+docs/                 images used by this README (not deployed)
+vercel.json           clean URLs, caching and security headers
 ```
-
-### CSS
-
-The order of the `<link>` tags in `index.html` matters, because a rule written later wins over one written earlier.
-`base.css` always goes first, `reduced-motion.css` always goes last.
-
-| File | Contents |
-| --- | --- |
-| `base.css` | colors and fonts (variables `--bg`, `--fg`, `--a1`...), reset, reusable classes |
-| `loader.css` | loading screen |
-| `cursor.css` | custom cursor |
-| `nav.css` | top bar |
-| `buttons.css` | `.btn` buttons |
-| `hero.css` | first screen with the name |
-| `marquee.css` | scrolling text bands |
-| `sections.css` | cards, chips and headings shared by all sections |
-| `about.css`, `projects.css`, `experience.css`, `skills.css`, `education.css`, `contact.css`, `footer.css` | one section each |
-| `reduced-motion.css` | version without animations |
-
-To change a color across the whole site, edit the variable in `:root` inside `base.css`.
 
 ### JavaScript
 
-Each file contains a class with a `start()` (or `play()`) method that starts it.
-`App.js` creates all of them in the right order.
+Plain classes, one per file, named like the file. Each has a `start()` (or `play()`) method, and `App.js` is the only place that creates them, so the start-up order can be read from top to bottom in one file. The scripts are ordinary `<script>` tags rather than modules, which keeps the site working when the file is opened directly from disk; for the same reason their order in `index.html` matters.
 
 | Class | What it does |
 | --- | --- |
-| `Environment` | detects whether the user has a mouse, whether they prefer fewer animations and whether GSAP is loaded |
-| `TextSplitter` | splits a text into words or letters to animate |
-| `SmoothScroll` | smooth scrolling (Lenis), scroll speed, internal `#...` links |
-| `OffscreenPauser` | pauses the endless animations of sections marked `data-pause-offscreen` when they are not visible |
-| `ContactDetails` | current year in the footer |
-| `NavBar` | on phones, gives the top bar a background when you scroll |
-| `ParticleWave` | 3D particle wave in the hero |
-| `CustomCursor`, `CardSpotlight`, `MagneticButtons` | mouse effects (desktop only) |
-| `ScraperTerminal` | simulated terminal for the JobScraper project |
-| `InViewWatcher` | starts the fake terminal when it enters the screen |
-| `SecureNotesDemo` | text that is encrypted and decrypted on phones |
-| `SerialMonitor` | fake monitor for the Raspberry Pi |
-| `CopyButtons` | "Copy" buttons in the contacts |
-| `VelocityMarquee` | text bands linked to scroll speed |
-| `IntroAnimation` | opening animation |
-| `ScrollAnimations` | titles, phrases and blocks that appear while scrolling |
-| `HorizontalProjects` | projects in a horizontal row on desktop |
-| `FooterSignature` | the name in the footer that draws itself when you reach the bottom |
+| `Environment` | Reads once whether the visitor uses a mouse, prefers reduced motion, and whether GSAP loaded |
+| `SmoothScroll` | Lenis scrolling, scroll speed for the marquee, in-page `#` links |
+| `TextSplitter` | Splits a text into words or letters to animate |
+| `OffscreenPauser` | Pauses endless CSS animations in sections that are off screen |
+| `ParticleWave` | The 3D particle wave in the hero |
+| `CustomCursor`, `CardSpotlight`, `MagneticButtons` | Mouse effects, desktop only |
+| `ScreenshotTabs` | Switches between the screenshots of a project |
+| `ScraperTerminal`, `InViewWatcher` | The typed terminal in the JobScraper card, started when it becomes visible |
+| `SecureNotesDemo`, `SerialMonitor` | Small simulations (encrypted notes, Raspberry Pi control loop) |
+| `CopyButtons` | Copies the email address |
+| `VelocityMarquee` | Text bands that follow the scroll speed |
+| `IntroAnimation`, `ScrollAnimations`, `HorizontalProjects`, `FooterSignature` | The GSAP animations |
 
-The scripts are plain `<script>` tags (not modules), so the site also works when you open the file by double-clicking it.
-For this reason the order of the `<script>` tags in `index.html` matters: a class must be loaded before anything that uses it.
+### CSS
+
+One file per section, loaded in a fixed order: `base.css` first (colour and font variables, reset, shared helpers), `reduced-motion.css` last. Colours are CSS variables in `:root`, so the accent colour changes in one place.
+
+### Animations
+
+- Animations run only when GSAP has loaded and the visitor has not asked for reduced motion (`Environment.canAnimateWithGsap()`). Otherwise the loader is hidden at once and the full content is visible.
+- On screens at least 1000 px wide and 680 px tall, the projects section is pinned and scrolls horizontally; below that the projects are stacked. `ScrollTrigger.matchMedia` switches between the two when the window is resized.
+- Keyboard users are not left behind by the horizontal section: when a link inside a project receives focus, the page scrolls to that project.
+
+### Responsive layout and accessibility
+
+- Checked at 320, 375, 768, 1000, 1280 and 1440 px wide, with no horizontal scrolling.
+- One `<h1>`, semantic sections, a "skip to content" link, visible keyboard focus, `alt` text and explicit sizes on every image.
+- The screenshot switcher uses real `<button>` elements with `aria-pressed`.
+- `prefers-reduced-motion` is respected by both the CSS and the JavaScript.
+
+### Screenshots of the projects
+
+Every screenshot in `assets/projects/` shows the real application; none is a mock-up.
+
+| Project | Source |
+| --- | --- |
+| JobScraper | `docs/dashboard-dark.png` and `docs/panel.png` from its repository, generated by the project from invented sample listings |
+| LogLens | Home page captured from the live demo; report and Workbench from `docs/screenshots/` in its repository |
+| Renova | Public pages captured from the live site |
+| Secure Notes | No screenshot: the phone in the card is a reconstruction of the interface and is labelled as such |
+
+They are stored as 1280×800 WebP files, lazy-loaded, with declared dimensions.
+
+## Security
+
+- A Content-Security-Policy in each page allows scripts only from this site and the two CDNs; inline scripts are not allowed.
+- CDN scripts carry SRI hashes, so a tampered file is refused by the browser.
+- `vercel.json` adds `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options` and `Permissions-Policy`.
+- The site has no forms, no cookies and no analytics. Contact goes through a `mailto:` link.
+- No secrets exist in this repository: there is no backend and nothing to configure.
+
+## Checks
+
+There is no test suite to install. Before publishing I run:
+
+```bash
+# JavaScript syntax
+for f in js/*.js js/*/*.js; do node --check "$f"; done
+```
+
+and open the page in a real browser (Chromium through Playwright) at the widths listed above, checking the console for errors, the screenshot buttons, keyboard navigation in the projects section, the page with the CDNs blocked, and reduced motion.
 
 ## Common tasks
 
-- **After every change to CSS or JS:** in `index.html`, change the number after `?v=` (e.g. `?v=2026-10-07` → `?v=2026-10-08`) using find and replace. Otherwise, visitors who have already opened the site may see the old version.
+- **After changing CSS or JS:** replace the version after `?v=` everywhere in the HTML files (for example `?v=2026-11-10b` → `?v=2026-11-11a`). CSS and JS are cached for a month, and the version is what makes returning visitors download the new files.
+- **Adding a project:** copy an `<article class="card proj">` block in `index.html`. The horizontal scrolling adapts on its own. Put its screenshots in `assets/projects/<name>/` as 1280×800 WebP.
+- **Adding an effect:** create the class in `js/components/`, add its `<script>` before `App.js`, and start it inside `App.start()`.
+- **Adding an external script, style or font:** add its domain to the Content-Security-Policy in the `<head>`, and an SRI hash to the tag.
 
-- **Adding a project:** copy a `<article class="card proj">` block in `index.html`. The horizontal scrolling adapts on its own.
-- **Adding a new effect:** create the class in `js/components/`, add its `<script>` before `App.js`, and start it inside `App.start()`.
+## Deployment
 
-## Publishing
+Vercel is connected to this repository: every push to `main` publishes the site, usually within a minute. `.vercelignore` keeps the README and `docs/` out of the deployment.
 
-The site is hosted on **Vercel**: https://giacomonegri.vercel.app
+## License
 
-Vercel is connected to this GitHub repository, so every `git push` to the main branch publishes the site automatically, usually within a minute.
-To preview a change, open `index.html` in the browser, or run a local server from the project folder:
-
-```bash
-python -m http.server 5173
-```
-
-`vercel.json` makes the CV open in the browser, and sets caching and security headers.
-The Content-Security-Policy lives in the `<head>` of `index.html` and `404.html`: if you add an external script, style or font, add its domain there too.
+No open-source license is granted. The code is public so that it can be read and evaluated; the texts, the design and the images remain the property of Giacomo Negri. The libraries listed above keep their own licenses.
 
 ---
 
-<p align="center">Made by <a href="https://www.linkedin.com/in/giacomo-negri-952084448">Giacomo Negri</a></p>
+Made by [Giacomo Negri](https://www.linkedin.com/in/giacomo-negri-952084448) · [giacomonegri.vercel.app](https://giacomonegri.vercel.app)
