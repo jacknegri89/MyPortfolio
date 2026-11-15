@@ -99,6 +99,7 @@ One file per section, loaded in a fixed order: `base.css` first (colour and font
 - The pinned section makes the page longer, so its ScrollTrigger has `refreshPriority: 1`: it is measured first and every animation below it starts at the right scroll position.
 - Elements that enter the screen together (a row of cards) are revealed in sequence with `ScrollTrigger.batch()` instead of all at once.
 - Paragraphs are split into lines by SplitText with `autoSplit`, so the lines are recalculated when the width changes. Headings keep the small hand-written `TextSplitter`, which preserves the styled words inside them.
+- Start-up is split into small steps that run one after the other (`App.runOneAtATime`), so the browser can paint and respond between them instead of freezing while every animation is prepared.
 - Each plugin is optional: if one fails to load, only its effect is skipped (`Environment.getLoadedPlugins()`), and the content stays visible.
 - Moving between the home page and the privacy page uses the browser's View Transitions (`@view-transition` in `base.css`), with no JavaScript; browsers without it change page as usual.
 - Keyboard users are not left behind by the horizontal section: when a link inside a project receives keyboard focus (`:focus-visible`), the page scrolls to that project. Mouse clicks do not move it.
