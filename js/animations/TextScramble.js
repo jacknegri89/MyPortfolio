@@ -12,7 +12,6 @@ class TextScramble {
 
   constructor(environment) {
     this.gsap = environment.gsap;
-    this.scrollTrigger = environment.scrollTrigger;
     this.isAvailable = Boolean(environment.scrambleText);
     this.finePointer = environment.finePointer;
   }
@@ -29,15 +28,25 @@ class TextScramble {
     }
   }
 
+  // IntersectionObserver avvisa quando un elemento entra nello schermo. Per un effetto che parte
+  // una volta sola basta questo: non serve che ScrollTrigger ne tenga aggiornata la posizione.
   scrambleWhenVisible(selector, characters) {
+    if (!("IntersectionObserver" in window)) {
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          observer.unobserve(entry.target);
+          this.scramble(entry.target, characters);
+        }
+      }
+    });
+
     const labels = document.querySelectorAll(selector);
     for (const label of labels) {
-      this.scrollTrigger.create({
-        trigger: label,
-        start: "top 92%",
-        once: true,
-        onEnter: () => this.scramble(label, characters),
-      });
+      observer.observe(label);
     }
   }
 
