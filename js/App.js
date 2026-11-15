@@ -30,7 +30,8 @@ class App {
     new SecureNotesDemo(this.environment).start();
     new SerialMonitor(document.getElementById("serial-body"), this.environment).start();
     new CopyButtons().start();
-    new ScreenshotTabs().start();
+    new ScreenshotTabs(this.environment).start();
+    new ShotLightbox(this.environment, this.smoothScroll).start();
     new VelocityMarquee(this.smoothScroll, this.environment).start();
 
     this.startAnimations();
@@ -55,12 +56,14 @@ class App {
 
     const gsap = this.environment.gsap;
     const scrollTrigger = this.environment.scrollTrigger;
-    gsap.registerPlugin(scrollTrigger);
+    gsap.registerPlugin(...this.environment.getLoadedPlugins());
 
     new IntroAnimation(this.environment, this.smoothScroll, loader, firstNameLetters, document.getElementById("name-2")).play();
     new ScrollAnimations(this.environment, headings).start();
     new HorizontalProjects(this.environment).start();
     new FooterSignature(this.environment).start();
+    new SchematicDraw(this.environment).start();
+    new TextScramble(this.environment).start();
 
     // Quando immagini e font sono pronti le misure della pagina cambiano: ricalcoliamo gli scroll.
     window.addEventListener("load", () => scrollTrigger.refresh());
