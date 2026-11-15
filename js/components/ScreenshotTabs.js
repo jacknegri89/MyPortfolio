@@ -8,6 +8,10 @@
  * Senza JavaScript le schermate restano tutte visibili, una sotto l'altra.
  */
 class ScreenshotTabs {
+  constructor(environment) {
+    this.environment = environment;
+  }
+
   start() {
     const groups = document.querySelectorAll("[data-shots]");
     for (const group of groups) {
@@ -22,7 +26,10 @@ class ScreenshotTabs {
     }
 
     for (const button of buttons) {
-      button.addEventListener("click", () => this.showPanel(buttons, button));
+      button.addEventListener("click", () => {
+        this.showPanel(buttons, button);
+        this.animatePanel(document.getElementById(button.dataset.shotTarget));
+      });
     }
 
     // All'inizio è visibile la prima schermata
@@ -40,5 +47,18 @@ class ScreenshotTabs {
       button.setAttribute("aria-pressed", String(isActive));
       panel.hidden = !isActive;
     }
+  }
+
+  // La schermata appena scelta sale leggermente e appare (solo se le animazioni sono attive).
+  animatePanel(panel) {
+    if (!this.environment.canAnimateWithGsap()) {
+      return;
+    }
+
+    this.environment.gsap.fromTo(
+      panel,
+      { y: 14, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", clearProps: "transform,opacity" }
+    );
   }
 }
