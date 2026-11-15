@@ -163,3 +163,9 @@ p {
 .skip-link:focus {
   transform: none;
 }
+
+/* Passaggio tra le pagine del sito (home, privacy): il browser sfuma dalla vecchia alla nuova.
+   È una funzione dei browser recenti (View Transitions): gli altri la ignorano e cambiano pagina come sempre. */
+@view-transition {
+  navigation: auto;
+}
