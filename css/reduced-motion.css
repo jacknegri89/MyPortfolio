@@ -6,4 +6,14 @@
   .aurora {
     animation: none;
   }
+  .nav,
+  .svc h3 {
+    transition: none;
+  }
+  .lightbox[open]::backdrop {
+    animation: none;
+  }
+  @view-transition {
+    navigation: none;
+  }
 }

@@ -106,7 +106,12 @@ class SmoothScroll {
     }
   }
 
-  // Blocca lo scroll (usato durante il caricamento iniziale).
+  // true se lo scroll morbido (Lenis) è in funzione: in quel caso pause() blocca davvero la pagina.
+  isSmooth() {
+    return this.lenis !== null;
+  }
+
+  // Blocca lo scroll (usato durante il caricamento iniziale e con la schermata ingrandita aperta).
   pause() {
     if (this.lenis) {
       this.lenis.stop();
