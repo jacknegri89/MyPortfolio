@@ -19,16 +19,20 @@ class ScrollAnimations {
     this.headings = headings;
   }
 
-  start() {
-    this.fadeHeroName();
-    this.revealHeadings();
-    this.revealLines();
-    this.lightUpStatement();
-    this.revealServices();
-    this.revealBlocks();
-    this.revealSkillDetails();
-    this.revealContactTitle();
-    this.growContactLight();
+  // Restituisce l'elenco dei passi da eseguire, uno per gruppo di animazioni.
+  // Li esegue App uno alla volta (App.runOneAtATime), così la pagina non resta bloccata all'avvio.
+  getSteps() {
+    return [
+      () => this.fadeHeroName(),
+      () => this.revealHeadings(),
+      () => this.revealLines(),
+      () => this.lightUpStatement(),
+      () => this.revealServices(),
+      () => this.revealBlocks(),
+      () => this.revealSkillDetails(),
+      () => this.revealContactTitle(),
+      () => this.growContactLight(),
+    ];
   }
 
   fadeHeroName() {

@@ -60,7 +60,8 @@ class IntroAnimation {
     if (this.canScramble && this.role !== null) {
       const roleText = this.role.textContent;
       const scramble = { text: roleText, chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", speed: 0.5 };
-      timeline.to(this.role, { duration: 1.1, ease: "none", scrambleText: scramble }, "-=0.9");
+      // Finisce insieme al resto dell'hero, senza allungare l'animazione d'apertura
+      timeline.to(this.role, { duration: 0.8, ease: "none", scrambleText: scramble }, "-=0.9");
     }
     timeline.set(this.loader, { display: "none" });
   }
