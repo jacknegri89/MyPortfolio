@@ -24,13 +24,14 @@ It is a static site written by hand in HTML, CSS and JavaScript: no framework, n
 | What | Why |
 | --- | --- |
 | HTML, CSS, JavaScript (no build) | A single page does not need a framework; the browser runs the files as they are |
-| [GSAP](https://gsap.com) 3.12 + ScrollTrigger | Intro animation, scroll reveals, horizontal projects section |
+| [GSAP](https://gsap.com) 3.14 + ScrollTrigger | Intro animation, scroll reveals, horizontal projects section |
+| GSAP plugins: SplitText, ScrambleText, DrawSVG | Paragraphs revealed line by line, labels that decode, the system diagram and the skill icons drawing themselves |
 | [Three.js](https://threejs.org) r128 | The particle wave in the hero, computed on the GPU by a small vertex shader |
 | [Lenis](https://github.com/darkroomengineering/lenis) 1.1 | Smooth scrolling |
 | Local fonts (`assets/fonts/`) | Geist, Geist Mono and Instrument Serif, served from this site as WOFF2 (SIL Open Font License), latin and latin-ext subsets only |
 | [Vercel](https://vercel.com) | Hosting; every push to `main` goes live |
 
-The fonts come from the site itself; the four libraries load from public CDNs with [Subresource Integrity](https://developer.mozilla.org/docs/Web/Security/Subresource_Integrity) hashes. There is no `package.json` because nothing has to be installed.
+The fonts come from the site itself; the libraries load from public CDNs with [Subresource Integrity](https://developer.mozilla.org/docs/Web/Security/Subresource_Integrity) hashes. There is no `package.json` because nothing has to be installed.
 
 ## Run it locally
 
@@ -52,7 +53,7 @@ css/                  one stylesheet per part of the page
 js/
   core/               base classes used across the site
   components/         one class per interactive element
-  animations/         GSAP animations (intro, scroll, horizontal projects)
+  animations/         GSAP animations (intro, scroll, horizontal projects, diagram, text)
   App.js              creates and starts every component, in order
   main.js             starts App (must be the last script)
 assets/
@@ -71,18 +72,21 @@ Plain classes, one per file, named like the file. Each has a `start()` (or `play
 
 | Class | What it does |
 | --- | --- |
-| `Environment` | Reads once whether the visitor uses a mouse, prefers reduced motion, and whether GSAP loaded |
+| `Environment` | Reads once whether the visitor uses a mouse, prefers reduced motion, and which GSAP plugins loaded |
 | `SmoothScroll` | Lenis scrolling, scroll speed for the marquee, in-page `#` links |
 | `TextSplitter` | Splits a text into words or letters to animate |
 | `OffscreenPauser` | Pauses endless CSS animations in sections that are off screen |
 | `ParticleWave` | The 3D particle wave in the hero |
 | `CustomCursor`, `CardSpotlight`, `MagneticButtons` | Mouse effects, desktop only |
+| `NavBar` | Hides the bar while scrolling down and shows it again on the way up, moves the reading-progress line, marks the link of the section on screen |
 | `ScreenshotTabs` | Switches between the screenshots of a project |
+| `ShotLightbox` | Opens a screenshot enlarged in a native `<dialog>`, growing from the thumbnail |
 | `ScraperTerminal`, `InViewWatcher` | The typed terminal in the JobScraper card, started when it becomes visible |
 | `SecureNotesDemo`, `SerialMonitor` | Small simulations (encrypted notes, Raspberry Pi control loop) |
 | `CopyButtons` | Copies the email address |
 | `VelocityMarquee` | Text bands that follow the scroll speed |
-| `IntroAnimation`, `ScrollAnimations`, `HorizontalProjects`, `FooterSignature` | The GSAP animations |
+| `IntroAnimation`, `ScrollAnimations`, `HorizontalProjects`, `FooterSignature` | Loader and hero, scroll reveals, pinned projects, the name drawn in the footer |
+| `SchematicDraw`, `TextScramble` | The system diagram that draws itself (DrawSVG) and the small labels that decode (ScrambleText) |
 
 ### CSS
 
@@ -91,8 +95,15 @@ One file per section, loaded in a fixed order: `base.css` first (colour and font
 ### Animations
 
 - Animations run only when GSAP has loaded and the visitor has not asked for reduced motion (`Environment.canAnimateWithGsap()`). Otherwise the loader is hidden at once and the full content is visible.
-- On screens at least 1000 px wide and 680 px tall, the projects section is pinned and scrolls horizontally; below that the projects are stacked. `ScrollTrigger.matchMedia` switches between the two when the window is resized.
-- Keyboard users are not left behind by the horizontal section: when a link inside a project receives focus, the page scrolls to that project.
+- On screens at least 1000 px wide and 680 px tall, the projects section is pinned and scrolls horizontally; below that the projects are stacked. `gsap.matchMedia()` switches between the two when the window is resized and reverts the animations of the mode that no longer applies.
+- The pinned section makes the page longer, so its ScrollTrigger has `refreshPriority: 1`: it is measured first and every animation below it starts at the right scroll position.
+- Elements that enter the screen together (a row of cards) are revealed in sequence with `ScrollTrigger.batch()` instead of all at once.
+- Paragraphs are split into lines by SplitText with `autoSplit`, so the lines are recalculated when the width changes. Headings keep the small hand-written `TextSplitter`, which preserves the styled words inside them.
+- Start-up is split into small steps that run one after the other (`App.runOneAtATime`), so the browser can paint and respond between them instead of freezing while every animation is prepared.
+- Each plugin is optional: if one fails to load, only its effect is skipped (`Environment.getLoadedPlugins()`), and the content stays visible.
+- Moving between the home page and the privacy page uses the browser's View Transitions (`@view-transition` in `base.css`), with no JavaScript; browsers without it change page as usual.
+- Keyboard users are not left behind by the horizontal section: when a link inside a project receives keyboard focus (`:focus-visible`), the page scrolls to that project. Mouse clicks do not move it.
+- The enlarged screenshot is a native `<dialog>`: Esc closes it and focus returns to the link that opened it. Ctrl or Shift + click still opens the image in a new tab.
 
 ### Responsive layout and accessibility
 
@@ -136,7 +147,7 @@ and open the page in a real browser (Chromium through Playwright) at the widths 
 
 ## Common tasks
 
-- **After changing CSS or JS:** replace the version after `?v=` everywhere in the HTML files (for example `?v=2026-11-10b` → `?v=2026-11-11a`). CSS and JS are cached for a month, and the version is what makes returning visitors download the new files.
+- **After changing CSS or JS:** replace the version after `?v=` everywhere in the HTML files (for example `?v=2026-11-15a` → `?v=2026-11-16a`). CSS and JS are cached for a month, and the version is what makes returning visitors download the new files.
 - **Adding a project:** copy an `<article class="card proj">` block in `index.html`. The horizontal scrolling adapts on its own. Put its screenshots in `assets/projects/<name>/` as 1280×800 WebP.
 - **Adding an effect:** create the class in `js/components/`, add its `<script>` before `App.js`, and start it inside `App.start()`.
 - **Adding an external script, style or font:** add its domain to the Content-Security-Policy in the `<head>`, and an SRI hash to the tag.

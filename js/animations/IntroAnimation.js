@@ -3,7 +3,7 @@
  * 1. il contatore del loader va da 0 a 100 mentre si riempie la barra
  * 2. il loader scorre via verso l'alto
  * 3. le lettere di "Giacomo" salgono una alla volta, poi entra "Negri"
- * 4. compaiono il testo e i pulsanti dell'hero (.hero-in)
+ * 4. compaiono il testo e i pulsanti dell'hero (.hero-in) e la scritta "Developer" si decifra
  * Durante l'animazione lo scroll è bloccato.
  */
 class IntroAnimation {
@@ -14,6 +14,8 @@ class IntroAnimation {
     this.firstNameLetters = firstNameLetters;
     this.lastName = lastName;
     this.counterText = document.getElementById("ld-count");
+    this.role = document.querySelector(".role");
+    this.canScramble = Boolean(environment.scrambleText);
   }
 
   play() {
@@ -55,6 +57,12 @@ class IntroAnimation {
     timeline.to(this.firstNameLetters, { yPercent: 0, duration: 1.2, ease: "expo.out", stagger: 0.045 }, "-=0.45");
     timeline.to(this.lastName, { yPercent: 0, duration: 1.3, ease: "expo.out" }, "-=1.05");
     timeline.to(".hero-in", { y: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.08 }, "-=1");
+    if (this.canScramble && this.role !== null) {
+      const roleText = this.role.textContent;
+      const scramble = { text: roleText, chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", speed: 0.5 };
+      // Finisce insieme al resto dell'hero, senza allungare l'animazione d'apertura
+      timeline.to(this.role, { duration: 0.8, ease: "none", scrambleText: scramble }, "-=0.9");
+    }
     timeline.set(this.loader, { display: "none" });
   }
 }
