@@ -45,6 +45,15 @@
 .svc h3 .serif {
   font-size: 1.06em;
 }
+/* Solo con il mouse: su touchscreen l'effetto resterebbe "incastrato" dopo un tocco */
+@media (hover: hover) {
+  .svc h3 {
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .svc:hover h3 {
+    transform: translateX(12px);
+  }
+}
 .svc-body {
   display: grid;
   gap: 18px;

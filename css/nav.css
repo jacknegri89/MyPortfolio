@@ -13,6 +13,15 @@
   mix-blend-mode: difference;
   color: #fff;
   pointer-events: none;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+/* Scorrendo verso il basso la barra esce dallo schermo, verso l'alto rientra (js/components/NavBar.js).
+   Se un link della barra ha il focus della tastiera resta sempre visibile. */
+.nav.is-hidden {
+  transform: translateY(-110%);
+}
+.nav:focus-within {
+  transform: none;
 }
 .nav > * {
   pointer-events: auto;
@@ -54,9 +63,29 @@
   transform-origin: right;
   transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.nav ul a:hover::after {
+/* Sottolineato: il link sotto il mouse e quello della sezione che stai guardando */
+.nav ul a:hover::after,
+.nav ul a[aria-current]::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* Linea sottile in cima alla pagina: si allunga in base a quanto hai scorso */
+.scroll-progress {
+  position: fixed;
+  z-index: 61;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  pointer-events: none;
+}
+.scroll-progress i {
+  display: block;
+  height: 100%;
+  background: var(--a2);
+  transform-origin: left;
+  transform: scaleX(0);
 }
 @media (max-width: 860px) {
   .nav ul li:not(.keep) {
@@ -69,6 +98,7 @@
     padding-block: calc(env(safe-area-inset-top, 0px) + 16px) 16px;
     border-bottom: 1px solid transparent;
     transition:
+      transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
       background-color 0.3s,
       border-color 0.3s;
   }
