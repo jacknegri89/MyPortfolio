@@ -20,7 +20,7 @@ class TextScramble {
     if (!this.isAvailable) {
       return;
     }
-    this.scrambleWhenVisible(".eyebrow, .edu .k, .lang .k", TextScramble.LETTERS);
+    this.scrambleWhenVisible(".eyebrow, .tl-when", TextScramble.LETTERS);
     this.scrambleWhenVisible(".svc-num", TextScramble.DIGITS);
 
     if (this.finePointer) {

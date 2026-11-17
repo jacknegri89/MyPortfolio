@@ -25,7 +25,7 @@ It is a static site written by hand in HTML, CSS and JavaScript: no framework, n
 | --- | --- |
 | HTML, CSS, JavaScript (no build) | A single page does not need a framework; the browser runs the files as they are |
 | [GSAP](https://gsap.com) 3.14 + ScrollTrigger | Intro animation, scroll reveals, horizontal projects section |
-| GSAP plugins: SplitText, ScrambleText, DrawSVG | Paragraphs revealed line by line, labels that decode, the system diagram and the skill icons drawing themselves |
+| GSAP plugins: SplitText, ScrambleText, DrawSVG | Paragraphs revealed line by line, labels that decode, the system diagram drawing itself |
 | [Three.js](https://threejs.org) r128 | The particle wave in the hero, computed on the GPU by a small vertex shader |
 | [Lenis](https://github.com/darkroomengineering/lenis) 1.1 | Smooth scrolling |
 | Local fonts (`assets/fonts/`) | Geist, Geist Mono and Instrument Serif, served from this site as WOFF2 (SIL Open Font License), latin and latin-ext subsets only |
@@ -76,17 +76,27 @@ Plain classes, one per file, named like the file. Each has a `start()` (or `play
 | `SmoothScroll` | Lenis scrolling, scroll speed for the marquee, in-page `#` links |
 | `TextSplitter` | Splits a text into words or letters to animate |
 | `OffscreenPauser` | Pauses endless CSS animations in sections that are off screen |
-| `ParticleWave` | The 3D particle wave in the hero |
+| `ParticleWave` | The 3D particle wave in the hero. On load the camera flies in from far away (`startFlyIn`); a click or a tap in the hero starts a circular wave from that point (`startRipple`). Its drawing loop starts only when the curtain goes up, without antialiasing and with a pixel ratio of at most 1.5; it keeps the scroll position from the `scroll` event instead of reading `window.scrollY` in every frame (that read forced a layout of the whole page) |
 | `CustomCursor`, `CardSpotlight`, `MagneticButtons` | Mouse effects, desktop only |
+| `NameProximity` | The letters of the name in the hero get thinner near the cursor (Geist is a variable font, weight 300 to 800). The weight moves in steps of 20 and the letter centres are measured when the mouse enters the hero: with any weight value the browser built a new font instance in every frame and the page spent 60% of its time in layout |
 | `NavBar` | Hides the bar while scrolling down and shows it again on the way up, moves the reading-progress line, marks the link of the section on screen |
 | `ScreenshotTabs` | Switches between the screenshots of a project |
 | `ShotLightbox` | Opens a screenshot enlarged in a native `<dialog>`, growing from the thumbnail |
 | `ScraperTerminal`, `InViewWatcher` | The typed terminal in the JobScraper card, started when it becomes visible |
 | `SecureNotesDemo`, `SerialMonitor` | Small simulations (encrypted notes, Raspberry Pi control loop) |
 | `CopyButtons` | Copies the email address |
-| `VelocityMarquee` | Text bands that follow the scroll speed |
-| `IntroAnimation`, `ScrollAnimations`, `HorizontalProjects`, `FooterSignature` | Loader and hero, scroll reveals, pinned projects, the name drawn in the footer |
+| `WorkIndex` | The big rows at the start of the projects section: with a mouse, a preview of the project follows the cursor. Each row says which picture to show with `data-work` |
+| `LocalClock` | The time in Barlassina shown in the footer (Italian time zone, whatever the visitor's one is) |
+| `StackFilter` | In the tools section, highlights the tools used in the chosen project. Each tool lists its projects in `data-used` in `index.html`. When the choice changes it fires the `stackfilterchange` event |
+| `StackConstellation` | The 3D constellation of the tools drawn on `<canvas id="stack-sky">`: languages in the middle, the other tools around them, a line between a language and a tool used in the same project. It reads everything from the `#stack` list (the first row is the languages), lights up the chosen project with pulses along the lines and turns to bring its tools to the front, follows the mouse, can be dragged and assembles itself when it scrolls into view (the lines draw from the language outwards). Overlapping names fade so that the most important one stays readable. With reduced motion it is drawn once and stays still |
+| `WindowTilt` | The project windows and the phone tilt towards the mouse, with a light reflection that follows the cursor |
+| `VelocityMarquee` | The text band under the hero (what I offer and where) that follows the scroll speed. The languages are not repeated here: they are in the Tools section |
+| `IntroAnimation`, `ScrollAnimations`, `HorizontalProjects` | Loader and hero, scroll reveals, pinned projects. In the pinned projects the windows turn in 3D, the cards lean with the scroll speed, each window opens from the top with a light line scanning down, and the counter changes with a scramble |
+| `ProjectDetails` | The text of each project card builds itself as the card arrives (tied to the scroll): Problem / Solution / Technique slide in one after the other, then the technology chips and the links. The card title does not animate: the chapter right before it has just animated the same name letter by letter |
+| `ProjectChapters` | Before each project card it adds a chapter with the project name (read from the card's `<h3>`): an outline whose letters rise one by one and then fill with ink from left to right. On large screens the name is full height and the card slides over it; on small screens it is a big title above the card |
 | `SchematicDraw`, `TextScramble` | The system diagram that draws itself (DrawSVG) and the small labels that decode (ScrambleText) |
+| `ServicesStage` | On large screens the services stay pinned while you scroll: they open one at a time and a wireframe site rearranges itself to show each one (full site, landing page, restyling). In front of the computer the same site on a phone rearranges itself too (in the old site it shows the desktop page shrunk and cut off), two labels per service float even closer and a light reflection crosses the screen as it turns. The positions of every block are in `ServicesStage.LAYOUTS` and `ServicesStage.PHONE_LAYOUTS` |
+| `RuleLines`, `EducationTimeline` | Rows whose top line draws itself (`data-rule`), and the education timeline whose line follows the scroll |
 
 ### CSS
 
@@ -96,8 +106,19 @@ One file per section, loaded in a fixed order: `base.css` first (colour and font
 
 - Animations run only when GSAP has loaded and the visitor has not asked for reduced motion (`Environment.canAnimateWithGsap()`). Otherwise the loader is hidden at once and the full content is visible.
 - On screens at least 1000 px wide and 680 px tall, the projects section is pinned and scrolls horizontally; below that the projects are stacked. `gsap.matchMedia()` switches between the two when the window is resized and reverts the animations of the mode that no longer applies.
+- The services scene is pinned too and sits above the projects, so it has `refreshPriority: 2`. The open service follows the timeline's own `onUpdate`, not the scroll's: with `scrub` the picture arrives a moment after the scroll, and text and picture must change together.
+- Only the first screen is prepared under the loader (wave, mouse effects, hero name): the animations of all the other sections are prepared right after the opening animation ends (`App.revealPage`). The curtain now goes up at about 1.2 s on a fast computer and 2.2 s on a mid-range one (it was 1.7 s and 4.3 s). ScrollTrigger does not refresh on `load` (`App.skipRefreshOnLoad`): the images have width and height, and the refresh fell right in the middle of the opening. The index preview images use `data-src` and are downloaded only when the mouse reaches the index.
+- Loading happens in two stages. `js/boot.js` (the only script in `<head>`) adds the `js` class to `<html>`, so the 2-second CSS fallback that hides the loader is only used without JavaScript. The counter starts in CSS while the files download (`--ld-progress` in `loader.css`), then `IntroAnimation.prepare()` takes it over and follows the setup steps of `App`; only when they are all done does `IntroAnimation.reveal()` lift the curtain, so nothing heavy runs while the name comes in. All scripts use `defer` (without it the browser fetched them one after another) and Three.js is `async`: the wave starts whenever it arrives.
+- The loader leaves as two curtains with a curved bottom edge: the dark one (`#loader`) and, a moment later, an azure one (`#ld-veil`). The curve is the `.ld-curve` half ellipse hanging under each curtain.
+- The About section is light with dark text and carries `data-theme="light"`. Its top and bottom edges arrive curved and flatten while you scroll: two half ellipses (`::before`, `::after` in `about.css`) scaled by the variables `--dome-top` and `--dome-bottom`.
+- A click on a row of the project index must not scroll like a normal anchor, because on large screens the card lives inside the pinned horizontal row. `HorizontalProjects` catches the click first (capture phase) and `SmoothScroll` skips clicks that were already handled (`event.defaultPrevented`).
+- The project chapters are created by JavaScript only in the horizontal layout and removed when the screen gets small. The cards must stay opaque (`background-color` in `.is-h .proj`, no fade on entry): they are what covers the giant name.
+- The footer is `position: sticky; bottom: 0` behind `<main>`, which has a solid background: the contact section uncovers it while leaving. Do not remove the background or the `z-index` of `<main>` in `footer.css`.
+- The contact section is azure with dark text: it only redefines the colour variables of `base.css` (`--fg`, `--muted`, `--a2`...) and every component inside follows. It appears through a `clip-path` circle whose radius is the variable `--flood`. Sections with a light background carry `data-theme="light"`: `NavBar` and `CustomCursor` use it to turn dark over them.
 - The pinned section makes the page longer, so its ScrollTrigger has `refreshPriority: 1`: it is measured first and every animation below it starts at the right scroll position.
-- Elements that enter the screen together (a row of cards) are revealed in sequence with `ScrollTrigger.batch()` instead of all at once.
+- Elements that enter the screen together (a group of rows) are revealed in sequence with `ScrollTrigger.batch()` instead of all at once.
+- Lines drawn by CSS pseudo-elements are animated through a custom property: GSAP moves `--rule` or `--tl-progress` from 0 to 1 and the CSS uses it in `scaleX()` / `scaleY()`. Without JavaScript the property is unset and the line is complete.
+- The tools filter starts `hidden` in the HTML and is shown by JavaScript, so there are never buttons that do nothing. It changes only the text colour, never the opacity, so contrast stays above 4.5:1.
 - Paragraphs are split into lines by SplitText with `autoSplit`, so the lines are recalculated when the width changes. Headings keep the small hand-written `TextSplitter`, which preserves the styled words inside them.
 - Start-up is split into small steps that run one after the other (`App.runOneAtATime`), so the browser can paint and respond between them instead of freezing while every animation is prepared.
 - Each plugin is optional: if one fails to load, only its effect is skipped (`Environment.getLoadedPlugins()`), and the content stays visible.
@@ -147,7 +168,7 @@ and open the page in a real browser (Chromium through Playwright) at the widths 
 
 ## Common tasks
 
-- **After changing CSS or JS:** replace the version after `?v=` everywhere in the HTML files (for example `?v=2026-11-15a` → `?v=2026-11-16a`). CSS and JS are cached for a month, and the version is what makes returning visitors download the new files.
+- **After changing CSS or JS:** replace the version after `?v=` everywhere in the HTML files (for example `?v=2026-11-17b` → `?v=2026-11-18a`). CSS and JS are cached for a month, and the version is what makes returning visitors download the new files.
 - **Adding a project:** copy an `<article class="card proj">` block in `index.html`. The horizontal scrolling adapts on its own. Put its screenshots in `assets/projects/<name>/` as 1280×800 WebP.
 - **Adding an effect:** create the class in `js/components/`, add its `<script>` before `App.js`, and start it inside `App.start()`.
 - **Adding an external script, style or font:** add its domain to the Content-Security-Policy in the `<head>`, and an SRI hash to the tag.
