@@ -18,7 +18,7 @@ class MagneticButtons {
   }
 
   makeMagnetic(button) {
-    const animationSettings = { duration: 0.6, ease: "elastic.out(1,0.4)" };
+    const animationSettings = { duration: 0.5, ease: "power3.out" };
     const moveX = this.gsap.quickTo(button, "x", animationSettings);
     const moveY = this.gsap.quickTo(button, "y", animationSettings);
 
