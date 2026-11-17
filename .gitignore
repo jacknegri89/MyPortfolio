@@ -11,6 +11,5 @@ CV – Giacomo Negri.pdf
 node_modules/
 .playwright-mcp/
 
-# Della cartella .claude si versiona solo lo stato tecnico del progetto
-.claude/*
-!.claude/state.md
+# Cartella di Claude Code (stato tecnico e impostazioni locali): resta solo sul PC, non va su GitHub
+.claude/
