@@ -7,8 +7,21 @@
     animation: none;
   }
   .nav,
-  .svc h3 {
+  .svc h3,
+  .btn svg,
+  .channels svg,
+  .stack-tools li,
+  .work-name-plain,
+  .work-name-serif,
+  .work-row svg,
+  .round-cta,
+  .round-cta::before,
+  .round-cta svg {
     transition: none;
+  }
+  /* Il footer non resta fermo dietro la pagina: scorre come tutto il resto */
+  footer {
+    position: static;
   }
   .lightbox[open]::backdrop {
     animation: none;

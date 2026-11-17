@@ -49,6 +49,11 @@ class CustomCursor {
     if (showLabel) {
       this.label.textContent = elementWithLabel.dataset.cursor;
     }
+
+    // Sopra una sezione chiara (data-theme="light", es. i contatti) il cursore bianco non si vedrebbe
+    const isOnLightSection = event.target.closest('[data-theme="light"]') !== null;
+    this.dot.classList.toggle("is-on-light", isOnLightSection);
+    this.ring.classList.toggle("is-on-light", isOnLightSection);
   }
 
   // Nasconde (0) o mostra (1) il cursore quando il mouse esce o rientra nella finestra.

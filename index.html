@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Giacomo Negri">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://giacomonegri.vercel.app/">
-<meta property="og:image" content="https://giacomonegri.vercel.app/assets/og.jpg?v=2026-11-15a">
+<meta property="og:image" content="https://giacomonegri.vercel.app/assets/og.jpg?v=2026-11-17b">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Giacomo Negri, developer">
@@ -26,27 +26,28 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preload" href="assets/fonts/geist-normal-300-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-serif-italic-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=2026-11-15a">
+<script src="js/boot.js?v=2026-11-17b"></script>
+<link rel="stylesheet" href="css/fonts.css?v=2026-11-17b">
 <!-- Stili: l'ordine conta (reduced-motion.css deve restare l'ultimo).
      ?v=... è la versione: dopo aver modificato CSS o JS cambiala ovunque (cerca e sostituisci),
      così i visitatori scaricano i file nuovi invece di usare quelli vecchi in cache. -->
-<link rel="stylesheet" href="css/base.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/loader.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/cursor.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/nav.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/buttons.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/hero.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/marquee.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/sections.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/about.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/services.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/projects.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/experience.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/skills.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/education.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/contact.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/footer.css?v=2026-11-15a">
-<link rel="stylesheet" href="css/reduced-motion.css?v=2026-11-15a">
+<link rel="stylesheet" href="css/base.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/loader.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/cursor.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/nav.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/buttons.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/hero.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/marquee.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/sections.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/about.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/services.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/projects.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/experience.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/skills.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/education.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/contact.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/footer.css?v=2026-11-17b">
+<link rel="stylesheet" href="css/reduced-motion.css?v=2026-11-17b">
 <!-- Dati strutturati per i motori di ricerca: è un blocco di dati, non codice che viene eseguito -->
 <script type="application/ld+json">
 {
@@ -88,9 +89,13 @@
 <!-- PRELOADER -->
 <div id="loader" aria-hidden="true">
   <div class="ld-top"><span>Giacomo Negri</span><span>Portfolio ©2026</span></div>
-  <div class="ld-bottom"><div class="ld-count" id="ld-count">0</div><div class="ld-word">web · AI · embedded</div></div>
+  <div class="ld-bottom"><div class="ld-count" id="ld-count"></div><div class="ld-word">web · AI · embedded</div></div>
   <div class="ld-bar" id="ld-bar"></div>
+  <!-- Bordo curvo sotto il sipario: si vede solo mentre il sipario sale (js/animations/IntroAnimation.js) -->
+  <div class="ld-curve" id="ld-curve"></div>
 </div>
+<!-- Secondo sipario, azzurro: sale un attimo dopo quello scuro. Lo mostra solo IntroAnimation.js -->
+<div class="ld-veil" id="ld-veil" aria-hidden="true"><div class="ld-curve"></div></div>
 
 <div class="cur-dot" id="cur-dot" aria-hidden="true"></div>
 <div class="cur-ring" id="cur-ring" aria-hidden="true"><span id="cur-label">Apri</span></div>
@@ -132,7 +137,7 @@
         <a class="btn magnetic" href="#progetti">Esplora i progetti
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
         </a>
-        <a class="btn btn-icon magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-15a" target="_blank" rel="noopener" aria-label="Apri il CV in PDF">CV</a>
+        <a class="btn btn-icon magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-17b" target="_blank" rel="noopener" aria-label="Apri il CV in PDF">CV</a>
         <a class="btn btn-icon magnetic" href="https://github.com/jacknegri89" target="_blank" rel="noopener" aria-label="Profilo GitHub">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
         </a>
@@ -142,7 +147,6 @@
 
   <!-- ================= VELOCITY MARQUEE ================= -->
   <div class="vmarquee" aria-hidden="true">
-    <div class="vrow" data-dir="-1"><span class="strong">C#</span><span class="o">JavaScript</span><span class="strong">PHP</span><span class="o">Java</span><span class="strong">Python</span><span class="o">C++</span><span class="o">TypeScript</span><span class="strong">C#</span><span class="o">JavaScript</span><span class="strong">PHP</span><span class="o">Java</span><span class="strong">Python</span><span class="o">C++</span><span class="o">TypeScript</span></div>
     <div class="vrow" data-dir="1"><span class="s g">Siti web</span><span class="o">Negozi</span><span class="s">Professionisti</span><span class="o">Attività locali</span><span class="s g">Landing page</span><span class="o">Lombardia</span><span class="s">Canton Ticino</span><span class="s g">Siti web</span><span class="o">Negozi</span><span class="s">Professionisti</span><span class="o">Attività locali</span><span class="s g">Landing page</span><span class="o">Lombardia</span><span class="s">Canton Ticino</span></div>
   </div>
 
@@ -154,10 +158,14 @@
         <p data-lines>Hai un negozio, uno studio, un'attività locale o lavori come professionista? Ti costruisco un sito fatto su misura per te: chi lo visita capisce subito cosa offri, dove ti trovi e come contattarti. Non serve conoscere la parte tecnica: mi spieghi cosa fai, al resto penso io.</p>
       </div>
 
-      <ol class="svc-list">
+      <!-- Su schermi grandi questa parte si blocca mentre scorri: i tre servizi si aprono uno alla volta
+           e il sito disegnato a destra si ricompone per mostrarli (js/animations/ServicesStage.js).
+           Su telefono, o senza animazioni, resta un semplice elenco e il disegno non si vede. -->
+      <div class="svc-stage" id="svc-stage">
+      <ol class="svc-list" id="svc-list">
         <li class="svc">
           <span class="svc-num" aria-hidden="true">01</span>
-          <h3 class="split">Sito web <span class="serif accent-text">su misura</span></h3>
+          <h3 class="split">Sito web su misura</h3>
           <div class="svc-body">
             <p>Il sito della tua attività, costruito da zero attorno a quello che fai, senza modelli uguali per tutti.</p>
             <ul class="svc-points">
@@ -171,7 +179,7 @@
         </li>
         <li class="svc">
           <span class="svc-num" aria-hidden="true">02</span>
-          <h3 class="split">Landing <span class="serif accent-text">page</span></h3>
+          <h3 class="split">Landing page</h3>
           <div class="svc-body">
             <p>Una sola pagina, con un solo obiettivo: presentare un'offerta, un evento o un servizio e far arrivare le richieste.</p>
             <ul class="svc-points">
@@ -183,7 +191,7 @@
         </li>
         <li class="svc">
           <span class="svc-num" aria-hidden="true">03</span>
-          <h3 class="split">Restyling di un sito <span class="serif accent-text">esistente</span></h3>
+          <h3 class="split">Restyling di un sito esistente</h3>
           <div class="svc-body">
             <p>Hai già un sito che non ti rappresenta più? Lo rifaccio tenendo quello che funziona, con un aspetto curato e testi e percorsi più chiari per chi lo visita.</p>
             <ul class="svc-points">
@@ -195,6 +203,80 @@
           </div>
         </li>
       </ol>
+
+      <!-- Sito stilizzato: ogni rettangolo data-block è un pezzo di pagina (menu, titolo, pulsante, foto...).
+           Le posizioni scritte qui sono quelle del "sito su misura"; le altre sono in ServicesStage.js. -->
+      <div class="svc-visual" aria-hidden="true">
+        <div class="svc-screen">
+        <svg id="svc-site" viewBox="0 0 560 400" fill="none">
+          <defs>
+            <!-- Riempimento della "foto": una sfumatura che si adatta da sola alla misura del rettangolo -->
+            <linearGradient id="site-photo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#63BDFF" stop-opacity=".55"/>
+              <stop offset="1" stop-color="#1D4ED8" stop-opacity=".2"/>
+            </linearGradient>
+            <!-- Scia luminosa che segue la linea del restyling -->
+            <linearGradient id="site-scan-trail" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#63BDFF" stop-opacity="0"/>
+              <stop offset="1" stop-color="#63BDFF" stop-opacity=".3"/>
+            </linearGradient>
+          </defs>
+          <rect class="site-frame" x="1" y="1" width="558" height="398" rx="16"/>
+          <path class="site-frame" d="M1 42H559"/>
+          <circle class="site-dot" cx="22" cy="22" r="4"/>
+          <circle class="site-dot" cx="38" cy="22" r="4"/>
+          <circle class="site-dot" cx="54" cy="22" r="4"/>
+          <rect class="site-url" x="180" y="12" width="200" height="20" rx="10"/>
+          <rect class="site-block" data-block="nav" x="20" y="56" width="520" height="22" rx="6"/>
+          <rect class="site-block is-img" data-block="img" x="300" y="96" width="220" height="104" rx="8"/>
+          <rect class="site-block is-title" data-block="title" x="40" y="100" width="220" height="26" rx="6"/>
+          <rect class="site-block" data-block="text" x="40" y="138" width="180" height="12" rx="6"/>
+          <rect class="site-block is-cta" data-block="cta" x="40" y="166" width="96" height="26" rx="13"/>
+          <rect class="site-block" data-block="card1" x="40" y="224" width="150" height="84" rx="8"/>
+          <rect class="site-block" data-block="card2" x="205" y="224" width="150" height="84" rx="8"/>
+          <rect class="site-block" data-block="card3" x="370" y="224" width="150" height="84" rx="8"/>
+          <rect class="site-block" data-block="foot" x="40" y="334" width="480" height="12" rx="6"/>
+          <rect class="site-scan-trail" id="svc-scan-trail" x="-70" y="44" width="70" height="354"/>
+          <rect class="site-scan" id="svc-scan" x="0" y="44" width="2" height="354"/>
+          <!-- Landing page: un cursore arriva sul pulsante e lo clicca (l'onda è il click) -->
+          <circle class="site-ripple" id="svc-ripple" cx="280" cy="199" r="0"/>
+          <path class="site-pointer" id="svc-pointer" d="M0 0V17L4.6 12.6L7.6 19.6L10.4 18.4L7.4 11.6H13.6Z"/>
+        </svg>
+          <!-- Riflesso di luce che attraversa lo schermo mentre il sito ruota -->
+          <span class="svc-sheen" id="svc-sheen"></span>
+        </div>
+
+        <!-- Lo stesso sito su telefono, davanti al computer: si ricompone insieme a lui.
+             Le posizioni scritte qui sono quelle del "sito su misura"; le altre in ServicesStage.PHONE_LAYOUTS. -->
+        <svg class="svc-phone" id="svc-phone" viewBox="0 0 120 240" fill="none">
+          <defs>
+            <clipPath id="phone-screen"><rect x="5" y="5" width="110" height="230" rx="14"/></clipPath>
+          </defs>
+          <rect class="phone-body" x="1" y="1" width="118" height="238" rx="18"/>
+          <g clip-path="url(#phone-screen)">
+            <rect class="phone-glass" x="5" y="5" width="110" height="230" rx="14"/>
+            <rect class="site-block" data-block="nav" x="10" y="22" width="100" height="8" rx="4"/>
+            <rect class="site-block is-img" data-block="img" x="10" y="36" width="100" height="56" rx="6"/>
+            <rect class="site-block is-title" data-block="title" x="10" y="100" width="84" height="12" rx="4"/>
+            <rect class="site-block" data-block="text" x="10" y="118" width="70" height="6" rx="3"/>
+            <rect class="site-block is-cta" data-block="cta" x="10" y="130" width="52" height="14" rx="7"/>
+            <rect class="site-block" data-block="card1" x="10" y="152" width="100" height="22" rx="5"/>
+            <rect class="site-block" data-block="card2" x="10" y="180" width="100" height="22" rx="5"/>
+            <rect class="site-block" data-block="card3" x="10" y="208" width="100" height="12" rx="5"/>
+            <rect class="site-block" data-block="foot" x="34" y="226" width="52" height="4" rx="2"/>
+          </g>
+          <rect class="phone-notch" x="46" y="10" width="28" height="6" rx="3"/>
+        </svg>
+
+        <!-- Etichette che fluttuano davanti al sito, una coppia per servizio (testi presi dai punti dell'elenco) -->
+        <span class="svc-tag" data-tag="speed">Pagine veloci</span>
+        <span class="svc-tag" data-tag="phone">Comodo su telefono</span>
+        <span class="svc-tag" data-tag="goal">Un solo obiettivo</span>
+        <span class="svc-tag" data-tag="request">Richiesta ben visibile</span>
+        <span class="svc-tag is-before" data-tag="before">Prima</span>
+        <span class="svc-tag" data-tag="after">Dopo</span>
+      </div>
+      </div>
 
       <div class="svc-cta reveal">
         <p>Non sai ancora cosa ti serve di preciso? Raccontami la situazione anche in due righe.</p>
@@ -208,22 +290,25 @@
   </section>
 
   <!-- ================= ABOUT ================= -->
-  <section class="section" id="chi-sono">
+  <!-- Sezione chiara (data-theme="light": barra e cursore diventano scuri sopra di lei).
+       I bordi in alto e in basso arrivano curvi e si appiattiscono scorrendo (vedi about.css) -->
+  <section class="section about-sec" id="chi-sono" data-theme="light">
     <div class="wrap">
       <h2 class="visually-hidden">Chi sono</h2>
       <p class="statement" id="statement">Sono Giacomo, developer. Scrivo programmi per risolvere problemi che mi interessano e, per chi ha un'attività, costruisco siti web dalla prima bozza alla messa online: <span class="serif accent-text">niente template, niente pezzi inutili.</span></p>
 
+      <!-- Due colonne: a sinistra i dati essenziali in righe, a destra il testo. Le righe [data-rule]
+           hanno una linea che si disegna quando entrano nello schermo (js/animations/RuleLines.js) -->
       <div class="about">
-        <div class="about-side">
-          <div class="card about-text reveal">
-            <p>Sviluppo <strong>software e siti web</strong>, lavorando su interfaccia, logica lato server e database. I programmi sono soprattutto progetti miei, come <strong>JobScraper</strong> e <strong>LogLens</strong>: nascono da un problema reale e il codice è pubblico. Per i clienti realizzo <strong>siti web</strong>.</p>
-            <p>Mi sono diplomato in Informatica &amp; Telecomunicazioni all'Istituto Jean Monnet nel 2026 e ho fatto uno stage in <strong>TCR Tecora</strong>, su un sistema con Raspberry Pi in un contesto industriale. Sono aperto anche a collaborazioni e opportunità in azienda.</p>
-            <div class="about-meta">
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Barlassina (MB)</span>
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16v10H4zM4 7l8 6 8-6"/></svg>Lombardia · Canton Ticino</span>
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Italiano · Inglese B2</span>
-            </div>
-          </div>
+        <dl class="facts">
+          <div data-rule><dt>Base</dt><dd>Barlassina (MB)</dd></div>
+          <div data-rule><dt>Zona</dt><dd>Lombardia e Canton Ticino</dd></div>
+          <div data-rule><dt>Lingue</dt><dd>Italiano madrelingua, inglese B2</dd></div>
+          <div data-rule><dt>Referenze</dt><dd>Disponibili su richiesta</dd></div>
+        </dl>
+        <div class="about-text">
+          <p data-lines>Sviluppo <strong>software e siti web</strong>, lavorando su interfaccia, logica lato server e database. I programmi sono soprattutto progetti miei, come <strong>JobScraper</strong> e <strong>LogLens</strong>: nascono da un problema reale e il codice è pubblico. Per i clienti realizzo <strong>siti web</strong>.</p>
+          <p data-lines>Mi sono diplomato in Informatica &amp; Telecomunicazioni all'Istituto Jean Monnet nel 2026 e ho fatto uno stage in <strong>TCR Tecora</strong>, su un sistema con Raspberry Pi in un contesto industriale. Sono aperto anche a collaborazioni e opportunità in azienda.</p>
         </div>
       </div>
     </div>
@@ -233,15 +318,46 @@
   <section class="hsec" id="progetti" data-pause-offscreen>
     <div class="h-track" id="h-track">
       <div class="h-intro">
-        <h2 class="split">Cose che ho <span class="serif accent-text">costruito.</span></h2>
-        <p data-lines>Quattro progetti, quattro problemi diversi. Per ognuno trovi cosa risolve, come è fatto e le prove: schermate reali, demo e codice.</p>
+        <div class="h-intro-head">
+          <h2 class="split">Cose che ho <span class="serif accent-text">costruito.</span></h2>
+          <p data-lines>Quattro progetti, quattro problemi diversi. Per ognuno trovi cosa risolve, come è fatto e le prove: schermate reali, demo e codice.</p>
+        </div>
+
+        <!-- Indice dei progetti: ogni riga porta alla sua scheda. Con il mouse un'anteprima segue il cursore
+             (js/components/WorkIndex.js): data-work dice quale schermata di #work-preview mostrare. -->
+        <ol class="work" id="work">
+          <li><a class="work-row" href="#progetto-renova" data-work="0" data-cursor="Apri">
+            <span class="work-num" aria-hidden="true">01</span>
+            <span class="work-name"><span class="work-name-plain">Renova</span><span class="work-name-serif serif" aria-hidden="true">Renova</span></span>
+            <span class="work-kind">Piattaforma web · Progetto scolastico</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a></li>
+          <li><a class="work-row" href="#progetto-jobscraper" data-work="1" data-cursor="Apri">
+            <span class="work-num" aria-hidden="true">02</span>
+            <span class="work-name"><span class="work-name-plain">JobScraper</span><span class="work-name-serif serif" aria-hidden="true">JobScraper</span></span>
+            <span class="work-kind">Python · Open source</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a></li>
+          <li><a class="work-row" href="#progetto-loglens" data-work="2" data-cursor="Apri">
+            <span class="work-num" aria-hidden="true">03</span>
+            <span class="work-name"><span class="work-name-plain">LogLens</span><span class="work-name-serif serif" aria-hidden="true">LogLens</span></span>
+            <span class="work-kind">Web app · Open source</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a></li>
+          <li><a class="work-row" href="#progetto-secure-notes" data-work="3" data-cursor="Apri">
+            <span class="work-num" aria-hidden="true">04</span>
+            <span class="work-name"><span class="work-name-plain">Secure Notes</span><span class="work-name-serif serif" aria-hidden="true">Secure Notes</span></span>
+            <span class="work-kind">Android · Personale</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a></li>
+        </ol>
         <span class="h-hint"><i></i>Continua a scorrere</span>
       </div>
 
       <!-- Renova -->
-      <article class="card proj">
+      <article class="card proj" id="progetto-renova">
         <div class="proj-copy">
-          <div class="proj-num"><span class="kind">Piattaforma web · Progetto scolastico</span><span>Mar — Giu 2026</span></div>
+          <div class="proj-num"><span class="kind">Piattaforma web · Progetto scolastico</span><span>Mar – Giu 2026</span></div>
           <h3>Renova</h3>
           <dl class="case">
             <div><dt>Problema</dt><dd>I dati sull'energia sono pubblici, ma leggerli è difficile: tabelle da migliaia di righe, sigle e unità di misura.</dd></div>
@@ -260,13 +376,13 @@
           <div class="window">
             <div class="win-bar"><i></i><i></i><i></i><span>renovaenergy.vercel.app</span></div>
             <div class="shot-panel" id="renova-shot-home">
-              <a href="assets/projects/renova/home.webp?v=2026-11-15a" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/renova/home.webp?v=2026-11-15a" alt="Pagina principale di Renova: titolo «Da dove arriva la tua elettricità?» e pulsante per creare un account" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/renova/home.webp?v=2026-11-17b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/renova/home.webp?v=2026-11-17b" alt="Pagina principale di Renova: titolo «Da dove arriva la tua elettricità?» e pulsante per creare un account" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="shot-panel" id="renova-shot-progetto">
-              <a href="assets/projects/renova/progetto.webp?v=2026-11-15a" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/renova/progetto.webp?v=2026-11-15a" alt="Sezione «Perché esiste Renova»: il testo che spiega il progetto e quattro numeri, 31 paesi e aree, 26 anni di dati, 480 domande nel quiz e 15 azioni nella routine" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/renova/progetto.webp?v=2026-11-17b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/renova/progetto.webp?v=2026-11-17b" alt="Sezione «Perché esiste Renova»: il testo che spiega il progetto e quattro numeri, 31 paesi e aree, 26 anni di dati, 480 domande nel quiz e 15 azioni nella routine" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
           </div>
@@ -278,9 +394,9 @@
       </article>
 
       <!-- JobScraper -->
-      <article class="card proj">
+      <article class="card proj" id="progetto-jobscraper">
         <div class="proj-copy">
-          <div class="proj-num"><span class="kind">Python · Open source</span><span>Giu — Nov 2026</span></div>
+          <div class="proj-num"><span class="kind">Python · Open source</span><span>Giu – Nov 2026</span></div>
           <h3>JobScraper</h3>
           <dl class="case">
             <div><dt>Problema</dt><dd>Cercare lavoro a cavallo del confine significa controllare una dozzina di portali, senza sapere se un annuncio è recente o davvero vicino.</dd></div>
@@ -299,13 +415,13 @@
           <div class="window">
             <div class="win-bar"><i></i><i></i><i></i><span>JobScraper</span></div>
             <div class="shot-panel" id="jobscraper-shot-dashboard">
-              <a href="assets/projects/jobscraper/dashboard.webp?v=2026-11-15a" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/jobscraper/dashboard.webp?v=2026-11-15a" alt="Dashboard di JobScraper: filtri a sinistra e, per ogni annuncio, testo, livello, contratto, distanza, fonte, date e stima dello stipendio netto" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/jobscraper/dashboard.webp?v=2026-11-17b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/jobscraper/dashboard.webp?v=2026-11-17b" alt="Dashboard di JobScraper: filtri a sinistra e, per ogni annuncio, testo, livello, contratto, distanza, fonte, date e stima dello stipendio netto" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="shot-panel" id="jobscraper-shot-panel">
-              <a href="assets/projects/jobscraper/panel.webp?v=2026-11-15a" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/jobscraper/panel.webp?v=2026-11-15a" alt="Pannello di configurazione di JobScraper: scelta delle regioni, distanza in chilometri e località da includere" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/jobscraper/panel.webp?v=2026-11-17b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/jobscraper/panel.webp?v=2026-11-17b" alt="Pannello di configurazione di JobScraper: scelta delle regioni, distanza in chilometri e località da includere" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="shot-panel watch" id="jobscraper-shot-terminal">
@@ -329,7 +445,7 @@
       </article>
 
       <!-- LogLens -->
-      <article class="card proj">
+      <article class="card proj" id="progetto-loglens">
         <div class="proj-copy">
           <div class="proj-num"><span class="kind">Web app · Open source</span><span>2026</span></div>
           <h3>LogLens</h3>
@@ -353,18 +469,18 @@
           <div class="window">
             <div class="win-bar"><i></i><i></i><i></i><span>loglens-demo.vercel.app</span></div>
             <div class="shot-panel" id="loglens-shot-home">
-              <a href="assets/projects/loglens/home.webp?v=2026-11-15a" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/loglens/home.webp?v=2026-11-15a" alt="Pagina iniziale di LogLens: titolo «Trova la riga che ha ceduto» e una lente d'ingrandimento sopra un foglio di log con la riga d'errore evidenziata" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/loglens/home.webp?v=2026-11-17b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/loglens/home.webp?v=2026-11-17b" alt="Pagina iniziale di LogLens: titolo «Trova la riga che ha ceduto» e una lente d'ingrandimento sopra un foglio di log con la riga d'errore evidenziata" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="shot-panel" id="loglens-shot-report">
-              <a href="assets/projects/loglens/report.webp?v=2026-11-15a" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/loglens/report.webp?v=2026-11-15a" alt="Report di LogLens: gravità media, un incidente con causa confermata e le righe di log che la dimostrano" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/loglens/report.webp?v=2026-11-17b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/loglens/report.webp?v=2026-11-17b" alt="Report di LogLens: gravità media, un incidente con causa confermata e le righe di log che la dimostrano" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="shot-panel" id="loglens-shot-workbench">
-              <a href="assets/projects/loglens/workbench.webp?v=2026-11-15a" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
-                <img class="win-shot" src="assets/projects/loglens/workbench.webp?v=2026-11-15a" alt="Workbench di LogLens: barra di ricerca con filtri per livello e servizio sopra l'elenco delle righe di log analizzate" width="1280" height="800" loading="lazy" decoding="async">
+              <a href="assets/projects/loglens/workbench.webp?v=2026-11-17b" target="_blank" rel="noopener" data-cursor="Ingrandisci" aria-label="Apri la schermata a grandezza piena">
+                <img class="win-shot" src="assets/projects/loglens/workbench.webp?v=2026-11-17b" alt="Workbench di LogLens: barra di ricerca con filtri per livello e servizio sopra l'elenco delle righe di log analizzate" width="1280" height="800" loading="lazy" decoding="async">
               </a>
             </div>
           </div>
@@ -377,7 +493,7 @@
       </article>
 
       <!-- Secure Notes -->
-      <article class="card proj">
+      <article class="card proj" id="progetto-secure-notes">
         <div class="proj-copy">
           <div class="proj-num"><span class="kind">Android · Personale</span><span>Java</span></div>
           <h3>Secure Notes</h3>
@@ -406,6 +522,21 @@
         </div>
       </article>
     </div>
+    <!-- Anteprima che segue il cursore sopra l'indice dei progetti (solo con il mouse): le schermate sono
+         una sopra l'altra dentro #work-strip, che scorre in verticale per mostrare quella della riga puntata.
+         Secure Notes non ha schermate vere: al loro posto c'è un riquadro con il lucchetto.
+         Le immagini hanno data-src: WorkIndex le scarica solo quando il mouse arriva sull'indice. -->
+    <div class="work-preview" id="work-preview" aria-hidden="true">
+      <div class="work-strip" id="work-strip">
+        <img data-src="assets/projects/renova/home.webp?v=2026-11-17b" alt="" width="1280" height="800" loading="lazy" decoding="async">
+        <img data-src="assets/projects/jobscraper/dashboard.webp?v=2026-11-17b" alt="" width="1280" height="800" loading="lazy" decoding="async">
+        <img data-src="assets/projects/loglens/home.webp?v=2026-11-17b" alt="" width="1280" height="800" loading="lazy" decoding="async">
+        <div class="work-tile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          <span>Note cifrate con AES</span>
+        </div>
+      </div>
+    </div>
     <div class="h-progress" aria-hidden="true"><i id="h-progress"></i></div>
     <div class="h-count" aria-hidden="true"><b id="h-count">01</b> / 04</div>
   </section>
@@ -421,7 +552,7 @@
       <article class="card exp reveal">
         <div>
           <div class="exp-head">
-            <span class="eyebrow">Stage · Giu — Lug 2025</span>
+            <span class="eyebrow">Stage · Giu – Lug 2025</span>
             <h3>TCR Tecora</h3>
             <div class="exp-meta"><span>Elettronica industriale</span><span>Cogliate (MB)</span><span>Team di 4</span></div>
           </div>
@@ -480,34 +611,101 @@
     <div class="wrap">
       <div class="sec-head">
                 <h2 class="split">Strumenti che <span class="serif accent-text">uso.</span></h2>
-        <p data-lines>Solo tecnologie che ho usato davvero nei progetti qui sopra: il codice pubblico su GitHub lo dimostra.</p>
+        <p data-lines>Strumenti che ho usato davvero. Scegli un progetto e vedi con cosa è fatto: per quelli pubblici il codice su GitHub lo conferma.</p>
       </div>
-      <div class="bento">
-        <div class="card skill w2 reveal">
-          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span><h3>Linguaggi</h3></div>
-          <ul class="chips"><li>JavaScript</li><li>TypeScript</li><li>Python</li><li>PHP</li><li>Java</li><li>C++</li><li>C#</li></ul>
-        </div>
-        <div class="card skill reveal">
-          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></span><h3>Frontend</h3></div>
-          <ul class="chips"><li>HTML5 / CSS3</li><li>React</li><li>Tailwind</li><li>Vite</li><li>GSAP</li><li>Three.js</li></ul>
-        </div>
-        <div class="card skill reveal">
-          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.9L19 9.7l-4.2 3 1.5 5.3L12 15l-4.3 3 1.5-5.3L5 9.7l5.2-1.8Z"/></svg></span><h3>Automazioni &amp; AI</h3></div>
-          <ul class="chips"><li>Web scraping</li><li>Playwright</li><li>OpenAI API</li><li>Ollama</li><li>Claude Code</li><li>Codex</li></ul>
-        </div>
-        <div class="card skill w2 reveal">
-          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><h3>Backend &amp; Database</h3></div>
-          <ul class="chips"><li>Node.js</li><li>Express</li><li>PHP</li><li>REST API</li><li>MySQL / MariaDB</li><li>PostgreSQL</li><li>Prisma</li><li>Supabase</li><li>SQLite</li></ul>
-        </div>
-        <div class="card skill reveal">
-          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7l7.4 4M8.3 17l7.4-4"/></svg></span><h3>Test &amp; rilascio</h3></div>
-          <ul class="chips"><li>Git / GitHub</li><li>GitHub Actions</li><li>Vitest</li><li>pytest</li><li>Vercel</li></ul>
-        </div>
-        <div class="card skill reveal">
-          <div class="skill-top"><span class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span><h3>Embedded &amp; Reti</h3></div>
-          <ul class="chips"><li>Raspberry Pi</li><li>Arduino</li><li>TCP/IP</li><li>VLAN</li><li>Routing</li><li>Packet Tracer</li></ul>
-        </div>
+
+      <!-- Filtro: evidenzia gli strumenti usati in un progetto (js/components/StackFilter.js).
+           Parte nascosto e lo mostra il JavaScript: senza JavaScript i pulsanti non farebbero nulla.
+           Ogni strumento dichiara in data-used dove è stato usato; per aggiungerne uno basta una riga. -->
+      <div class="stack-filter" id="stack-filter" role="group" aria-label="Evidenzia gli strumenti usati in" hidden>
+        <button type="button" data-stack-filter="all" aria-pressed="true">Tutti</button>
+        <button type="button" data-stack-filter="renova" aria-pressed="false">Renova</button>
+        <button type="button" data-stack-filter="jobscraper" aria-pressed="false">JobScraper</button>
+        <button type="button" data-stack-filter="loglens" aria-pressed="false">LogLens</button>
+        <button type="button" data-stack-filter="notes" aria-pressed="false">Secure Notes</button>
+        <button type="button" data-stack-filter="sito" aria-pressed="false">Questo sito</button>
+        <button type="button" data-stack-filter="stage" aria-pressed="false">Stage</button>
+        <button type="button" data-stack-filter="scuola" aria-pressed="false">Scuola</button>
       </div>
+      <p class="stack-count" id="stack-count" aria-live="polite"></p>
+
+      <!-- Costellazione 3D degli strumenti (js/components/StackConstellation.js): legge i dati dall'elenco
+           qui sotto, che resta il contenuto vero. Parte nascosta e la mostra il JavaScript. -->
+      <div class="stack-sky-wrap" id="stack-sky-wrap" hidden>
+        <canvas class="stack-sky" id="stack-sky" aria-hidden="true" data-cursor="Trascina"></canvas>
+        <p class="stack-sky-hint" aria-hidden="true">Passa sopra un nome (o toccalo) per vedere dove l'ho usato</p>
+      </div>
+
+      <dl class="stack" id="stack">
+        <div class="stack-row" data-rule>
+          <dt>Linguaggi</dt>
+          <dd><ul class="stack-tools">
+            <li data-used="renova sito">JavaScript</li>
+            <li data-used="loglens">TypeScript</li>
+            <li data-used="jobscraper">Python</li>
+            <li data-used="renova">PHP</li>
+            <li data-used="notes scuola">Java</li>
+            <li data-used="scuola">C++</li>
+            <li data-used="scuola">C#</li>
+          </ul></dd>
+        </div>
+        <div class="stack-row" data-rule>
+          <dt>Frontend</dt>
+          <dd><ul class="stack-tools">
+            <li data-used="renova sito">HTML5 / CSS3</li>
+            <li data-used="loglens">React</li>
+            <li data-used="loglens">Tailwind</li>
+            <li data-used="loglens">Vite</li>
+            <li data-used="sito">GSAP</li>
+            <li data-used="sito">Three.js</li>
+          </ul></dd>
+        </div>
+        <div class="stack-row" data-rule>
+          <dt>Backend e database</dt>
+          <dd><ul class="stack-tools">
+            <li data-used="loglens">Node.js</li>
+            <li data-used="loglens">Express</li>
+            <li data-used="loglens">REST API</li>
+            <li data-used="renova">MySQL / MariaDB</li>
+            <li data-used="loglens">PostgreSQL</li>
+            <li data-used="loglens">Prisma</li>
+            <li data-used="">Supabase</li>
+            <li data-used="notes">SQLite</li>
+          </ul></dd>
+        </div>
+        <div class="stack-row" data-rule>
+          <dt>Automazioni e AI</dt>
+          <dd><ul class="stack-tools">
+            <li data-used="jobscraper">Web scraping</li>
+            <li data-used="jobscraper loglens">Playwright</li>
+            <li data-used="jobscraper loglens">OpenAI API</li>
+            <li data-used="loglens">Ollama</li>
+            <li data-used="">Claude Code</li>
+            <li data-used="">Codex</li>
+          </ul></dd>
+        </div>
+        <div class="stack-row" data-rule>
+          <dt>Test e rilascio</dt>
+          <dd><ul class="stack-tools">
+            <li data-used="renova jobscraper loglens sito">Git / GitHub</li>
+            <li data-used="jobscraper loglens">GitHub Actions</li>
+            <li data-used="loglens">Vitest</li>
+            <li data-used="jobscraper">pytest</li>
+            <li data-used="renova loglens sito">Vercel</li>
+          </ul></dd>
+        </div>
+        <div class="stack-row" data-rule>
+          <dt>Embedded e reti</dt>
+          <dd><ul class="stack-tools">
+            <li data-used="stage">Raspberry Pi</li>
+            <li data-used="scuola">Arduino</li>
+            <li data-used="scuola">TCP/IP</li>
+            <li data-used="scuola">VLAN</li>
+            <li data-used="scuola">Routing</li>
+            <li data-used="scuola">Packet Tracer</li>
+          </ul></dd>
+        </div>
+      </dl>
 
       <dl class="method reveal">
         <div><dt>Versioni</dt><dd>Lavoro su rami dedicati, con commit piccoli e pull request. La cronologia dei repository è pubblica.</dd></div>
@@ -524,54 +722,63 @@
       <div class="sec-head">
                 <h2 class="split">Studio e <span class="serif accent-text">prossimi passi.</span></h2>
       </div>
-      <div class="edu">
-        <div class="card panel reveal">
-          <span class="k">2020 — 2026</span>
-          <h3>Istituto Jean Monnet</h3>
-          <p class="sub">Diploma in Informatica &amp; Telecomunicazioni, conseguito a giugno 2026 · Mariano Comense</p>
-          <dl class="subjects">
-            <div><dt>Informatica</dt><dd>Java, C#, C++, JavaScript, OOP, programmazione concorrente</dd></div>
-            <div><dt>Sistemi e Reti</dt><dd>TCP/IP, VLAN, routing</dd></div>
-            <div><dt>Laboratorio</dt><dd>Hardware, Arduino, Cisco Packet Tracer</dd></div>
-          </dl>
-        </div>
-        <div class="card panel reveal">
-          <span class="k">Certificazioni</span>
-          <h3>Percorso pianificato</h3>
-          <p>Certificazioni cloud per affiancare lo sviluppo web.</p>
-          <ul class="certs">
-            <li><span><b>AWS Skill Builder</b><small>Cloud computing</small></span><span class="pill">In programma</span></li>
-            <li><span><b>Microsoft Learn</b><small>Azure e strumenti Microsoft</small></span><span class="pill">In programma</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="langs">
-        <div class="card lang reveal"><span class="k">Italiano</span><b>Madrelingua</b></div>
-        <div class="card lang reveal"><span class="k">Inglese</span><b>B2</b><span>Documentazione tecnica e comunicazione</span></div>
-        <div class="card lang reveal"><span class="k">Referenze</span><b>Disponibili su richiesta</b></div>
-      </div>
+      <!-- Linea del tempo: la riga verticale si riempie di azzurro scorrendo (js/animations/EducationTimeline.js).
+           .is-done = già concluso (pallino pieno), .is-next = in programma (pallino vuoto) -->
+      <ol class="timeline" id="timeline">
+        <li class="tl-item is-done">
+          <span class="tl-when">2020 – 2026</span>
+          <span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-body reveal">
+            <h3>Istituto Jean Monnet</h3>
+            <p class="tl-sub">Diploma in Informatica &amp; Telecomunicazioni, conseguito a giugno 2026 · Mariano Comense</p>
+            <dl class="subjects">
+              <div><dt>Informatica</dt><dd>Java, C#, C++, JavaScript, OOP, programmazione concorrente</dd></div>
+              <div><dt>Sistemi e reti</dt><dd>TCP/IP, VLAN, routing</dd></div>
+              <div><dt>Laboratorio</dt><dd>Hardware, Arduino, Cisco Packet Tracer</dd></div>
+            </dl>
+          </div>
+        </li>
+        <li class="tl-item is-next">
+          <span class="tl-when">In programma</span>
+          <span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-body reveal">
+            <h3>Certificazioni cloud</h3>
+            <p class="tl-sub">Per affiancare lo sviluppo web. Non le ho ancora conseguite.</p>
+            <dl class="subjects">
+              <div><dt>AWS Skill Builder</dt><dd>Cloud computing</dd></div>
+              <div><dt>Microsoft Learn</dt><dd>Azure e strumenti Microsoft</dd></div>
+            </dl>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
   <!-- ================= CONTACT ================= -->
-  <section class="contact" id="contatti">
-    <div class="orb" aria-hidden="true"></div>
+  <section class="contact" id="contatti" data-theme="light">
     <div class="wrap">
       <h2 class="contact-big" data-chars>Parliamone<span class="serif accent-text">.</span></h2>
-      <p class="contact-lead" data-lines>Hai un'attività e ti serve un sito web? Scrivimi cosa fai e cosa ti serve, anche in poche righe: ti rispondo con una proposta e un preventivo, senza impegno.</p>
-      <div class="mail-row reveal">
-        <a class="mail-big" href="mailto:negrigiacomo435@gmail.com" data-cursor="Scrivi">negrigiacomo435@gmail.com</a>
-        <button class="copy" type="button" data-copy="negrigiacomo435@gmail.com" aria-label="Copia l'indirizzo email">Copia</button>
-      </div>
-      <div class="contact-cta reveal">
-        <a class="btn btn-primary magnetic" href="mailto:negrigiacomo435@gmail.com?subject=Richiesta%20di%20preventivo%20per%20un%20sito%20web&amp;body=Ciao%20Giacomo%2C%0A%0Ami%20serve%20un%20sito%20per%3A%20%0AAttivit%C3%A0%3A%20%0ATempi%20indicativi%3A%20%0A">Richiedi un preventivo
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+      <div class="contact-top">
+        <div class="contact-intro">
+          <p class="contact-lead" data-lines>Hai un'attività e ti serve un sito web? Scrivimi cosa fai e cosa ti serve, anche in poche righe: ti rispondo con una proposta e un preventivo, senza impegno.</p>
+          <div class="mail-row reveal">
+            <a class="mail-big" href="mailto:negrigiacomo435@gmail.com" data-cursor="Scrivi">negrigiacomo435@gmail.com</a>
+            <button class="copy" type="button" data-copy="negrigiacomo435@gmail.com" aria-label="Copia l'indirizzo email">Copia</button>
+          </div>
+        </div>
+        <!-- Pulsante tondo: segue il mouse (classe .magnetic) e al passaggio si riempie di bianco dal basso.
+             Apre un'email già impostata per chiedere il preventivo. -->
+        <div class="round-cta-wrap reveal">
+          <a class="round-cta magnetic" href="mailto:negrigiacomo435@gmail.com?subject=Richiesta%20di%20preventivo%20per%20un%20sito%20web&amp;body=Ciao%20Giacomo%2C%0A%0Ami%20serve%20un%20sito%20per%3A%20%0AAttivit%C3%A0%3A%20%0ATempi%20indicativi%3A%20%0A">
+            <span>Richiedi un <br>preventivo</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
       </div>
 
       <div class="contact-paths">
         <div class="path reveal">
-          <h3 class="eyebrow">Se ti serve un sito</h3>
+          <h3>Se ti serve un sito</h3>
           <ol class="steps">
             <li>Mi scrivi che attività hai e che sito ti serve.</li>
             <li>Ci sentiamo per capire obiettivi, contenuti e tempi.</li>
@@ -580,27 +787,19 @@
         </div>
 
         <div class="path reveal">
-          <h3 class="eyebrow">Per recruiter e team tecnici</h3>
+          <h3>Per recruiter e team tecnici</h3>
           <p class="path-text">Sono aperto anche a collaborazioni e opportunità in azienda, in Lombardia o come frontaliere in Canton Ticino. Qui trovi codice, profilo e CV.</p>
-          <div class="channels">
-            <div class="channel">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
-              <div class="v"><small>GitHub</small><a href="https://github.com/jacknegri89" target="_blank" rel="noopener">github.com/jacknegri89</a></div>
-            </div>
-            <div class="channel">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.82-2.06 3.75-2.06 4 0 4.74 2.64 4.74 6.07V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4z"/></svg>
-              <div class="v"><small>LinkedIn</small><a href="https://www.linkedin.com/in/giacomo-negri-952084448" target="_blank" rel="noopener">linkedin.com/in/giacomo-negri</a></div>
-            </div>
-            <div class="channel">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>
-              <div class="v"><small>Codice di questo portfolio</small><a href="https://github.com/jacknegri89/MyPortfolio" target="_blank" rel="noopener">github.com/jacknegri89/MyPortfolio</a></div>
-            </div>
-          </div>
+          <!-- Elenco di link: tutta la riga è cliccabile, la freccia si sposta quando ci passi sopra -->
+          <ul class="channels">
+            <li><a href="https://github.com/jacknegri89" target="_blank" rel="noopener"><span class="ch-label">GitHub</span><span class="ch-value">github.com/jacknegri89</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/giacomo-negri-952084448" target="_blank" rel="noopener"><span class="ch-label">LinkedIn</span><span class="ch-value">linkedin.com/in/giacomo-negri</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></li>
+            <li><a href="https://github.com/jacknegri89/MyPortfolio" target="_blank" rel="noopener"><span class="ch-label">Codice di questo sito</span><span class="ch-value">github.com/jacknegri89/MyPortfolio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></li>
+          </ul>
           <div class="contact-cta">
-            <a class="btn btn-sm magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-15a" target="_blank" rel="noopener">
+            <a class="btn btn-sm magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-17b" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>Guarda il CV
             </a>
-            <a class="btn btn-sm magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-15a" download="CV-Giacomo-Negri.pdf">
+            <a class="btn btn-sm magnetic" href="assets/CV-Giacomo-Negri.pdf?v=2026-11-17b" download="CV-Giacomo-Negri.pdf">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Scarica il CV
             </a>
           </div>
@@ -618,11 +817,10 @@
 </dialog>
 
 <footer>
-  <div class="foot-name" aria-hidden="true">
-    <svg class="foot-sign"><text class="foot-sign-text" x="50%" y="0.94em" text-anchor="middle">Giacomo Negri</text></svg>
-  </div>
   <div class="wrap foot-row">
     <span>© <span id="year">2026</span> Giacomo Negri · Developer</span>
+    <!-- L'ora di Barlassina, aggiornata da js/components/LocalClock.js. Senza JavaScript resta nascosta -->
+    <span id="local-time-row" hidden>Barlassina, ora locale <time id="local-time"></time></span>
     <span class="foot-links">
       <a href="https://github.com/jacknegri89/MyPortfolio" target="_blank" rel="noopener">Codice di questo sito su GitHub</a>
       <a href="privacy.html">Privacy e cookie</a>
@@ -632,39 +830,49 @@
   <p class="wrap foot-tech">Sito scritto a mano in HTML, CSS e JavaScript, con animazioni GSAP e Three.js. Nessun template, nessun cookie.</p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/ScrollTrigger.min.js" integrity="sha384-xNHNOfrykny9oFwnmpfNbkSc6isny38d1GZvTRVuFV0l9fTMIZKhULvomyQJSMRl" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/SplitText.min.js" integrity="sha384-iJQU/7haAHHrfeX4o0uooRF7Po6K7IhD+YU5dustu1NfalmSBYI7pbX6wAtx2f9j" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/ScrambleTextPlugin.min.js" integrity="sha384-WLYL9YzLSUMXVSCeTvIeNU1RjveFpJK9drY7FtmMDfLeYdVjyx2/JoVDt/ujHexr" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/DrawSVGPlugin.min.js" integrity="sha384-Kq7y+7vT2T5fTU1XbrcUJR+91CvCq8qRx27GxRruW31wsKnWgbwMmJoJ5rC9kGEn" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous"></script>
+<script id="three-script" async fetchpriority="low" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/ScrollTrigger.min.js" integrity="sha384-xNHNOfrykny9oFwnmpfNbkSc6isny38d1GZvTRVuFV0l9fTMIZKhULvomyQJSMRl" crossorigin="anonymous"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/SplitText.min.js" integrity="sha384-iJQU/7haAHHrfeX4o0uooRF7Po6K7IhD+YU5dustu1NfalmSBYI7pbX6wAtx2f9j" crossorigin="anonymous"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/ScrambleTextPlugin.min.js" integrity="sha384-WLYL9YzLSUMXVSCeTvIeNU1RjveFpJK9drY7FtmMDfLeYdVjyx2/JoVDt/ujHexr" crossorigin="anonymous"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/DrawSVGPlugin.min.js" integrity="sha384-Kq7y+7vT2T5fTU1XbrcUJR+91CvCq8qRx27GxRruW31wsKnWgbwMmJoJ5rC9kGEn" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous"></script>
 <!-- Codice del sito: prima le classi, poi App.js che le usa, per ultimo main.js che avvia tutto -->
-<script src="js/core/Environment.js?v=2026-11-15a"></script>
-<script src="js/core/TextSplitter.js?v=2026-11-15a"></script>
-<script src="js/core/SmoothScroll.js?v=2026-11-15a"></script>
-<script src="js/core/OffscreenPauser.js?v=2026-11-15a"></script>
-<script src="js/components/ContactDetails.js?v=2026-11-15a"></script>
-<script src="js/components/NavBar.js?v=2026-11-15a"></script>
-<script src="js/components/ParticleWave.js?v=2026-11-15a"></script>
-<script src="js/components/CustomCursor.js?v=2026-11-15a"></script>
-<script src="js/components/CardSpotlight.js?v=2026-11-15a"></script>
-<script src="js/components/MagneticButtons.js?v=2026-11-15a"></script>
-<script src="js/components/ScraperTerminal.js?v=2026-11-15a"></script>
-<script src="js/components/InViewWatcher.js?v=2026-11-15a"></script>
-<script src="js/components/SecureNotesDemo.js?v=2026-11-15a"></script>
-<script src="js/components/SerialMonitor.js?v=2026-11-15a"></script>
-<script src="js/components/CopyButtons.js?v=2026-11-15a"></script>
-<script src="js/components/ScreenshotTabs.js?v=2026-11-15a"></script>
-<script src="js/components/ShotLightbox.js?v=2026-11-15a"></script>
-<script src="js/components/VelocityMarquee.js?v=2026-11-15a"></script>
-<script src="js/animations/IntroAnimation.js?v=2026-11-15a"></script>
-<script src="js/animations/ScrollAnimations.js?v=2026-11-15a"></script>
-<script src="js/animations/HorizontalProjects.js?v=2026-11-15a"></script>
-<script src="js/animations/FooterSignature.js?v=2026-11-15a"></script>
-<script src="js/animations/SchematicDraw.js?v=2026-11-15a"></script>
-<script src="js/animations/TextScramble.js?v=2026-11-15a"></script>
-<script src="js/App.js?v=2026-11-15a"></script>
-<script src="js/main.js?v=2026-11-15a"></script>
+<script defer src="js/core/Environment.js?v=2026-11-17b"></script>
+<script defer src="js/core/TextSplitter.js?v=2026-11-17b"></script>
+<script defer src="js/core/SmoothScroll.js?v=2026-11-17b"></script>
+<script defer src="js/core/OffscreenPauser.js?v=2026-11-17b"></script>
+<script defer src="js/components/ContactDetails.js?v=2026-11-17b"></script>
+<script defer src="js/components/NavBar.js?v=2026-11-17b"></script>
+<script defer src="js/components/ParticleWave.js?v=2026-11-17b"></script>
+<script defer src="js/components/CustomCursor.js?v=2026-11-17b"></script>
+<script defer src="js/components/CardSpotlight.js?v=2026-11-17b"></script>
+<script defer src="js/components/MagneticButtons.js?v=2026-11-17b"></script>
+<script defer src="js/components/NameProximity.js?v=2026-11-17b"></script>
+<script defer src="js/components/ScraperTerminal.js?v=2026-11-17b"></script>
+<script defer src="js/components/InViewWatcher.js?v=2026-11-17b"></script>
+<script defer src="js/components/SecureNotesDemo.js?v=2026-11-17b"></script>
+<script defer src="js/components/SerialMonitor.js?v=2026-11-17b"></script>
+<script defer src="js/components/CopyButtons.js?v=2026-11-17b"></script>
+<script defer src="js/components/ScreenshotTabs.js?v=2026-11-17b"></script>
+<script defer src="js/components/ShotLightbox.js?v=2026-11-17b"></script>
+<script defer src="js/components/VelocityMarquee.js?v=2026-11-17b"></script>
+<script defer src="js/components/StackFilter.js?v=2026-11-17b"></script>
+<script defer src="js/components/StackConstellation.js?v=2026-11-17b"></script>
+<script defer src="js/components/WorkIndex.js?v=2026-11-17b"></script>
+<script defer src="js/components/WindowTilt.js?v=2026-11-17b"></script>
+<script defer src="js/components/LocalClock.js?v=2026-11-17b"></script>
+<script defer src="js/animations/IntroAnimation.js?v=2026-11-17b"></script>
+<script defer src="js/animations/ScrollAnimations.js?v=2026-11-17b"></script>
+<script defer src="js/animations/ServicesStage.js?v=2026-11-17b"></script>
+<script defer src="js/animations/ProjectChapters.js?v=2026-11-17b"></script>
+<script defer src="js/animations/ProjectDetails.js?v=2026-11-17b"></script>
+<script defer src="js/animations/HorizontalProjects.js?v=2026-11-17b"></script>
+<script defer src="js/animations/SchematicDraw.js?v=2026-11-17b"></script>
+<script defer src="js/animations/TextScramble.js?v=2026-11-17b"></script>
+<script defer src="js/animations/RuleLines.js?v=2026-11-17b"></script>
+<script defer src="js/animations/EducationTimeline.js?v=2026-11-17b"></script>
+<script defer src="js/App.js?v=2026-11-17b"></script>
+<script defer src="js/main.js?v=2026-11-17b"></script>
 </body>
 </html>

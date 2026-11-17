@@ -1,4 +1,50 @@
-/* Sezione Chi sono: frase che si illumina con lo scroll e riquadri con i numeri. */
+/* Sezione Chi sono: chiara, con il testo scuro. Frase che si illumina con lo scroll, poi dati essenziali
+   e testo su due colonne. */
+.about-sec {
+  /* Come nei contatti, i colori si invertono ridefinendo le variabili di base.css */
+  --paper: #f3f5fb;
+  --ink: #05060b;
+  --fg: var(--ink);
+  --muted: #454b5e; /* contrasto 8:1 sul fondo chiaro */
+  --dim: #454b5e;
+  --a2: #1a43c0; /* l'azzurro del sito sul chiaro non si leggerebbe: qui l'accento è un blu pieno */
+  --grad: var(--a2);
+  --stroke: rgba(5, 6, 11, 0.12);
+  --stroke-2: rgba(5, 6, 11, 0.24);
+  /* Altezza delle due curve (in alto e in basso) */
+  --dome: clamp(36px, 8vw, 120px);
+  z-index: 2; /* le curve devono stare sopra le sezioni vicine */
+  background: var(--paper);
+  color: var(--fg);
+}
+.about-sec ::selection {
+  background: rgba(26, 67, 192, 0.22);
+}
+/* Le due curve sono mezze ellissi attaccate fuori dalla sezione, sopra e sotto.
+   --dome-top e --dome-bottom vanno da 1 (curva piena) a 0 (bordo dritto): le anima
+   js/animations/ScrollAnimations.js; senza JavaScript valgono 0 e i bordi sono dritti. */
+.about-sec::before,
+.about-sec::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--dome);
+  background: var(--paper);
+  pointer-events: none;
+}
+.about-sec::before {
+  bottom: calc(100% - 1px);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  transform-origin: bottom;
+  transform: scaleY(var(--dome-top, 0));
+}
+.about-sec::after {
+  top: calc(100% - 1px);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  transform-origin: top;
+  transform: scaleY(var(--dome-bottom, 0));
+}
 .statement {
   font-size: clamp(1.9rem, 4.4vw, 4rem);
   line-height: 1.08;
@@ -14,48 +60,46 @@
 }
 .about {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 16px;
+  /* dati a sinistra (colonna più stretta), testo a destra */
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
   margin-top: clamp(56px, 8vw, 110px);
 }
-.about-side {
-  grid-column: 1/-1;
+.facts {
+  margin: 0;
+  border-bottom: 1px solid var(--stroke-2);
+}
+.facts > div {
   display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
   gap: 16px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-content: start;
+  padding-block: 16px;
+}
+.facts dt {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+.facts dd {
+  margin: 0;
+  font-weight: 500;
 }
 .about-text {
-  grid-column: 1/-1;
-  padding: clamp(24px, 3vw, 38px);
   display: grid;
-  gap: 20px;
+  gap: 22px;
 }
 .about-text p {
   color: var(--muted);
-  max-width: 72ch;
+  font-size: 1.12rem;
+  line-height: 1.6;
+  max-width: 62ch;
 }
 .about-text p strong {
   color: var(--fg);
   font-weight: 500;
 }
-.about-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.about-meta span {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 13px;
-  border-radius: 999px;
-  border: 1px solid var(--stroke);
-  font-size: 0.86rem;
-  color: #c9cee0;
-}
-.about-meta svg {
-  width: 15px;
-  height: 15px;
-  color: var(--a2);
+@media (max-width: 860px) {
+  .about {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

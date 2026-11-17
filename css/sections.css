@@ -75,6 +75,24 @@
   opacity: 1;
 }
 
+/* Righe con la linea in alto che si "disegna" da sinistra quando entrano nello schermo.
+   La linea è lunga quanto dice --rule (0 = invisibile, 1 = intera): la anima
+   js/animations/RuleLines.js; senza JavaScript vale 1 e la linea è già tutta visibile. */
+[data-rule] {
+  position: relative;
+}
+[data-rule]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: var(--stroke-2);
+  transform: scaleX(var(--rule, 1));
+  transform-origin: left;
+}
+
 .chips {
   display: flex;
   flex-wrap: wrap;
