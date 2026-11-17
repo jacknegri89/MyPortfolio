@@ -55,6 +55,25 @@
 .cur-ring.is-view span {
   opacity: 1;
 }
+/* Sopra le sezioni chiare (classe messa da js/components/CustomCursor.js) il cursore diventa scuro */
+.cur-dot.is-on-light {
+  background: #05060b;
+  mix-blend-mode: normal;
+}
+.cur-ring.is-on-light {
+  border-color: rgba(5, 6, 11, 0.5);
+}
+.cur-ring.is-on-light.is-link {
+  background: rgba(5, 6, 11, 0.08);
+  border-color: rgba(5, 6, 11, 0.75);
+}
+.cur-ring.is-on-light.is-view {
+  background: #05060b;
+  border-color: transparent;
+}
+.cur-ring.is-on-light span {
+  color: #f3f5fb;
+}
 .has-cursor,
 .has-cursor a,
 .has-cursor button {

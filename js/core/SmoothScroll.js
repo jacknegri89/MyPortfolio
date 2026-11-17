@@ -81,6 +81,12 @@ class SmoothScroll {
   }
 
   onAnchorClick(event, link) {
+    // Un altro componente ha già gestito questo click (es. le righe dell'indice dei progetti,
+    // che HorizontalProjects porta alla scheda giusta dentro la fila orizzontale)
+    if (event.defaultPrevented) {
+      return;
+    }
+
     const id = link.getAttribute("href");
 
     // "#top" significa "torna in cima" (posizione 0)
@@ -95,15 +101,29 @@ class SmoothScroll {
     event.preventDefault();
 
     if (this.lenis) {
-      this.lenis.scrollTo(target, {
-        duration: 1.6,
-        easing: (progress) => 1 - Math.pow(1 - progress, 4),
-      });
+      this.lenis.scrollTo(target, this.getLenisScrollSettings());
     } else if (target === 0) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       target.scrollIntoView({ behavior: "smooth" });
     }
+  }
+
+  // Scorre con dolcezza fino a una posizione verticale della pagina (in pixel dall'alto).
+  scrollToPosition(top) {
+    if (this.lenis) {
+      this.lenis.scrollTo(top, this.getLenisScrollSettings());
+      return;
+    }
+    window.scrollTo({ top: top, behavior: "smooth" });
+  }
+
+  // Durata e curva degli scorrimenti comandati da un click: partenza veloce, arrivo morbido.
+  getLenisScrollSettings() {
+    return {
+      duration: 1.6,
+      easing: (progress) => 1 - Math.pow(1 - progress, 4),
+    };
   }
 
   // true se lo scroll morbido (Lenis) è in funzione: in quel caso pause() blocca davvero la pagina.

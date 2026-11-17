@@ -15,7 +15,12 @@
   white-space: nowrap;
   transition:
     background 0.3s,
-    box-shadow 0.3s;
+    box-shadow 0.3s,
+    filter 0.12s;
+}
+/* Mentre il pulsante è premuto si scurisce un attimo: conferma che il click è arrivato */
+.btn:active {
+  filter: brightness(0.86);
 }
 .btn:hover {
   background: rgba(255, 255, 255, 0.11);
@@ -24,6 +29,11 @@
   width: 17px;
   height: 17px;
   flex: none;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+/* La freccia dei pulsanti principali avanza quando ci passi sopra */
+.btn-primary:hover svg {
+  transform: translateX(3px);
 }
 .btn-primary {
   color: #05060b;

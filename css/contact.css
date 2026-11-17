@@ -1,29 +1,54 @@
-/* Sezione Contatti: titolo grande, email e riquadri dei canali. */
+/* Sezione Contatti: tutta azzurra, con il testo scuro. Titolo grande, email e canali. */
 .contact {
+  /* Dentro questa sezione i colori si invertono: basta ridefinire le variabili di base.css
+     e pulsanti, linee e testi le usano da soli. */
+  --ink: #05060b;
+  --fg: var(--ink);
+  --muted: #17324a; /* blu scuro: contrasto 6:1 sull'azzurro */
+  --dim: #17324a;
+  --a2: var(--ink);
+  --ok: var(--ink);
+  --grad: var(--ink);
+  --stroke: rgba(5, 6, 11, 0.2);
+  --stroke-2: rgba(5, 6, 11, 0.36);
   position: relative;
-  isolation: isolate; /* senza questo la luce (.orb, z-index -1) finisce dietro lo sfondo e non si vede */
   overflow: hidden;
   padding-block: clamp(72px, 14vw, 190px) clamp(60px, 8vw, 100px);
+  background: #63bdff;
+  color: var(--fg);
+  /* La sezione si vede solo dentro un cerchio centrato sul suo bordo in alto. Con --flood al 150%
+     il cerchio la copre tutta (è il valore di base: senza JavaScript la sezione è già intera).
+     js/animations/ScrollAnimations.js lo fa crescere da 0 mentre arrivi ai contatti. */
+  clip-path: circle(var(--flood, 150%) at 50% 0%);
 }
-.contact .orb {
-  position: absolute;
-  width: 760px;
-  height: 760px;
-  left: 50%;
-  top: 10%;
-  margin-left: -380px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(99, 189, 255, 0.18),
-    rgba(59, 139, 235, 0.06) 40%,
-    transparent 65%
-  );
-  pointer-events: none;
-  z-index: -1;
+.contact ::selection {
+  background: rgba(5, 6, 11, 0.22);
 }
+/* Il punto di "Parliamone." è bianco: sull'azzurro è lui l'accento */
+.contact-big .accent-text {
+  color: #f3f5fb;
+}
+/* Pulsanti sull'azzurro: quello principale diventa scuro, gli altri a contorno scuro */
+.contact .btn {
+  background: rgba(5, 6, 11, 0.08);
+}
+.contact .btn:hover {
+  background: rgba(5, 6, 11, 0.16);
+}
+.contact .btn-primary,
+.contact .btn-primary:hover {
+  background: var(--ink);
+  color: #f3f5fb;
+  box-shadow: none;
+}
+.contact .steps li {
+  color: var(--fg);
+}
+/* "Parliamone." resta sempre su una riga: è largo circa 6,1 volte la grandezza del carattere,
+   quindi 14.5vw (massimo 11.5rem) entra nella colonna a ogni larghezza, da 320px in su */
 .contact-big {
-  font-size: clamp(4rem, 15vw, 15rem);
+  white-space: nowrap;
+  font-size: clamp(2.6rem, 14.5vw, 11.5rem);
   line-height: 0.82;
   letter-spacing: -0.07em;
   font-weight: 700;
@@ -32,11 +57,73 @@
 .contact-big .serif {
   font-weight: 400;
 }
-.contact-lead {
+/* Sotto il titolo: a sinistra testo ed email, a destra il pulsante tondo */
+.contact-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
   margin-top: 28px;
+}
+.contact-lead {
   color: var(--muted);
   font-size: 1.12rem;
   max-width: 52ch;
+}
+/* Pulsante tondo "Richiedi un preventivo": scuro sull'azzurro. Al passaggio del mouse
+   un cerchio bianco sale dal basso e lo riempie (::before), e il testo diventa scuro. */
+.round-cta {
+  position: relative;
+  isolation: isolate; /* il cerchio bianco (z-index -1) resta dietro il testo ma dentro il pulsante */
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  width: clamp(148px, 15vw, 204px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--ink);
+  color: #f3f5fb;
+  font: 500 clamp(0.95rem, 1.2vw, 1.12rem) / 1.2 var(--f-sans);
+  letter-spacing: -0.01em;
+  text-align: center;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.round-cta::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: 50%;
+  background: #f3f5fb;
+  transform: translateY(101%);
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.round-cta:hover,
+.round-cta:focus-visible {
+  color: var(--ink);
+}
+.round-cta:hover::before,
+.round-cta:focus-visible::before {
+  transform: none;
+}
+.round-cta:focus-visible {
+  border-radius: 50%;
+}
+.round-cta svg {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.round-cta:hover svg {
+  transform: translateX(4px);
+}
+@media (max-width: 720px) {
+  .contact-top {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 /* Email grande con il pulsante "Copia" accanto */
 .mail-row {
@@ -71,51 +158,55 @@
 .mail-big:hover::after {
   transform: scaleX(1);
 }
+/* Elenco dei canali (GitHub, LinkedIn, codice del sito): righe separate da una linea, tutta la riga è un link */
 .channels {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: clamp(36px, 5vw, 60px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--stroke);
 }
-.channel {
-  flex: 0 1 auto; /* larghezza naturale: con un solo riquadro non deve occupare tutta la riga */
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px 22px;
-  border-radius: 16px;
-  border: 1px solid var(--stroke);
-  background: rgba(6, 7, 13, 0.6);
-  min-width: 0;
-  transition: border-color 0.2s;
-}
-.channel:hover {
-  border-color: var(--stroke-2);
-}
-.channel > svg {
-  width: 20px;
-  height: 20px;
-  color: var(--a2);
-  flex: none;
-}
-.channel .v {
+.channels a {
   display: grid;
-  flex: 1;
-  min-width: 0;
-}
-.channel .v small {
-  font: 500 0.68rem/1.4 var(--f-mono);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--dim);
-}
-.channel .v a {
-  font-weight: 500;
+  grid-template-columns: 11rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 16px;
+  min-height: 56px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--stroke);
   text-decoration: none;
-  overflow-wrap: anywhere;
 }
-.channel .v a:hover {
+.ch-label {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+.ch-value {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+  transition: color 0.2s;
+}
+.channels svg {
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 0.2s;
+}
+.channels a:hover .ch-value,
+.channels a:hover svg {
   color: var(--a2);
+}
+/* La freccia si sposta nella direzione in cui punta */
+.channels a:hover svg {
+  transform: translate(3px, -3px);
+}
+@media (max-width: 520px) {
+  .channels a {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .ch-label {
+    grid-column: 1 / -1;
+  }
 }
 .copy {
   flex: none;
@@ -143,21 +234,6 @@
   gap: 12px;
   margin-top: 22px;
 }
-@media (max-width: 480px) {
-  .channel {
-    padding: 14px 16px;
-    flex-wrap: wrap;
-    row-gap: 10px;
-  }
-  .channel > svg {
-    display: none;
-  }
-  .channel .v a {
-    font-size: 0.95rem;
-    white-space: nowrap;
-  }
-}
-
 /* Su touchscreen il pulsante "Copia" deve essere abbastanza grande da toccare con il dito */
 @media (pointer: coarse) {
   .copy {
@@ -182,7 +258,9 @@
   min-width: 0;
 }
 .path h3 {
-  font-weight: 500;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
 }
 .path-text {
   color: var(--muted);
