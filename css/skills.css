@@ -1,75 +1,134 @@
-/* Sezione Competenze: griglia bento delle tecnologie. */
-.bento {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-.skill {
-  padding: 26px;
-  display: grid;
-  gap: 16px;
-  align-content: start;
-}
-.skill.w2 {
-  grid-column: span 2;
-}
-.skill-top {
+/* Sezione Strumenti: indice a righe (gruppo a sinistra, strumenti a destra) con filtro per progetto. */
+
+/* Pulsanti del filtro: quello scelto è pieno, gli altri a contorno */
+.stack-filter {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
-.skill-ico {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(
-    140deg,
-    rgba(99, 189, 255, 0.22),
-    rgba(59, 139, 235, 0.12)
-  );
+.stack-filter button {
+  min-height: 40px;
+  padding: 9px 16px;
+  border-radius: 999px;
   border: 1px solid var(--stroke-2);
+  background: transparent;
+  color: var(--muted);
+  font: 500 0.9rem/1 var(--f-sans);
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
 }
-.skill-ico svg {
-  width: 20px;
-  height: 20px;
-  color: #dbeeff;
+.stack-filter button:hover {
+  color: var(--fg);
+  border-color: var(--fg);
 }
-.skill h3 {
-  font-size: 1.18rem;
-  letter-spacing: -0.02em;
-  font-weight: 600;
+.stack-filter button[aria-pressed="true"] {
+  background: var(--fg);
+  border-color: var(--fg);
+  color: #05060b;
 }
-@media (max-width: 980px) {
-  .bento {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (pointer: coarse) {
+  .stack-filter button {
+    min-height: 44px;
   }
 }
-@media (max-width: 600px) {
-  .bento {
+/* Riga con il conteggio ("LogLens: 14 strumenti"): altezza fissa, così la pagina non salta quando cambia */
+.stack-count {
+  min-height: 1.65em;
+  margin: 14px 0 clamp(20px, 3vw, 32px);
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+/* Costellazione 3D degli strumenti (js/components/StackConstellation.js) */
+.stack-sky-wrap {
+  margin: 0 0 clamp(28px, 4vw, 52px);
+}
+.stack-sky {
+  display: block;
+  width: 100%;
+  height: clamp(420px, 78vh, 800px);
+  cursor: grab;
+  touch-action: pan-y; /* in verticale il dito scorre la pagina, in orizzontale gira la sfera */
+  background: radial-gradient(40% 46% at 50% 50%, rgba(99, 189, 255, 0.08), transparent 70%);
+}
+/* Telefoni: altezza legata alla larghezza, così la sfera resta tonda */
+@media (max-width: 640px) {
+  .stack-sky {
+    height: min(125vw, 560px);
+  }
+}
+.stack-sky.is-dragging {
+  cursor: grabbing;
+}
+.stack-sky.is-pointing {
+  cursor: pointer;
+}
+.stack-sky-hint {
+  margin: 10px 0 0;
+  text-align: center;
+  color: var(--dim);
+  font-size: 0.86rem;
+}
+
+.stack {
+  margin: 0;
+  border-bottom: 1px solid var(--stroke-2);
+}
+.stack-row {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: 10px clamp(16px, 3vw, 48px);
+  align-items: baseline;
+  padding-block: clamp(20px, 2.6vw, 32px);
+}
+.stack-row dt {
+  color: var(--muted);
+  font-weight: 500;
+}
+.stack-row dd {
+  margin: 0;
+}
+.stack-tools {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px clamp(18px, 2.4vw, 34px);
+}
+.stack-tools li {
+  font: 500 clamp(1.25rem, 2.2vw, 1.9rem)/1.25 var(--f-sans);
+  letter-spacing: -0.035em;
+  transition: color 0.35s;
+}
+/* Con un progetto scelto (classe messa da js/components/StackFilter.js): gli strumenti usati
+   diventano azzurri, gli altri grigi. Cambia solo il colore, così il testo resta leggibile. */
+.stack.is-filtered .stack-tools li {
+  color: var(--dim);
+}
+.stack.is-filtered .stack-tools li.is-used {
+  color: var(--a2);
+}
+@media (max-width: 760px) {
+  .stack-row {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .skill.w2 {
-    grid-column: auto;
   }
 }
 
-/* "Come lavoro": quattro abitudini verificabili, in riga sotto la griglia delle tecnologie */
+/* "Come lavoro": quattro abitudini verificabili, in riga sotto l'indice degli strumenti */
 .method {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(18px, 3vw, 40px);
-  margin: clamp(36px, 5vw, 64px) 0 0;
-  padding-top: clamp(24px, 3vw, 36px);
-  border-top: 1px solid var(--stroke);
+  margin: clamp(40px, 6vw, 80px) 0 0;
 }
 .method dt {
-  font: 500 0.72rem/1.4 var(--f-mono);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--a2);
-  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
 }
 .method dd {
   margin: 0;

@@ -87,6 +87,17 @@
   transform-origin: left;
   transform: scaleX(0);
 }
+/* Sopra una sezione chiara (classe messa da js/components/NavBar.js): la linea diventa scura... */
+.is-over-light .scroll-progress i {
+  background: #05060b;
+}
+/* ...e anche la barra, ma solo su schermi grandi: su telefono ha già il suo sfondo scuro */
+@media (min-width: 861px) {
+  .is-over-light .nav {
+    mix-blend-mode: normal;
+    color: #05060b;
+  }
+}
 @media (max-width: 860px) {
   .nav ul li:not(.keep) {
     display: none;

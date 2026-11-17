@@ -9,7 +9,30 @@
   justify-content: space-between;
   padding: calc(env(safe-area-inset-top, 0px) + 24px) var(--gut)
     calc(env(safe-area-inset-bottom, 0px) + 24px);
-  animation: loaderOut 0.6s ease 2s forwards;
+  /* ldWaiting: il contatore sale da solo mentre si scaricano i file, senza aspettare il JavaScript.
+     loaderOut: riserva per chi non ha JavaScript, il loader sparisce dopo 2 secondi. */
+  animation:
+    ldWaiting 2.6s cubic-bezier(0.2, 0.7, 0.3, 1) forwards,
+    loaderOut 0.6s ease 2s forwards;
+}
+/* Con il JavaScript (classe "js" messa da js/boot.js) la riserva scatta solo dopo 12 secondi, se qualcosa
+   si è rotto: di solito il loader lo toglie prima IntroAnimation, appena la pagina è pronta. */
+.js #loader {
+  animation:
+    ldWaiting 2.6s cubic-bezier(0.2, 0.7, 0.3, 1) forwards,
+    loaderOut 0.6s ease 12s forwards;
+}
+/* Il numero del contatore è la variabile --ld-progress (intera, da 0 a 100): la animano prima il CSS
+   (ldWaiting, fino a 30) e poi IntroAnimation, che la porta a 100 seguendo la preparazione della pagina. */
+@property --ld-progress {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 0;
+}
+@keyframes ldWaiting {
+  to {
+    --ld-progress: 30;
+  }
 }
 @keyframes loaderOut {
   to {
@@ -36,12 +59,44 @@
   font: 600 clamp(5rem, 22vw, 18rem)/0.8 var(--f-sans);
   letter-spacing: -0.07em;
   font-variant-numeric: tabular-nums;
+  counter-reset: ld-progress var(--ld-progress);
+}
+.ld-count::before {
+  content: counter(ld-progress);
 }
 .ld-word {
   font: 400 clamp(1.4rem, 3vw, 2.4rem)/1 var(--f-serif);
   font-style: italic;
   color: var(--muted);
   text-align: right;
+}
+/* Mezza ellisse attaccata sotto il sipario: quando il sipario sale, il suo bordo in basso è curvo.
+   --ld-curve è l'altezza della curva (la legge anche IntroAnimation.js per sapere di quanto salire). */
+#loader,
+.ld-veil {
+  --ld-curve: clamp(70px, 16vh, 190px);
+}
+/* Il secondo sipario sta appena sotto il loader ed è azzurro: mentre il loader sale si vede
+   una fascia azzurra curva che lo insegue. Senza JavaScript resta nascosto. */
+.ld-veil {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 399;
+  background: var(--a2);
+}
+.ld-veil .ld-curve {
+  background: var(--a2);
+}
+.ld-curve {
+  position: absolute;
+  left: 0;
+  top: calc(100% - 1px);
+  width: 100%;
+  height: var(--ld-curve);
+  background: #06070d;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  transform-origin: top;
 }
 .ld-bar {
   position: absolute;
@@ -50,6 +105,6 @@
   height: 2px;
   width: 100%;
   transform-origin: left;
-  transform: scaleX(0);
+  transform: scaleX(calc(var(--ld-progress) / 100));
   background: var(--grad);
 }

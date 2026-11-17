@@ -5,6 +5,7 @@
  *   appena torni verso l'alto ricompare
  * - la linea sottile in cima alla pagina si allunga in base a quanto hai letto
  * - il link della sezione che stai guardando viene evidenziato (aria-current)
+ * - sopra una sezione chiara la barra diventa scura (classe "is-over-light" su <html>)
  * Vedi nav.css per l'aspetto di ogni stato.
  */
 class NavBar {
@@ -29,6 +30,7 @@ class NavBar {
     this.update();
     window.addEventListener("scroll", () => this.scheduleUpdate(), { passive: true });
     this.watchSections();
+    this.watchLightSections();
   }
 
   // Lo scroll genera decine di eventi al secondo: aggiorniamo al massimo una volta per fotogramma.
@@ -109,6 +111,29 @@ class NavBar {
 
     const sections = document.querySelectorAll("main > [id]");
     for (const section of sections) {
+      observer.observe(section);
+    }
+  }
+
+  // Quando una sezione chiara (data-theme="light", es. i contatti) passa sotto la barra,
+  // <html> riceve la classe "is-over-light" e nav.css rende scuri barra e linea di avanzamento.
+  watchLightSections() {
+    if (!("IntersectionObserver" in window)) {
+      return;
+    }
+
+    // rootMargin -96% in basso: l'area osservata è la fascia in cima allo schermo, dove sta la barra
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          document.documentElement.classList.toggle("is-over-light", entry.isIntersecting);
+        }
+      },
+      { rootMargin: "0px 0px -96% 0px" }
+    );
+
+    const lightSections = document.querySelectorAll('[data-theme="light"]');
+    for (const section of lightSections) {
       observer.observe(section);
     }
   }

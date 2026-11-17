@@ -16,6 +16,11 @@
   height: 100%;
   z-index: -2;
   display: block;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+#bg3d.is-ready {
+  opacity: 1;
 }
 /* Macchie di colore sfumate dietro l'hero.
    Prima erano ellissi con filter: blur(100px), molto pesante da ricalcolare mentre si muovono:
@@ -102,6 +107,10 @@
   /* Altezza fissa (misurata con i font caricati): finché il font non arriva il browser usa
      un font di riserva con misure diverse, e senza questa riga il nome "saltava" di qualche pixel */
   height: 1.3em;
+  /* Le lettere di "Giacomo" cambiano spessore seguendo il mouse (NameProximity) e quindi larghezza.
+     Senza contain il browser ricalcolava il layout di tutta la pagina a ogni movimento (60% del tempo):
+     con contain: strict il ricalcolo resta dentro la riga, che ha già misure fisse e taglia ciò che esce. */
+  contain: strict;
 }
 .hero-name .line > span {
   display: inline-block;
