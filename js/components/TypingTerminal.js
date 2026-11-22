@@ -1,8 +1,8 @@
 /*
- * Finto terminale del progetto "JobScraper":
+ * Finto terminale nelle schede progetto (JobScraper e RelayHub, elementi con l'attributo data-terminal):
  * quando diventa visibile, le righe compaiono una alla volta come se il comando girasse davvero.
  */
-class ScraperTerminal {
+class TypingTerminal {
   constructor(element, environment) {
     this.element = element;
     this.environment = environment;

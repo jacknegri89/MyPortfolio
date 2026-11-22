@@ -144,6 +144,11 @@
   color: var(--muted);
   font-size: 0.98rem;
   max-width: 46ch;
+  /* Un alone del colore dello sfondo attorno alle lettere: su telefono il testo sta sopra la parte
+     più fitta dell'onda di punti, e senza l'alone alcune parole si leggevano male */
+  text-shadow:
+    0 0 3px var(--bg),
+    0 0 12px var(--bg);
 }
 .hero-foot .intro b {
   color: var(--fg);
@@ -183,6 +188,18 @@
   }
   .hero-foot {
     margin-top: 40px;
+  }
+  /* Qui il testo sta sopra la parte più fitta dell'onda di punti: una sfumatura scura dietro lo rende leggibile */
+  .hero-foot .intro {
+    position: relative;
+  }
+  .hero-foot .intro::before {
+    content: "";
+    position: absolute;
+    inset: -28px -32px;
+    z-index: -1;
+    background: radial-gradient(farthest-side, rgba(4, 5, 10, 0.85), rgba(4, 5, 10, 0.6) 70%, transparent);
+    pointer-events: none;
   }
   /* pulsanti un po' più compatti: stanno sulla stessa riga anche a 320px */
   .cta .btn {
