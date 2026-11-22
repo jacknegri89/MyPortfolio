@@ -5,9 +5,15 @@
  * In index.html:
  * - il contenitore ha l'attributo data-shots
  * - ogni pulsante ha data-shot-target con l'id della schermata (.shot-panel) da mostrare
+ *   e dentro la miniatura della schermata (.shot-thumb)
+ * - la finestra sta in .shot-stage, che disegna in CSS la pila di fogli dietro di lei
  * Senza JavaScript le schermate restano tutte visibili, una sotto l'altra.
  */
 class ScreenshotTabs {
+  // Cambio schermata: la finestra parte da qui (più in alto e più piccola, come il foglio dietro)
+  static SHUFFLE_LIFT_PIXELS = 12;
+  static SHUFFLE_START_SCALE = 0.95;
+
   constructor(environment) {
     this.environment = environment;
   }
@@ -50,15 +56,30 @@ class ScreenshotTabs {
   }
 
   // La schermata appena scelta sale leggermente e appare (solo se le animazioni sono attive).
+  // Intanto la pila "si rimescola": la finestra arriva dal foglio dietro (più in alto e più piccola)
+  // e i fogli dietro, prima raccolti, tornano a spuntare.
   animatePanel(panel) {
     if (!this.environment.canAnimateWithGsap()) {
       return;
     }
+    const gsap = this.environment.gsap;
 
-    this.environment.gsap.fromTo(
+    gsap.fromTo(
       panel,
       { y: 14, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", clearProps: "transform,opacity" }
     );
+
+    const stage = panel.closest(".shot-stage");
+    if (stage === null) {
+      return;
+    }
+    const windowFrame = stage.querySelector(".window");
+    gsap.fromTo(
+      windowFrame,
+      { y: -ScreenshotTabs.SHUFFLE_LIFT_PIXELS, scale: ScreenshotTabs.SHUFFLE_START_SCALE },
+      { y: 0, scale: 1, duration: 0.7, ease: "expo.out", overwrite: "auto" }
+    );
+    gsap.fromTo(stage, { "--deck-spread": 0 }, { "--deck-spread": 1, duration: 0.8, ease: "expo.out", overwrite: "auto" });
   }
 }
