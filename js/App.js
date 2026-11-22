@@ -82,8 +82,13 @@ class App {
     new ScreenshotTabs(this.environment).start();
     new ShotLightbox(this.environment, this.smoothScroll).start();
 
-    const terminal = new ScraperTerminal(document.getElementById("scraper-term"), this.environment);
-    new InViewWatcher(terminal).start();
+    // Un terminale animato per ogni elemento con data-terminal (oggi JobScraper e RelayHub)
+    const terminals = [];
+    const terminalElements = document.querySelectorAll("[data-terminal]");
+    for (const element of terminalElements) {
+      terminals.push(new TypingTerminal(element, this.environment));
+    }
+    new InViewWatcher(terminals).start();
     new SecureNotesDemo(this.environment).start();
   }
 

@@ -80,9 +80,9 @@ Plain classes, one per file, named like the file. Each has a `start()` (or `play
 | `CustomCursor`, `CardSpotlight`, `MagneticButtons` | Mouse effects, desktop only |
 | `NameProximity` | The letters of the name in the hero get thinner near the cursor (Geist is a variable font, weight 300 to 800). The weight moves in steps of 20 and the letter centres are measured when the mouse enters the hero: with any weight value the browser built a new font instance in every frame and the page spent 60% of its time in layout |
 | `NavBar` | Hides the bar while scrolling down and shows it again on the way up, moves the reading-progress line, marks the link of the section on screen |
-| `ScreenshotTabs` | Switches between the screenshots of a project |
+| `ScreenshotTabs` | Switches between the screenshots of a project (buttons with thumbnails) and reshuffles the stack of sheets drawn behind the window |
 | `ShotLightbox` | Opens a screenshot enlarged in a native `<dialog>`, growing from the thumbnail |
-| `ScraperTerminal`, `InViewWatcher` | The typed terminal in the JobScraper card, started when it becomes visible |
+| `TypingTerminal`, `InViewWatcher` | The typed terminals (`data-terminal`) in the JobScraper and RelayHub cards, started when they become visible |
 | `SecureNotesDemo`, `SerialMonitor` | Small simulations (encrypted notes, Raspberry Pi control loop) |
 | `CopyButtons` | Copies the email address |
 | `WorkIndex` | The big rows at the start of the projects section: with a mouse, a preview of the project follows the cursor. Each row says which picture to show with `data-work` |
@@ -93,7 +93,7 @@ Plain classes, one per file, named like the file. Each has a `start()` (or `play
 | `VelocityMarquee` | The text band under the hero (what I offer and where) that follows the scroll speed. The languages are not repeated here: they are in the Tools section |
 | `IntroAnimation`, `ScrollAnimations`, `HorizontalProjects` | Loader and hero, scroll reveals, pinned projects. In the pinned projects the windows turn in 3D, the cards lean with the scroll speed, each window opens from the top with a light line scanning down, and the counter changes with a scramble |
 | `ProjectDetails` | The text of each project card builds itself as the card arrives (tied to the scroll): Problem / Solution / Technique slide in one after the other, then the technology chips and the links. The card title does not animate: the chapter right before it has just animated the same name letter by letter |
-| `ProjectChapters` | Before each project card it adds a chapter with the project name (read from the card's `<h3>`): an outline whose letters rise one by one and then fill with ink from left to right. On large screens the name is full height and the card slides over it; on small screens it is a big title above the card |
+| `ProjectChapters` | Before each project card it adds a chapter with the project name (read from the card's `<h3>`): an outline whose letters rise one by one and then fill with ink from left to right. On large screens the name is a vertical spine between two cards, always whole: its size comes from `--name-ems` (the name's width in em, measured once) so every spine is 78% of the screen tall; on small screens it is a big title above the card |
 | `SchematicDraw`, `TextScramble` | The system diagram that draws itself (DrawSVG) and the small labels that decode (ScrambleText) |
 | `ServicesStage` | On large screens the services stay pinned while you scroll: they open one at a time and a wireframe site rearranges itself to show each one (full site, landing page, restyling). In front of the computer the same site on a phone rearranges itself too (in the old site it shows the desktop page shrunk and cut off), two labels per service float even closer and a light reflection crosses the screen as it turns. The positions of every block are in `ServicesStage.LAYOUTS` and `ServicesStage.PHONE_LAYOUTS` |
 | `RuleLines`, `EducationTimeline` | Rows whose top line draws itself (`data-rule`), and the education timeline whose line follows the scroll |
@@ -112,7 +112,7 @@ One file per section, loaded in a fixed order: `base.css` first (colour and font
 - The loader leaves as two curtains with a curved bottom edge: the dark one (`#loader`) and, a moment later, an azure one (`#ld-veil`). The curve is the `.ld-curve` half ellipse hanging under each curtain.
 - The About section is light with dark text and carries `data-theme="light"`. Its top and bottom edges arrive curved and flatten while you scroll: two half ellipses (`::before`, `::after` in `about.css`) scaled by the variables `--dome-top` and `--dome-bottom`.
 - A click on a row of the project index must not scroll like a normal anchor, because on large screens the card lives inside the pinned horizontal row. `HorizontalProjects` catches the click first (capture phase) and `SmoothScroll` skips clicks that were already handled (`event.defaultPrevented`).
-- The project chapters are created by JavaScript only in the horizontal layout and removed when the screen gets small. The cards must stay opaque (`background-color` in `.is-h .proj`, no fade on entry): they are what covers the giant name.
+- The project chapters are created by JavaScript only in the horizontal layout and removed when the screen gets small. The cards must stay opaque (`background-color` in `.is-h .proj`, no fade on entry): they cover the chapter while it slides past.
 - The footer is `position: sticky; bottom: 0` behind `<main>`, which has a solid background: the contact section uncovers it while leaving. Do not remove the background or the `z-index` of `<main>` in `footer.css`.
 - The contact section is azure with dark text: it only redefines the colour variables of `base.css` (`--fg`, `--muted`, `--a2`...) and every component inside follows. It appears through a `clip-path` circle whose radius is the variable `--flood`. Sections with a light background carry `data-theme="light"`: `NavBar` and `CustomCursor` use it to turn dark over them.
 - The pinned section makes the page longer, so its ScrollTrigger has `refreshPriority: 1`: it is measured first and every animation below it starts at the right scroll position.
@@ -142,6 +142,7 @@ Every screenshot in `assets/projects/` shows the real application; none is a moc
 | --- | --- |
 | JobScraper | `docs/dashboard-dark.png` and `docs/panel.png` from its repository, generated by the project from invented sample listings |
 | LogLens | Home page captured from the live demo; report and Workbench from `docs/screenshots/` in its repository |
+| RelayHub | Home page and delivery guide captured in Italian from the public pages of the live demo; the "Una consegna" terminal is a simplified example and says so |
 | Renova | Public pages captured from the live site |
 | Secure Notes | No screenshot: the phone in the card is a reconstruction of the interface and is labelled as such |
 
@@ -168,8 +169,8 @@ and open the page in a real browser (Chromium through Playwright) at the widths 
 
 ## Common tasks
 
-- **After changing CSS or JS:** replace the version after `?v=` everywhere in the HTML files (for example `?v=2026-11-17b` → `?v=2026-11-18a`). CSS and JS are cached for a month, and the version is what makes returning visitors download the new files.
-- **Adding a project:** copy an `<article class="card proj">` block in `index.html`. The horizontal scrolling adapts on its own. Put its screenshots in `assets/projects/<name>/` as 1280×800 WebP.
+- **After changing CSS or JS:** replace the version after `?v=` everywhere in the HTML files (for example `?v=2026-11-22a` → `?v=2026-11-23a`). CSS and JS are cached for a month, and the version is what makes returning visitors download the new files.
+- **Adding a project:** copy an `<article class="card proj">` block in `index.html` (text in `.proj-copy`, screenshots in `.shots`, tools and links in `.proj-foot`; each screenshot button repeats its image in `.shot-thumb`). The horizontal scrolling, chapters and counter number adapt on their own. Then add its row to the index (`ol#work`, `data-work` in order), its picture to `#work-strip` in the same position, the total in `.h-count`, a button in `#stack-filter` and its key in the `data-used` of the tools it uses. Put its screenshots in `assets/projects/<name>/` as 1280×800 WebP.
 - **Adding an effect:** create the class in `js/components/`, add its `<script>` before `App.js`, and start it inside `App.start()`.
 - **Adding an external script, style or font:** add its domain to the Content-Security-Policy in the `<head>`, and an SRI hash to the tag.
 
