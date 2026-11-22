@@ -1,11 +1,11 @@
 /*
  * Osserva gli elementi .watch e, la prima volta che entrano nello schermo:
  * - aggiunge la classe "inview" (utile al CSS per animazioni d'ingresso)
- * - avvia il finto terminale, se l'elemento lo contiene
+ * - avvia i finti terminali (TypingTerminal) che l'elemento contiene
  */
 class InViewWatcher {
-  constructor(terminal) {
-    this.terminal = terminal;
+  constructor(terminals) {
+    this.terminals = terminals;
   }
 
   start() {
@@ -37,8 +37,10 @@ class InViewWatcher {
   onEnterScreen(element) {
     element.classList.add("inview");
 
-    if (element.contains(this.terminal.element)) {
-      this.terminal.play();
+    for (const terminal of this.terminals) {
+      if (element.contains(terminal.element)) {
+        terminal.play();
+      }
     }
 
     // Ogni elemento si anima una volta sola

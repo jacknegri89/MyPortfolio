@@ -214,11 +214,14 @@
   padding: 0 6vw;
   margin: 0;
 }
-/* L'indice occupa quasi tutta la prima schermata: a destra spunta appena la prima scheda */
+/* L'indice occupa la prima schermata. Il margine a destra tiene il primo dorso (il nome gigante del primo
+   progetto) appena fuori dallo schermo: sugli schermi larghi l'indice non arriva al bordo, e senza margine
+   il dorso era già dentro all'apertura, con l'animazione a metà. 94vw = schermo meno il bordo sinistro
+   della fila (6vw); 28px = lo spazio tra gli elementi della fila. */
 .is-h .h-intro {
   width: min(1180px, 86vw);
   flex: none;
-  margin: 0;
+  margin: 0 max(0px, calc(94vw - 28px - min(1180px, 86vw))) 0 0;
   gap: clamp(18px, 3.4vh, 40px);
 }
 .is-h .h-intro-head {
@@ -231,7 +234,7 @@
 }
 /* Le schede sono piene (non trasparenti): passano sopra al nome gigante del capitolo e lo coprono */
 .is-h .proj {
-  width: min(1180px, 84vw);
+  width: min(1300px, 84vw);
   flex: none;
   z-index: 1;
   background-color: var(--bg);
@@ -269,21 +272,29 @@
   display: inline-block;
   white-space: pre;
 }
-/* Fila orizzontale: il nome è a tutta altezza */
+/* Fila orizzontale: il nome è un "dorso" verticale tra una scheda e l'altra, come quello di un libro.
+   Si legge dal basso verso l'alto ed è sempre intero: nessuna scheda gli passa sopra.
+   --name-ems = larghezza del nome in em (la misura ProjectChapters.measureName). Con questa il nome è
+   dimensionato per essere lungo il 78% dello schermo, ma non più grosso del 24%: i nomi corti
+   ("Renova") vengono più grossi, quelli lunghi ("Secure Notes") più sottili. Tutto in vh, quindi
+   si adatta da solo quando la finestra cambia misura. */
 .is-h .proj-chapter {
+  --spine-size: min(24vh, calc(78vh / var(--name-ems, 6)));
   display: block;
   position: relative;
   flex: none;
-  width: 44vw;
+  width: calc(var(--spine-size) * 1.1);
   height: 100vh;
   padding: 0;
 }
 .is-h .chapter-name {
   position: absolute;
-  left: 0;
+  left: 50%;
   top: 50%;
-  translate: 0 -50%;
-  font-size: clamp(7rem, 34vh, 22rem);
+  /* Il nome ruotato non va animato con GSAP (riscriverebbe translate e rotate): la salita la fa il capitolo */
+  translate: -50% -50%;
+  rotate: -90deg;
+  font-size: var(--spine-size);
   -webkit-text-stroke-width: 1.5px;
 }
 .is-h .h-progress {
@@ -327,16 +338,38 @@
   transform: scaleX(0);
 }
 
+/* Scheda: testo a sinistra, schermate a destra (più larghe del testo), sotto la barra .proj-foot */
 .proj {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: clamp(24px, 3.6vw, 52px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+  column-gap: clamp(24px, 3.6vw, 52px);
+  row-gap: clamp(20px, 2.4vw, 30px);
   align-items: center;
   padding: clamp(22px, 3.4vw, 46px);
+}
+/* Barra in fondo a tutta larghezza: tecnologie a sinistra, link a destra */
+.proj-foot {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+  padding-top: clamp(16px, 2vw, 22px);
+  border-top: 1px solid var(--stroke);
+}
+.proj-foot .proj-links {
+  margin-top: 0;
 }
 @media (max-width: 900px) {
   .proj {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Fila orizzontale su schermi poco larghi: testo e schermate a metà, altrimenti il testo diventa troppo alto */
+@media (max-width: 1199px) {
+  .is-h .proj {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 }
 .proj-copy {
@@ -670,6 +703,61 @@
   gap: 14px;
   min-width: 0;
 }
+/* Pila di schermate: dietro la finestra spuntano due fogli (::before e ::after), uno più piccolo dell'altro.
+   --deck-spread dice quanto spuntano (1 = normale): ScreenshotTabs lo anima quando cambi schermata.
+   --deck-open va da 0 a 1 mentre la finestra si apre (HorizontalProjects.openWindow): i fogli escono con lei.
+   Su schermo grande i fogli stanno anche più indietro in 3D (translateZ, vedi .is-h più sotto):
+   quando la finestra gira, scorrono a velocità diverse e si vede la profondità. */
+.shot-stage {
+  --deck-spread: 1;
+  --deck-open: 1;
+  position: relative;
+  margin-top: 24px; /* spazio per i fogli che spuntano sopra la finestra */
+}
+.shot-stage::before,
+.shot-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  /* la fascia più chiara in alto ricorda la barra della finestra */
+  background: linear-gradient(180deg, #1b2036 0, #1b2036 38px, #0a0c17 38px);
+  pointer-events: none;
+}
+.shot-stage::before {
+  opacity: calc(0.95 * var(--deck-open));
+  transform: translateY(calc(-12px * var(--deck-spread) * var(--deck-open))) scale(0.95);
+}
+.shot-stage::after {
+  opacity: calc(0.65 * var(--deck-open));
+  transform: translateY(calc(-24px * var(--deck-spread) * var(--deck-open))) scale(0.9);
+}
+.shot-stage > .window {
+  z-index: 1;
+}
+.is-h .shots,
+.is-h .shot-stage {
+  transform-style: preserve-3d;
+}
+/* In 3D la prospettiva rimpicciolisce già i fogli più lontani: niente scale, e salgono di più
+   (altrimenti, più piccoli, resterebbero nascosti dietro la finestra) */
+.is-h .shot-stage {
+  margin-top: 34px;
+}
+/* Il punto verso cui la prospettiva rimpicciolisce i fogli lontani è transform-origin di .shots.
+   Al centro (50%) cadeva sotto la finestra, perché sotto ci sono i pulsanti: mentre la scheda entrava
+   girata, il foglio più lontano spuntava anche sotto la finestra. Al 40% è circa al centro della finestra. */
+.is-h .shots {
+  transform-origin: 50% 40%;
+}
+.is-h .shot-stage::before {
+  transform: translate3d(0, calc(-26px * var(--deck-spread) * var(--deck-open)), -50px);
+}
+.is-h .shot-stage::after {
+  transform: translate3d(0, calc(-52px * var(--deck-spread) * var(--deck-open)), -100px);
+}
 .shot-panel {
   /* la schermata entra ingrandita (HorizontalProjects.openWindow): non deve coprire la barra della finestra */
   overflow: hidden;
@@ -682,9 +770,14 @@
   flex-wrap: wrap;
   gap: 8px;
 }
+/* Ogni pulsante mostra la miniatura della sua schermata e il nome */
 .shot-tabs button {
-  padding: 9px 14px;
-  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px; /* abbastanza grande da toccare con il dito */
+  padding: 5px 14px 5px 5px;
+  border-radius: 12px;
   border: 1px solid var(--stroke-2);
   background: transparent;
   color: var(--muted);
@@ -705,12 +798,35 @@
   background: var(--a2);
   border-color: transparent;
 }
-/* Su touchscreen i pulsanti devono essere abbastanza grandi da toccare con il dito */
-@media (pointer: coarse) {
-  .shot-tabs button {
-    min-height: 44px;
-    padding-inline: 18px;
-  }
+.shot-thumb {
+  flex: none;
+  width: 54px;
+  aspect-ratio: 16 / 10;
+  border-radius: 7px;
+  overflow: hidden;
+  border: 1px solid var(--stroke);
+  background: #070912;
+}
+.shot-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.shot-tabs button:hover .shot-thumb img {
+  transform: scale(1.08);
+}
+/* Schermata senza immagine (il terminale): al posto della miniatura il prompt */
+.shot-thumb.is-term {
+  display: grid;
+  place-items: center;
+  font: 500 0.78rem/1 var(--f-mono);
+  color: var(--a2);
+}
+.shot-tabs button[aria-pressed="true"] .shot-thumb {
+  border-color: rgba(5, 6, 11, 0.4);
 }
 
 /* Scorrimento orizzontale su schermi bassi (portatili): testo e spazi più compatti,
@@ -750,6 +866,22 @@
   }
   .is-h .proj-links {
     margin-top: 0;
+  }
+  .is-h .proj {
+    row-gap: 16px;
+  }
+  .is-h .proj-foot {
+    padding-top: 14px;
+  }
+  .is-h .shot-stage {
+    margin-top: 28px;
+  }
+  .is-h .shot-thumb {
+    width: 44px;
+  }
+  .is-h .shot-tabs button {
+    min-height: 38px;
+    padding: 4px 12px 4px 4px;
   }
 }
 

@@ -2,8 +2,9 @@
  * Capitoli della sezione Progetti: davanti a ogni scheda il nome del progetto scritto in grande.
  * Il nome nasce come contorno, le lettere salgono una alla volta e poi si riempie d'inchiostro
  * da sinistra a destra (un secondo strato di testo pieno, scoperto con clip-path).
- * - schermi grandi (fila orizzontale): il nome è a tutta altezza, scorre più lento della fila e la scheda
- *   che arriva gli passa sopra coprendolo
+ * - schermi grandi (fila orizzontale): il nome è un "dorso" verticale tra una scheda e l'altra, sempre intero
+ *   (prima era orizzontale e la scheda che arrivava lo copriva: si leggeva solo a metà).
+ *   La grandezza la decide projects.css partendo da --name-ems, la larghezza del nome misurata qui
  * - schermi piccoli: il capitolo è un titolo grande sopra la scheda, animato dallo scroll verticale
  * I capitoli sono solo decorazione (aria-hidden): i nomi veri restano negli <h3> delle schede.
  * Li creiamo leggendo proprio quegli <h3>, quindi per un progetto nuovo non serve toccare nulla qui.
@@ -13,11 +14,9 @@ class ProjectChapters {
   static LETTER_DROP_PERCENT = 115;
   static LETTER_TILT_DEGREES = 12;
   static LETTER_STAGGER = 0.08;
-  // Quanto scivola il nome mentre il capitolo attraversa lo schermo (in % della larghezza dello schermo).
-  // Va verso destra: il nome resta indietro rispetto alla fila e finisce sotto la scheda che arriva,
-  // senza mai passare sopra l'indice o la scheda precedente.
-  static NAME_SLIDE_START = 0;
-  static NAME_SLIDE_END = 40;
+  // Di quanto sale il dorso mentre attraversa lo schermo (in % dell'altezza dello schermo):
+  // parte un po' più in basso e finisce un po' più in alto, così sembra a una profondità diversa dalla fila
+  static NAME_DRIFT_PERCENT = 6;
   // clip-path dello strato pieno: tutto nascosto (tagliato a destra del 100%) e tutto visibile
   static INK_HIDDEN = "inset(0% 100% 0% 0%)";
   static INK_SHOWN = "inset(0% 0% 0% 0%)";
@@ -34,6 +33,7 @@ class ProjectChapters {
     for (let index = 0; index < projects.length; index++) {
       const chapter = this.createChapter(projects[index]);
       this.track.insertBefore(chapter, projects[index]);
+      this.measureName(chapter);
       this.chapters.push(chapter);
     }
     return this.chapters;
@@ -59,6 +59,15 @@ class ProjectChapters {
     return chapter;
   }
 
+  // Larghezza del nome in em (larghezza in pixel diviso grandezza del carattere): non cambia con la misura
+  // della finestra, quindi basta misurarla una volta. offsetWidth ignora la rotazione del dorso.
+  measureName(chapter) {
+    const name = chapter.querySelector(".chapter-name");
+    const fontSize = parseFloat(getComputedStyle(name).fontSize);
+    const widthInEms = name.offsetWidth / fontSize;
+    chapter.style.setProperty("--name-ems", widthInEms.toFixed(3));
+  }
+
   // Ogni lettera in uno <span>, con il suo numero d'ordine (serve a farle salire una alla volta)
   addLetters(parent, title) {
     let position = 0;
@@ -78,7 +87,7 @@ class ProjectChapters {
       this.raiseLetters(chapter, horizontalScroll);
       this.fillWithInk(chapter, horizontalScroll);
       if (horizontalScroll !== null) {
-        this.slideName(chapter, horizontalScroll);
+        this.driftName(chapter, horizontalScroll);
       }
     }
   }
@@ -99,7 +108,7 @@ class ProjectChapters {
 
   // Le lettere salgono da sotto la linea mentre il capitolo entra
   raiseLetters(chapter, horizontalScroll) {
-    const scroll = this.getScroll(chapter, horizontalScroll, ["left 92%", "left 35%"], ["top 92%", "top 45%"]);
+    const scroll = this.getScroll(chapter, horizontalScroll, ["left 98%", "left 62%"], ["top 92%", "top 45%"]);
     const timeline = this.gsap.timeline({ scrollTrigger: scroll });
     timeline.from(chapter.querySelectorAll(".chapter-letter"), {
       yPercent: ProjectChapters.LETTER_DROP_PERCENT,
@@ -110,9 +119,9 @@ class ProjectChapters {
     });
   }
 
-  // L'inchiostro riempie il nome da sinistra a destra, finendo quando il capitolo è al centro
+  // L'inchiostro riempie il nome dall'inizio alla fine (sul dorso: dal basso in alto), finendo quando il capitolo è al centro
   fillWithInk(chapter, horizontalScroll) {
-    const scroll = this.getScroll(chapter, horizontalScroll, ["left 70%", "left 15%"], ["top 75%", "top 30%"]);
+    const scroll = this.getScroll(chapter, horizontalScroll, ["left 85%", "left 45%"], ["top 75%", "top 30%"]);
     this.gsap.fromTo(
       chapter.querySelector(".chapter-ink"),
       { clipPath: ProjectChapters.INK_HIDDEN },
@@ -120,13 +129,16 @@ class ProjectChapters {
     );
   }
 
-  // Il nome si muove più lento della fila: resta indietro e scivola sotto la scheda che segue
-  slideName(chapter, horizontalScroll) {
+  // Il dorso sale piano mentre attraversa lo schermo. Si muove tutto il capitolo, non il nome:
+  // il nome è ruotato e centrato con le proprietà CSS rotate e translate, e animandolo GSAP le riscrive
+  // (il nome finiva spostato di lato, sotto la scheda). y negativa = verso l'alto.
+  driftName(chapter, horizontalScroll) {
+    const drift = () => window.innerHeight * (ProjectChapters.NAME_DRIFT_PERCENT / 100);
     this.gsap.fromTo(
-      chapter.querySelector(".chapter-name"),
-      { x: () => window.innerWidth * (ProjectChapters.NAME_SLIDE_START / 100) },
+      chapter,
+      { y: () => drift() },
       {
-        x: () => window.innerWidth * (ProjectChapters.NAME_SLIDE_END / 100),
+        y: () => -drift(),
         ease: "none",
         scrollTrigger: {
           trigger: chapter,
