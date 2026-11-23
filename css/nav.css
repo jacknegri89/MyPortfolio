@@ -31,6 +31,14 @@
   letter-spacing: -0.02em;
   text-decoration: none;
   justify-self: start;
+  position: relative;
+}
+/* Area di tocco più grande della scritta (almeno 44px di altezza), senza spostare nulla */
+.logo::before,
+.nav ul a::before {
+  content: "";
+  position: absolute;
+  inset: -14px -10px;
 }
 .logo sup {
   font: 500 0.6rem var(--f-mono);
