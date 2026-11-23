@@ -36,7 +36,13 @@ main {
 .foot-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 24px;
+  gap: 0 24px;
+}
+/* Link alti 44px: sul telefono si toccano senza prendere quello accanto */
+.foot-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 /* Riga finale: come è fatto il sito */
 .foot-tech {
