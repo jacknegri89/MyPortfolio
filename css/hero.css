@@ -196,9 +196,13 @@
   .hero-foot .intro::before {
     content: "";
     position: absolute;
-    inset: -28px -32px;
+    /* Rettangolo sfocato e non ellisse: con l'ellisse gli angoli restavano scoperti e l'inizio
+       delle righe (per esempio "Sono un developer") finiva sopra i puntini */
+    inset: -14px -12px;
     z-index: -1;
-    background: radial-gradient(farthest-side, rgba(4, 5, 10, 0.85), rgba(4, 5, 10, 0.6) 70%, transparent);
+    border-radius: 24px;
+    background: rgba(4, 5, 10, 0.78);
+    filter: blur(14px);
     pointer-events: none;
   }
   /* pulsanti un po' più compatti: stanno sulla stessa riga anche a 320px */
