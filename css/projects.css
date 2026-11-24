@@ -643,8 +643,11 @@
     grid-template-columns: minmax(0, 1fr);
     gap: 2px;
   }
+  /* Su telefono l'etichetta sta sopra il testo e ha tutta la riga: può essere più grande (circa 12px invece di 11) */
   .case dt {
     padding-top: 0;
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
   }
 }
 
