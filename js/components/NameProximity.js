@@ -1,6 +1,6 @@
 /*
  * Nome nell'hero che reagisce al mouse (solo con il mouse e con le animazioni attive).
- * Il font Geist è "variabile": lo spessore delle lettere può assumere qualsiasi valore
+ * Il font Archivo è "variabile": lo spessore delle lettere può assumere qualsiasi valore
  * tra 300 (sottile) e 800 (nero), non solo quelli fissi. Qui lo usiamo così:
  * le lettere di "Giacomo" vicine al cursore si assottigliano, quelle lontane restano piene.
  * Le lettere sottili sono anche più strette, quindi il nome si muove come se "respirasse".

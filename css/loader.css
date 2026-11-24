@@ -57,7 +57,7 @@
 }
 .ld-count {
   font: 600 clamp(5rem, 22vw, 18rem)/0.8 var(--f-sans);
-  letter-spacing: -0.07em;
+  letter-spacing: -0.05em;
   font-variant-numeric: tabular-nums;
   counter-reset: ld-progress var(--ld-progress);
 }

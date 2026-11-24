@@ -44,13 +44,13 @@
 .contact .steps li {
   color: var(--fg);
 }
-/* "Parliamone." resta sempre su una riga: è largo circa 6,1 volte la grandezza del carattere,
-   quindi 14.5vw (massimo 11.5rem) entra nella colonna a ogni larghezza, da 320px in su */
+/* "Parliamone." resta sempre su una riga: in Archivo espanso è largo circa 6,6 volte la grandezza
+   del carattere, quindi lo spazio della colonna (al massimo 1240px meno i margini) diviso 6,7 entra sempre */
 .contact-big {
   white-space: nowrap;
-  font-size: clamp(2.6rem, 14.5vw, 11.5rem);
+  font-size: clamp(2.2rem, calc((min(100vw, 1240px) - 2 * var(--gut)) / 6.7), 11.5rem);
   line-height: 0.82;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.045em;
   font-weight: 700;
   margin-top: 18px;
 }
@@ -136,7 +136,7 @@
 .mail-big {
   display: inline-block;
   font-size: clamp(1.4rem, 4.2vw, 3.4rem);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.025em;
   font-weight: 500;
   text-decoration: none;
   position: relative;
@@ -260,7 +260,7 @@
 .path h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 .path-text {
   color: var(--muted);

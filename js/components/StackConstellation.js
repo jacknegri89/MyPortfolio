@@ -908,7 +908,7 @@ class StackConstellation {
     if (node.isLanguage) {
       return "italic 400 " + size.toFixed(1) + "px 'Instrument Serif', Georgia, serif";
     }
-    return "500 " + size.toFixed(1) + "px Geist, system-ui, sans-serif";
+    return "500 " + size.toFixed(1) + "px Archivo, system-ui, sans-serif";
   }
 
   // Grandezza del testo prima della prospettiva: cresce con la sfera, entro un minimo e un massimo

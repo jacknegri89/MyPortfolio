@@ -101,7 +101,7 @@
 }
 .stack-tools li {
   font: 500 clamp(1.25rem, 2.2vw, 1.9rem)/1.25 var(--f-sans);
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
   transition: color 0.35s;
 }
 /* Con un progetto scelto (classe messa da js/components/StackFilter.js): gli strumenti usati
