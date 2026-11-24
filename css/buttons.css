@@ -39,11 +39,9 @@
   color: #05060b;
   background: var(--a2);
   border-color: transparent;
-  box-shadow: 0 8px 30px -8px rgba(99, 189, 255, 0.45);
 }
 .btn-primary:hover {
   background: #8fd0ff;
-  box-shadow: 0 12px 44px -6px rgba(99, 189, 255, 0.6);
 }
 .btn-sm {
   padding: 10px 16px;

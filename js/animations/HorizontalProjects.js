@@ -26,8 +26,6 @@ class HorizontalProjects {
   static EDGE_END_PERCENT = 125;
   // Da che punto dell'apertura la linea di luce comincia a spegnersi (0 = inizio, 1 = fine)
   static EDGE_FADE_AT = 0.7;
-  // Da che punto dell'apertura escono i fogli della pila dietro la finestra
-  static DECK_OPEN_AT = 0.75;
 
   constructor(environment, smoothScroll) {
     this.smoothScroll = smoothScroll;
@@ -203,20 +201,6 @@ class HorizontalProjects {
       { scale: 1, ease: "none", scrollTrigger: this.getOpeningScroll(project, horizontalScroll) }
     );
     this.traceOpeningEdge(windowFrame, project, horizontalScroll);
-
-    this.openDeck(windowFrame, project, horizontalScroll);
-  }
-
-  // I fogli della pila dietro la finestra (projects.css, .shot-stage) escono solo nell'ultimo tratto
-  // dell'apertura: prima la finestra è ancora tagliata e sotto il suo bordo si vedrebbero i fogli vuoti.
-  openDeck(windowFrame, project, horizontalScroll) {
-    const stage = windowFrame.closest(".shot-stage");
-    if (stage === null) {
-      return;
-    }
-    const start = HorizontalProjects.DECK_OPEN_AT;
-    const timeline = this.gsap.timeline({ scrollTrigger: this.getOpeningScroll(project, horizontalScroll) });
-    timeline.fromTo(stage, { "--deck-open": 0 }, { "--deck-open": 1, duration: 1 - start, ease: "none" }, start);
   }
 
   // Una linea di luce azzurra scende sul bordo che si sta aprendo, come una scansione, e si spegne alla fine

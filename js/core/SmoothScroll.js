@@ -1,26 +1,17 @@
 /*
  * Gestisce lo scroll della pagina:
  * - scroll morbido con la libreria Lenis (se le animazioni sono attive)
- * - velocità e direzione dello scroll, lette dal marquee
  * - click sui link interni (#progetti, #contatti, ...)
  */
 class SmoothScroll {
   constructor(environment) {
     this.environment = environment;
     this.lenis = null;
-
-    // Letti e modificati da VelocityMarquee
-    this.velocity = 0;
-    this.direction = 1;
-
-    this.lastScrollY = window.scrollY;
   }
 
   start() {
     if (!this.environment.reduceMotion && window.Lenis) {
       this.startLenis();
-    } else {
-      this.listenToNativeScroll();
     }
     this.setupAnchorLinks();
   }
@@ -47,30 +38,10 @@ class SmoothScroll {
     requestAnimationFrame((nextTime) => this.runLenisLoop(nextTime));
   }
 
-  onLenisScroll(event) {
-    this.velocity = event.velocity;
-    if (event.direction) {
-      this.direction = event.direction;
-    }
+  onLenisScroll() {
     if (this.environment.scrollTrigger) {
       this.environment.scrollTrigger.update();
     }
-  }
-
-  // Senza Lenis calcoliamo noi velocità e direzione dallo scroll normale del browser.
-  listenToNativeScroll() {
-    window.addEventListener(
-      "scroll",
-      () => {
-        const distance = window.scrollY - this.lastScrollY;
-        this.velocity = distance;
-        if (distance !== 0) {
-          this.direction = Math.sign(distance);
-        }
-        this.lastScrollY = window.scrollY;
-      },
-      { passive: true }
-    );
   }
 
   setupAnchorLinks() {

@@ -1,4 +1,4 @@
-/* Sezione Progetti: scorrimento orizzontale su desktop e finte interfacce (grafici, terminale, telefono). */
+/* Sezione Progetti: scorrimento orizzontale su desktop, una schermata reale per progetto, telefono di Secure Notes. */
 .hsec {
   position: relative;
   overflow: hidden;
@@ -44,23 +44,15 @@
 }
 .work-row {
   display: grid;
-  grid-template-columns: 2.6rem minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   grid-template-areas:
-    "num name arrow"
-    "num kind arrow";
+    "name arrow"
+    "kind arrow";
   align-items: center;
   gap: 2px 14px;
   padding-block: 16px;
   border-top: 1px solid var(--stroke-2);
   text-decoration: none;
-}
-.work-num {
-  grid-area: num;
-  align-self: start;
-  padding-top: 0.9em;
-  font: 500 0.76rem/1 var(--f-mono);
-  letter-spacing: 0.08em;
-  color: var(--muted);
 }
 /* Il nome è scritto due volte, una sopra l'altra: normale e in corsivo azzurro.
    Al passaggio del mouse la prima esce verso l'alto e la seconda sale al suo posto. */
@@ -110,8 +102,8 @@
 }
 @media (min-width: 900px) {
   .work-row {
-    grid-template-columns: 3.4rem minmax(0, 1fr) auto 3rem;
-    grid-template-areas: "num name kind arrow";
+    grid-template-columns: minmax(0, 1fr) auto 3rem;
+    grid-template-areas: "name kind arrow";
     gap: 24px;
     padding-block: clamp(10px, 1.9vh, 20px);
   }
@@ -223,6 +215,19 @@
   flex: none;
   margin: 0 max(0px, calc(94vw - 28px - min(1180px, 86vw))) 0 0;
   gap: clamp(18px, 3.4vh, 40px);
+  /* Spazio vero sopra e sotto: senza, su schermi larghi ma non altissimi l'indice era alto quanto lo schermo
+     e il titolo toccava il bordo della sezione chiara sopra. Il margine in alto lascia posto anche alla barra. */
+  padding-block: max(88px, 13vh) max(64px, 9vh);
+}
+/* Titolo e righe dell'indice seguono anche l'altezza dello schermo (vh), così l'indice ci sta sempre */
+.is-h .h-intro h2 {
+  font-size: clamp(2.4rem, min(6.4vw, 7.6vh), 5.4rem);
+}
+.is-h .work-name {
+  font-size: clamp(1.8rem, min(4.6vw, 5.6vh), 4.6rem);
+}
+.is-h .work-row {
+  padding-block: clamp(6px, 1.3vh, 18px);
 }
 .is-h .h-intro-head {
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
@@ -456,7 +461,6 @@
   height: 2px;
   margin-top: -2px;
   background: var(--a2);
-  box-shadow: 0 0 18px 4px rgba(99, 189, 255, 0.5);
   pointer-events: none;
 }
 .win-edge::before {
@@ -466,49 +470,22 @@
   right: 0;
   bottom: 2px;
   height: 120px;
-  background: linear-gradient(180deg, transparent, rgba(99, 189, 255, 0.14));
+  background: linear-gradient(180deg, transparent, rgba(99, 189, 255, 0.08));
 }
-.window::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  pointer-events: none;
-  background: radial-gradient(
-    60% 50% at 70% 0%,
-    rgba(99, 189, 255, 0.16),
-    transparent 70%
-  );
-}
+/* Barra della finestra: solo l'indirizzo della pagina (niente pallini colorati: sono un cliché) */
 .win-bar {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 11px 14px;
+  padding: 10px 14px;
   border-bottom: 1px solid var(--stroke);
   font: 400 0.74rem/1 var(--f-mono);
   color: var(--dim);
 }
-.win-bar i {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.win-bar i:nth-child(1) {
-  background: #ff5f57;
-}
-.win-bar i:nth-child(2) {
-  background: #febc2e;
-}
-.win-bar i:nth-child(3) {
-  background: #28c840;
-}
 .win-bar span {
-  margin-inline: auto;
-  padding: 4px 12px;
+  padding: 5px 12px;
   border-radius: 7px;
   background: rgba(255, 255, 255, 0.05);
-  max-width: 62%;
+  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -523,33 +500,6 @@
   width: 100%;
   height: auto;
 }
-.term-body {
-  font: 400 0.8rem/1.85 var(--f-mono);
-  color: #c6cce0;
-  min-height: 244px;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-.term-body .p {
-  color: var(--a2);
-}
-.term-body .c {
-  color: var(--a1);
-}
-.term-body .ok {
-  color: var(--ok);
-}
-.term-body .d {
-  color: var(--dim);
-}
-.tcaret {
-  display: inline-block;
-  width: 8px;
-  height: 1.1em;
-  vertical-align: -0.2em;
-  background: var(--a2);
-  animation: caret 1s steps(1) infinite;
-}
 .phone-stage {
   display: grid;
   place-items: center;
@@ -562,9 +512,7 @@
   padding: 11px;
   background: linear-gradient(160deg, #1a1d2b, #0a0c14);
   border: 1px solid var(--stroke-2);
-  box-shadow:
-    0 40px 80px -30px rgba(0, 0, 0, 0.9),
-    0 0 70px -10px rgba(99, 189, 255, 0.25);
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.9);
 }
 .phone-screen {
   position: relative;
@@ -700,67 +648,14 @@
   }
 }
 
-/* Schermate vere del progetto: una finestra e, sotto, i pulsanti per cambiare schermata
-   (vedi js/components/ScreenshotTabs.js) */
+/* Schermata reale del progetto, una sola, dentro una finestra. Su schermo grande la finestra gira in 3D
+   mentre la scheda attraversa lo schermo (HorizontalProjects.addDepth). */
 .shots {
   display: grid;
-  gap: 14px;
   min-width: 0;
 }
-/* Pila di schermate: dietro la finestra spuntano due fogli (::before e ::after), uno più piccolo dell'altro.
-   --deck-spread dice quanto spuntano (1 = normale): ScreenshotTabs lo anima quando cambi schermata.
-   --deck-open va da 0 a 1 mentre la finestra si apre (HorizontalProjects.openWindow): i fogli escono con lei.
-   Su schermo grande i fogli stanno anche più indietro in 3D (translateZ, vedi .is-h più sotto):
-   quando la finestra gira, scorrono a velocità diverse e si vede la profondità. */
-.shot-stage {
-  --deck-spread: 1;
-  --deck-open: 1;
-  position: relative;
-  margin-top: 24px; /* spazio per i fogli che spuntano sopra la finestra */
-}
-.shot-stage::before,
-.shot-stage::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  /* la fascia più chiara in alto ricorda la barra della finestra */
-  background: linear-gradient(180deg, #1b2036 0, #1b2036 38px, #0a0c17 38px);
-  pointer-events: none;
-}
-.shot-stage::before {
-  opacity: calc(0.95 * var(--deck-open));
-  transform: translateY(calc(-12px * var(--deck-spread) * var(--deck-open))) scale(0.95);
-}
-.shot-stage::after {
-  opacity: calc(0.65 * var(--deck-open));
-  transform: translateY(calc(-24px * var(--deck-spread) * var(--deck-open))) scale(0.9);
-}
-.shot-stage > .window {
-  z-index: 1;
-}
-.is-h .shots,
-.is-h .shot-stage {
-  transform-style: preserve-3d;
-}
-/* In 3D la prospettiva rimpicciolisce già i fogli più lontani: niente scale, e salgono di più
-   (altrimenti, più piccoli, resterebbero nascosti dietro la finestra) */
-.is-h .shot-stage {
-  margin-top: 34px;
-}
-/* Il punto verso cui la prospettiva rimpicciolisce i fogli lontani è transform-origin di .shots.
-   Al centro (50%) cadeva sotto la finestra, perché sotto ci sono i pulsanti: mentre la scheda entrava
-   girata, il foglio più lontano spuntava anche sotto la finestra. Al 40% è circa al centro della finestra. */
 .is-h .shots {
-  transform-origin: 50% 40%;
-}
-.is-h .shot-stage::before {
-  transform: translate3d(0, calc(-26px * var(--deck-spread) * var(--deck-open)), -50px);
-}
-.is-h .shot-stage::after {
-  transform: translate3d(0, calc(-52px * var(--deck-spread) * var(--deck-open)), -100px);
+  transform-style: preserve-3d;
 }
 .shot-panel {
   /* la schermata entra ingrandita (HorizontalProjects.openWindow): non deve coprire la barra della finestra */
@@ -769,82 +664,10 @@
 .shot-panel a {
   display: block;
 }
-.shot-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-/* Ogni pulsante mostra la miniatura della sua schermata e il nome */
-.shot-tabs button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 44px; /* abbastanza grande da toccare con il dito */
-  padding: 5px 14px 5px 5px;
-  border-radius: 12px;
-  border: 1px solid var(--stroke-2);
-  background: transparent;
-  color: var(--muted);
-  font: 500 0.74rem/1 var(--f-mono);
-  letter-spacing: 0.06em;
-  cursor: pointer;
-  transition:
-    color 0.2s,
-    border-color 0.2s,
-    background-color 0.2s;
-}
-.shot-tabs button:hover {
-  color: var(--fg);
-  border-color: var(--a2);
-}
-.shot-tabs button[aria-pressed="true"] {
-  color: #05060b;
-  background: var(--a2);
-  border-color: transparent;
-}
-.shot-thumb {
-  flex: none;
-  width: 54px;
-  aspect-ratio: 16 / 10;
-  border-radius: 7px;
-  overflow: hidden;
-  border: 1px solid var(--stroke);
-  background: #070912;
-}
-.shot-thumb img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.shot-tabs button:hover .shot-thumb img {
-  transform: scale(1.08);
-}
-/* Schermata senza immagine (il terminale): al posto della miniatura il prompt */
-.shot-thumb.is-term {
-  display: grid;
-  place-items: center;
-  font: 500 0.78rem/1 var(--f-mono);
-  color: var(--a2);
-}
-.shot-tabs button[aria-pressed="true"] .shot-thumb {
-  border-color: rgba(5, 6, 11, 0.4);
-}
 
 /* Scorrimento orizzontale su schermi bassi (portatili): testo e spazi più compatti,
    così ogni scheda resta tutta dentro lo schermo */
 @media (min-width: 1000px) and (max-height: 840px) {
-  .is-h .h-intro h2 {
-    font-size: clamp(2.4rem, 4.4vw, 3.6rem);
-  }
-  .is-h .work-name {
-    font-size: clamp(2rem, 3.6vw, 3.2rem);
-  }
-  .is-h .work-row {
-    padding-block: 8px;
-  }
   .is-h .proj {
     padding: 24px 34px;
   }
@@ -876,16 +699,6 @@
   }
   .is-h .proj-foot {
     padding-top: 14px;
-  }
-  .is-h .shot-stage {
-    margin-top: 28px;
-  }
-  .is-h .shot-thumb {
-    width: 44px;
-  }
-  .is-h .shot-tabs button {
-    min-height: 38px;
-    padding: 4px 12px 4px 4px;
   }
 }
 
