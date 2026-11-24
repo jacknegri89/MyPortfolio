@@ -73,16 +73,14 @@ Plain classes, one per file, named like the file. Each has a `start()` (or `play
 | Class | What it does |
 | --- | --- |
 | `Environment` | Reads once whether the visitor uses a mouse, prefers reduced motion, and which GSAP plugins loaded |
-| `SmoothScroll` | Lenis scrolling, scroll speed for the marquee, in-page `#` links |
+| `SmoothScroll` | Lenis scrolling, in-page `#` links |
 | `TextSplitter` | Splits a text into words or letters to animate |
 | `OffscreenPauser` | Pauses endless CSS animations in sections that are off screen |
 | `ParticleWave` | The 3D particle wave in the hero. On load the camera flies in from far away (`startFlyIn`); a click or a tap in the hero starts a circular wave from that point (`startRipple`). Its drawing loop starts only when the curtain goes up, without antialiasing and with a pixel ratio of at most 1.5; it keeps the scroll position from the `scroll` event instead of reading `window.scrollY` in every frame (that read forced a layout of the whole page) |
-| `CustomCursor`, `CardSpotlight`, `MagneticButtons` | Mouse effects, desktop only |
+| `CustomCursor`, `MagneticButtons` | Mouse effects, desktop only |
 | `NameProximity` | The letters of the name in the hero get thinner near the cursor (Geist is a variable font, weight 300 to 800). The weight moves in steps of 20 and the letter centres are measured when the mouse enters the hero: with any weight value the browser built a new font instance in every frame and the page spent 60% of its time in layout |
 | `NavBar` | Hides the bar while scrolling down and shows it again on the way up, moves the reading-progress line, marks the link of the section on screen |
-| `ScreenshotTabs` | Switches between the screenshots of a project (buttons with thumbnails) and reshuffles the stack of sheets drawn behind the window |
 | `ShotLightbox` | Opens a screenshot enlarged in a native `<dialog>`, growing from the thumbnail |
-| `TypingTerminal`, `InViewWatcher` | The typed terminals (`data-terminal`) in the JobScraper and RelayHub cards, started when they become visible |
 | `SecureNotesDemo`, `SerialMonitor` | Small simulations (encrypted notes, Raspberry Pi control loop) |
 | `CopyButtons` | Copies the email address |
 | `WorkIndex` | The big rows at the start of the projects section: with a mouse, a preview of the project follows the cursor. Each row says which picture to show with `data-work` |
@@ -90,7 +88,6 @@ Plain classes, one per file, named like the file. Each has a `start()` (or `play
 | `StackFilter` | In the tools section, highlights the tools used in the chosen project. Each tool lists its projects in `data-used` in `index.html`. When the choice changes it fires the `stackfilterchange` event |
 | `StackConstellation` | The 3D constellation of the tools drawn on `<canvas id="stack-sky">`: languages in the middle, the other tools around them, a line between a language and a tool used in the same project. It reads everything from the `#stack` list (the first row is the languages), lights up the chosen project with pulses along the lines and turns to bring its tools to the front, follows the mouse, can be dragged and assembles itself when it scrolls into view (the lines draw from the language outwards). Overlapping names fade so that the most important one stays readable. With reduced motion it is drawn once and stays still |
 | `WindowTilt` | The project windows and the phone tilt towards the mouse, with a light reflection that follows the cursor |
-| `VelocityMarquee` | The text band under the hero (what I offer and where) that follows the scroll speed. The languages are not repeated here: they are in the Tools section |
 | `IntroAnimation`, `ScrollAnimations`, `HorizontalProjects` | Loader and hero, scroll reveals, pinned projects. In the pinned projects the windows turn in 3D, the cards lean with the scroll speed, each window opens from the top with a light line scanning down, and the counter changes with a scramble |
 | `ProjectDetails` | The text of each project card builds itself as the card arrives (tied to the scroll): Problem / Solution / Technique slide in one after the other, then the technology chips and the links. The card title does not animate: the chapter right before it has just animated the same name letter by letter |
 | `ProjectChapters` | Before each project card it adds a chapter with the project name (read from the card's `<h3>`): an outline whose letters rise one by one and then fill with ink from left to right. On large screens the name is a vertical spine between two cards, always whole: its size comes from `--name-ems` (the name's width in em, measured once) so every spine is 78% of the screen tall; on small screens it is a big title above the card |
@@ -113,7 +110,8 @@ One file per section, loaded in a fixed order: `base.css` first (colour and font
 - The About section is light with dark text and carries `data-theme="light"`. Its top and bottom edges arrive curved and flatten while you scroll: two half ellipses (`::before`, `::after` in `about.css`) scaled by the variables `--dome-top` and `--dome-bottom`.
 - A click on a row of the project index must not scroll like a normal anchor, because on large screens the card lives inside the pinned horizontal row. `HorizontalProjects` catches the click first (capture phase) and `SmoothScroll` skips clicks that were already handled (`event.defaultPrevented`).
 - The project chapters are created by JavaScript only in the horizontal layout and removed when the screen gets small. The cards must stay opaque (`background-color` in `.is-h .proj`, no fade on entry): they cover the chapter while it slides past.
-- The footer is `position: sticky; bottom: 0` behind `<main>`, which has a solid background: the contact section uncovers it while leaving. Do not remove the background or the `z-index` of `<main>` in `footer.css`.
+- Each project card shows one real screenshot (no switcher); a click opens it larger (`ShotLightbox`).
+- The footer (`.site-foot`) is `position: sticky; bottom: 0` behind `<main>`, which has a solid background: the contact section uncovers it while leaving. Do not remove the background or the `z-index` of `<main>` in `footer.css`. It is sticky only where it fits on screen (see the media query in `footer.css`).
 - The contact section is azure with dark text: it only redefines the colour variables of `base.css` (`--fg`, `--muted`, `--a2`...) and every component inside follows. It appears through a `clip-path` circle whose radius is the variable `--flood`. Sections with a light background carry `data-theme="light"`: `NavBar` and `CustomCursor` use it to turn dark over them.
 - The pinned section makes the page longer, so its ScrollTrigger has `refreshPriority: 1`: it is measured first and every animation below it starts at the right scroll position.
 - Elements that enter the screen together (a group of rows) are revealed in sequence with `ScrollTrigger.batch()` instead of all at once.

@@ -107,7 +107,7 @@ p {
   font-weight: 400;
   letter-spacing: -0.01em;
 }
-/* Parole evidenziate (es. "costruito.", "tutto."): azzurro pieno */
+/* Parola o segno evidenziato (es. il punto di "Parliamone."): colore d'accento pieno */
 .accent-text {
   color: var(--a2);
 }

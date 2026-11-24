@@ -147,18 +147,16 @@ class ScrollAnimations {
     );
   }
 
-  // Servizi: il titolo entra con revealHeadings (ha la classe .split); qui numero, testo e punti.
+  // Servizi: il titolo entra con revealHeadings (ha la classe .split); qui testo e punti.
   revealServices() {
     const rows = document.querySelectorAll(".svc");
     for (const row of rows) {
-      const number = row.querySelector(".svc-num");
       const texts = row.querySelectorAll(".svc-body > p, .svc-points li");
 
       const timeline = this.gsap.timeline({
         scrollTrigger: { trigger: row, start: "top 85%", once: true },
       });
-      timeline.from(number, { x: -18, opacity: 0, duration: 0.7, ease: "power3.out" });
-      timeline.from(texts, { y: 24, opacity: 0, duration: 0.9, ease: "expo.out", stagger: 0.06 }, "-=0.45");
+      timeline.from(texts, { y: 24, opacity: 0, duration: 0.9, ease: "expo.out", stagger: 0.06 });
     }
   }
 

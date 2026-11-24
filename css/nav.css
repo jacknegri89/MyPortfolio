@@ -40,10 +40,6 @@
   position: absolute;
   inset: -14px -10px;
 }
-.logo sup {
-  font: 500 0.6rem var(--f-mono);
-  margin-left: 2px;
-}
 .nav ul {
   display: flex;
   gap: 22px;
