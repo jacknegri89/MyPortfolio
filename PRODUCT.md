@@ -22,7 +22,7 @@ Personal portfolio of Giacomo Negri, developer. It sells one thing to clients: c
 
 Precise, direct, hand-built. The voice is first person, plain Italian, concrete nouns, no slogans. The page should feel made by one person who cares about details, not assembled from a kit.
 
-Fixed identity, do not replace: near-black background, a single azure accent, Geist for text, Instrument Serif italic for the accented words in headings, Geist Mono only for dates and code-like labels, the giant name with the particle wave in the hero, the horizontal projects section.
+Fixed identity, do not replace: near-black background, a single azure accent, Archivo for text with headings in its expanded width (since 24/11/2026, replacing Geist), Instrument Serif italic only for "Negri" and a few details, Martian Mono only for dates and code-like labels, the giant name with the particle wave in the hero, the horizontal projects section.
 
 ## Anti-references
 
