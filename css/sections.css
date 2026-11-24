@@ -1,4 +1,4 @@
-/* Elementi comuni alle sezioni: spaziature, intestazioni, card con riflesso, chip. */
+/* Elementi comuni alle sezioni: spaziature, intestazioni, card, chip. */
 .section {
   position: relative;
   padding-block: clamp(64px, 12vw, 160px);
@@ -14,9 +14,6 @@
   line-height: 0.95;
   font-weight: 650;
   letter-spacing: -0.055em;
-}
-.sec-head h2 .serif {
-  font-size: 1.06em;
 }
 .sec-head p {
   color: var(--muted);
@@ -35,44 +32,6 @@
   border-radius: var(--r);
   overflow: hidden;
   min-width: 0;
-}
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  pointer-events: none;
-  background: radial-gradient(
-    380px circle at var(--mx, -500px) var(--my, -500px),
-    rgba(143, 208, 255, 0.8),
-    rgba(99, 189, 255, 0.4) 35%,
-    transparent 60%
-  );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.35s;
-}
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    520px circle at var(--mx, -500px) var(--my, -500px),
-    rgba(99, 189, 255, 0.07),
-    transparent 45%
-  );
-  opacity: 0;
-  transition: opacity 0.35s;
-}
-.card:hover::before,
-.card:hover::after {
-  opacity: 1;
 }
 
 /* Righe con la linea in alto che si "disegna" da sinistra quando entrano nello schermo.
@@ -108,10 +67,4 @@
   background: rgba(255, 255, 255, 0.03);
   font: 500 0.76rem/1.2 var(--f-mono);
   color: #c9cee0;
-}
-
-/* Competenze e Formazione seguono direttamente Esperienza: niente spazio in alto in più */
-#competenze,
-#formazione {
-  padding-top: 0;
 }

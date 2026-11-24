@@ -1,52 +1,142 @@
-/* Footer: riga con copyright, ora locale e link, più una riga su come è fatto il sito. */
-footer {
+/* Footer: chi sono e dove (con l'ora locale), i link della pagina e quelli esterni;
+   sotto, una riga con copyright, come è fatto il sito e privacy. */
+.site-foot {
   border-top: 1px solid var(--stroke);
+  background: var(--bg);
   overflow: hidden;
 }
 /* Il footer resta fermo in fondo allo schermo, dietro il resto della pagina: quando la sezione Contatti
    finisce di salire lo scopre, come un sipario. Per questo <main> sta sopra e ha un fondo pieno.
-   Su schermi molto bassi il footer non ci starebbe intero: lì resta un footer normale. */
+   Funziona solo se il footer sta tutto nello schermo: su telefono (footer più alto, colonne una sotto
+   l'altra) serve uno schermo alto almeno 760px, altrimenti resta un footer normale che scorre. */
 main {
   position: relative;
   z-index: 1;
   background: var(--bg);
 }
-@media (min-height: 560px) {
-  footer {
+@media (min-width: 761px) and (min-height: 560px), (min-height: 760px) {
+  .site-foot {
     position: sticky;
     bottom: 0;
   }
 }
-.foot-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 10px 24px;
-  padding-block: 26px;
-  font: 400 0.74rem/1.6 var(--f-mono);
+
+/* Parte alta: tre colonne; su telefono chi sono sopra e i due elenchi affiancati */
+.foot-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 36px 24px;
+  padding-block: clamp(44px, 6vw, 72px) clamp(32px, 4vw, 48px);
+}
+.foot-id {
+  grid-column: 1 / -1;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+@media (min-width: 761px) {
+  .foot-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+  }
+  .foot-id {
+    grid-column: auto;
+  }
+}
+.foot-name {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+.foot-id p:not(.foot-name) {
+  max-width: 38ch;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.foot-id .foot-time {
+  margin-top: 6px;
+  font: 400 0.78rem/1.4 var(--f-mono);
+  font-variant-numeric: tabular-nums;
   color: var(--dim);
 }
-.foot-row a {
-  text-decoration: none;
-  color: var(--muted);
-}
-.foot-row a:hover {
+.foot-time time {
   color: var(--fg);
 }
-.foot-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 24px;
+.foot-head {
+  margin-bottom: 10px;
+  font: 500 0.72rem/1 var(--f-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
 }
-/* Link alti 44px: sul telefono si toccano senza prendere quello accanto */
+.foot-col ul {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* Link alti 44px: sul telefono si toccano senza prendere quello accanto. Con il mouse bastano 34px. */
+.foot-col a,
 .foot-links a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
 }
-/* Riga finale: come è fatto il sito */
-.foot-tech {
-  padding-bottom: 26px;
-  font: 400 0.74rem/1.6 var(--f-mono);
+@media (pointer: fine) {
+  .foot-col a {
+    min-height: 34px;
+  }
+}
+.foot-col a {
+  color: #c9cee0;
+  font-size: 0.98rem;
+}
+/* Sottolineatura che compare al passaggio del mouse (o con il focus da tastiera) */
+.site-foot a {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  transition:
+    color 0.2s,
+    text-decoration-color 0.2s;
+}
+.site-foot a:hover,
+.site-foot a:focus-visible {
+  color: var(--fg);
+  text-decoration-color: currentColor;
+}
+
+/* Riga finale */
+.foot-base {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 28px;
+  padding-block: 12px 18px;
+  /* Linea in alto lunga quanto il testo (un bordo arriverebbe fino ai margini laterali di .wrap) */
+  background: linear-gradient(var(--stroke), var(--stroke)) var(--gut) 0 / calc(100% - 2 * var(--gut)) 1px no-repeat;
   color: var(--dim);
+  font-size: 0.82rem;
+}
+.foot-base a {
+  color: var(--muted);
+}
+.foot-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 22px;
+}
+.foot-links a {
+  gap: 6px;
+}
+@media (max-width: 760px) {
+  .foot-base {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 18px;
+  }
 }

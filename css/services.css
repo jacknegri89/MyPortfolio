@@ -1,4 +1,4 @@
-/* Sezione Siti web (servizi): elenco numerato in stile indice editoriale (righe separate da una linea, non card). */
+/* Sezione Siti web (servizi): elenco in stile indice editoriale (righe separate da una linea, non card). */
 .svc-list {
   list-style: none;
   margin: 0;
@@ -8,8 +8,8 @@
 .svc {
   position: relative;
   display: grid;
-  /* numero | titolo | descrizione: la descrizione ha più spazio del titolo */
-  grid-template-columns: 4.5rem minmax(0, 1fr) minmax(0, 1.2fr);
+  /* titolo | descrizione: la descrizione ha più spazio del titolo */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   gap: clamp(16px, 3vw, 48px);
   align-items: start;
   padding-block: clamp(28px, 4.4vw, 56px);
@@ -31,19 +31,10 @@
 .svc:hover::after {
   transform: scaleX(1);
 }
-.svc-num {
-  font: 500 0.8rem/1 var(--f-mono);
-  letter-spacing: 0.14em;
-  color: var(--a2);
-  padding-top: 0.75em;
-}
 .svc h3 {
   font-size: clamp(1.9rem, 3.8vw, 3.2rem);
   line-height: 1;
   letter-spacing: -0.05em;
-}
-.svc h3 .serif {
-  font-size: 1.06em;
 }
 /* Solo con il mouse: su touchscreen l'effetto resterebbe "incastrato" dopo un tocco */
 @media (hover: hover) {
@@ -114,9 +105,6 @@
   .svc {
     grid-template-columns: minmax(0, 1fr);
     gap: 14px;
-  }
-  .svc-num {
-    padding-top: 0;
   }
 }
 @media (max-width: 480px) {
@@ -319,10 +307,10 @@
   pointer-events: none;
 }
 .is-svc .svc {
-  /* numero | titolo sulla prima riga; sotto, la descrizione: alta 0 se il servizio è chiuso */
-  grid-template-columns: 3.2rem minmax(0, 1fr);
+  /* titolo sulla prima riga; sotto, la descrizione: alta 0 se il servizio è chiuso */
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto 0fr;
-  gap: 0 16px;
+  gap: 0;
   padding-block: 22px;
   transition: grid-template-rows 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -334,17 +322,10 @@
   transform: none;
   transition: color 0.4s;
 }
-.is-svc .svc-num {
-  padding-top: 0.6em;
-  transition: color 0.4s;
-}
-.is-svc .svc:not(.is-active) h3,
-.is-svc .svc:not(.is-active) h3 .accent-text,
-.is-svc .svc:not(.is-active) .svc-num {
+.is-svc .svc:not(.is-active) h3 {
   color: var(--dim);
 }
 .is-svc .svc-body {
-  grid-column: 2;
   /* stretch + min-height 0: la descrizione è alta quanto la sua riga, quindi 0 quando il servizio è chiuso */
   align-self: stretch;
   min-height: 0;

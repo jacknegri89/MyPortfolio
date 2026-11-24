@@ -70,25 +70,15 @@ class App {
       return;
     }
     new CustomCursor(this.environment).start();
-    new CardSpotlight().start();
     new MagneticButtons(this.environment).start();
     new NameProximity(this.environment).start();
     new WorkIndex(this.environment).start();
     new WindowTilt(this.environment).start();
   }
 
-  // Schermate dei progetti: pulsanti per cambiarle, versione ingrandita, terminale e telefono simulati.
+  // Schermate dei progetti: una per progetto, ingrandibile; per Secure Notes il telefono simulato.
   startProjectWidgets() {
-    new ScreenshotTabs(this.environment).start();
     new ShotLightbox(this.environment, this.smoothScroll).start();
-
-    // Un terminale animato per ogni elemento con data-terminal (oggi JobScraper e RelayHub)
-    const terminals = [];
-    const terminalElements = document.querySelectorAll("[data-terminal]");
-    for (const element of terminalElements) {
-      terminals.push(new TypingTerminal(element, this.environment));
-    }
-    new InViewWatcher(terminals).start();
     new SecureNotesDemo(this.environment).start();
   }
 
@@ -98,7 +88,6 @@ class App {
     const stackFilter = new StackFilter(this.environment);
     stackFilter.start();
     new StackConstellation(this.environment, stackFilter).start();
-    new VelocityMarquee(this.smoothScroll, this.environment).start();
   }
 
   // Avvia l'animazione d'apertura e restituisce i passi che preparano le animazioni di scroll:

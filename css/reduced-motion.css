@@ -3,9 +3,6 @@
   #loader {
     display: none;
   }
-  .aurora {
-    animation: none;
-  }
   .nav,
   .svc h3,
   .btn svg,
@@ -20,7 +17,7 @@
     transition: none;
   }
   /* Il footer non resta fermo dietro la pagina: scorre come tutto il resto */
-  footer {
+  .site-foot {
     position: static;
   }
   .lightbox[open]::backdrop {

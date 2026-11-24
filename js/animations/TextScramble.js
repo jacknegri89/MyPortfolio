@@ -2,12 +2,11 @@
  * Testo che si "decifra": per un attimo mostra caratteri a caso, poi torna il testo vero.
  * Usa il plugin ScrambleText di GSAP. Lo usiamo solo sulle scritte piccole in carattere
  * monospazio, dove ogni lettera è larga uguale e quindi la riga non "balla":
- * - le etichette delle sezioni e i numeri dei servizi, quando entrano nello schermo
+ * - le etichette delle sezioni e le date della formazione, quando entrano nello schermo
  * - le voci del menu, quando ci passi sopra con il mouse
  */
 class TextScramble {
   static LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  static DIGITS = "0123456789";
   static DURATION_SECONDS = 0.9;
 
   constructor(environment) {
@@ -21,7 +20,6 @@ class TextScramble {
       return;
     }
     this.scrambleWhenVisible(".eyebrow, .tl-when", TextScramble.LETTERS);
-    this.scrambleWhenVisible(".svc-num", TextScramble.DIGITS);
 
     if (this.finePointer) {
       this.scrambleOnHover(".nav ul a");
