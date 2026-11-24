@@ -28,7 +28,7 @@ It is a static site written by hand in HTML, CSS and JavaScript: no framework, n
 | GSAP plugins: SplitText, ScrambleText, DrawSVG | Paragraphs revealed line by line, labels that decode, the system diagram drawing itself |
 | [Three.js](https://threejs.org) r128 | The particle wave in the hero, computed on the GPU by a small vertex shader |
 | [Lenis](https://github.com/darkroomengineering/lenis) 1.1 | Smooth scrolling |
-| Local fonts (`assets/fonts/`) | Geist, Geist Mono and Instrument Serif, served from this site as WOFF2 (SIL Open Font License), latin and latin-ext subsets only |
+| Local fonts (`assets/fonts/`) | Archivo (headings in its expanded width), Martian Mono and Instrument Serif, served from this site as WOFF2 (SIL Open Font License), latin and latin-ext subsets only. Archivo and Martian Mono are trimmed with fonttools to the weights and widths in use |
 | [Vercel](https://vercel.com) | Hosting; every push to `main` goes live |
 
 The fonts come from the site itself; the libraries load from public CDNs with [Subresource Integrity](https://developer.mozilla.org/docs/Web/Security/Subresource_Integrity) hashes. There is no `package.json` because nothing has to be installed.
@@ -78,7 +78,7 @@ Plain classes, one per file, named like the file. Each has a `start()` (or `play
 | `OffscreenPauser` | Pauses endless CSS animations in sections that are off screen |
 | `ParticleWave` | The 3D particle wave in the hero. On load the camera flies in from far away (`startFlyIn`); a click or a tap in the hero starts a circular wave from that point (`startRipple`). Its drawing loop starts only when the curtain goes up, without antialiasing and with a pixel ratio of at most 1.5; it keeps the scroll position from the `scroll` event instead of reading `window.scrollY` in every frame (that read forced a layout of the whole page) |
 | `CustomCursor`, `MagneticButtons` | Mouse effects, desktop only |
-| `NameProximity` | The letters of the name in the hero get thinner near the cursor (Geist is a variable font, weight 300 to 800). The weight moves in steps of 20 and the letter centres are measured when the mouse enters the hero: with any weight value the browser built a new font instance in every frame and the page spent 60% of its time in layout |
+| `NameProximity` | The letters of the name in the hero get thinner near the cursor (Archivo is a variable font, weight 300 to 800). The weight moves in steps of 20 and the letter centres are measured when the mouse enters the hero: with any weight value the browser built a new font instance in every frame and the page spent 60% of its time in layout |
 | `NavBar` | Hides the bar while scrolling down and shows it again on the way up, moves the reading-progress line, marks the link of the section on screen |
 | `ShotLightbox` | Opens a screenshot enlarged in a native `<dialog>`, growing from the thumbnail |
 | `SecureNotesDemo`, `SerialMonitor` | Small simulations (encrypted notes, Raspberry Pi control loop) |

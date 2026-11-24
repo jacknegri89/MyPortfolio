@@ -46,7 +46,7 @@ main {
 .foot-name {
   font-size: 1.35rem;
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   line-height: 1.2;
 }
 .foot-id p:not(.foot-name) {
