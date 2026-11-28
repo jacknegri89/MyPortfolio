@@ -11,7 +11,7 @@ brand
 
 Two kinds of visitor, in this order of priority:
 
-1. Owners of shops, studios and local businesses, and independent professionals, between Lombardy and Canton Ticino. Usually on a phone, not technical, deciding in a minute whether to write. They need to understand what Giacomo does, see that he can do it, and find the contact.
+1. Owners of Italian shops, studios and local businesses, and independent professionals, anywhere in Italy (Giacomo is based in Barlassina, Lombardy). Usually on a phone, not technical, deciding in a minute whether to write. They need to understand what Giacomo does, see that he can do it, and find the contact.
 2. Recruiters and technical teams. On a laptop, scanning for proof: real projects, public code, stack, CV.
 
 ## Product Purpose
